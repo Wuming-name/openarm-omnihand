@@ -74,7 +74,7 @@ class FistTest(unittest.TestCase):
         target = [0, 4096, 1446, 0, 46, 46, 0, 46, 4096, 46]
         last = start
         for step in motion.trajectory(start, target):
-            self.assertTrue(all(abs(a-b) <= 24 for a, b in zip(last, step)))
+            self.assertTrue(all(abs(a-b) <= 12 for a, b in zip(last, step)))
             motion.positions_checked(step)
             last = step
         self.assertEqual(last, target)
@@ -116,7 +116,49 @@ class FistTest(unittest.TestCase):
         hand = Hand()
         report = self.run_hand(hand, [2060]*10)
         self.assertTrue(report["position_test_passed"])
-        self.assertEqual(report["final_positions_raw"], [2060]*10)
+        expected = [2000 if i + 1 in motion.PRESERVED_AXES else 2060 for i in range(10)]
+        self.assertEqual(report["final_positions_raw"], expected)
+        self.assertEqual(report["target"], expected)
+
+    def test_unresponsive_side_axes_are_held_once_not_driven_to_preset(self):
+        hand = Hand()
+        report = self.run_hand(hand, [2500]*10)
+        self.assertTrue(report["position_test_passed"])
+        for axis in motion.PRESERVED_AXES:
+            self.assertEqual([(a, v) for a, v in hand.writes if a == axis], [(axis, 2000)])
+        self.assertEqual(report["requested_preset"], [2500]*10)
+        self.assertTrue(all(sample["complete"] for sample in report["samples"]))
+
+    def test_recorded_start_with_stationary_side_axes_completes_six_axis_closure(self):
+        hand = Hand()
+        start = [2019, 1869, 3766, 1954, 3595, 3594, 2022, 3622, 2057, 3622]
+        hand.feedback = list(start)
+        original_set_axis = hand.set_axis
+        def stationary_side_axes(axis, target):
+            if axis in motion.PRESERVED_AXES:
+                self.assertEqual(target, start[axis - 1])
+                return start[axis - 1]
+            return original_set_axis(axis, target)
+        hand.set_axis = stationary_side_axes
+        profile = json.loads(motion.PROFILE.read_text(encoding="utf-8"))
+        report = self.run_hand(hand, profile["fist"])
+        self.assertTrue(report["position_test_passed"])
+        self.assertEqual(report["final_positions_raw"], [2019, 849, 1446, 1954, 46, 46, 2022, 46, 2057, 46])
+
+    def test_aborted_step_feedback_is_retained(self):
+        hand = Hand()
+        original_set_axis = hand.set_axis
+        def fail_active(axis, target):
+            if axis == 3:
+                raise RuntimeError("position response timed out")
+            return original_set_axis(axis, target)
+        hand.set_axis = fail_active
+        report, clock = {}, Clock()
+        with self.assertRaisesRegex(RuntimeError, "timed out"):
+            motion.run_motion(hand, [2500]*10, report, clock.sleep, clock.now)
+        self.assertFalse(report["samples"][-1]["complete"])
+        self.assertEqual(report["samples"][-1]["sent_axes"], [2, 3])
+        self.assertEqual(report["samples"][-1]["feedback"][1], hand.feedback[1])
 
     def test_dry_preview_does_not_inspect_or_open_can(self):
         with patch.object(sys, "argv", ["fist_test.py", "--channel", "can1"]), \

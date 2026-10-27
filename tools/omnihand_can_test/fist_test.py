@@ -15,6 +15,7 @@ import read_only_test as ro
 
 PROFILE = Path(__file__).with_name("right_hand_gestures.json")
 NODE = 9
+PRESERVED_AXES = (1, 4, 7, 9)
 
 
 def positions_checked(values):
@@ -63,6 +64,9 @@ class MotionTransport(ro.SocketTransport):
                 data = frame["data"]
                 if len(data) >= 4 and data[0] == 0x06 and data[1] == axis:
                     value = struct.unpack("<H", data[2:4])[0]
+                    self.events.append({"direction": "rx_position", "axis": axis,
+                                        "position": value, "data_hex": data.hex(" "),
+                                        "monotonic_time": time.monotonic()})
                     if value > 4112:
                         raise RuntimeError(f"Axis {axis} feedback outside accepted readback range: {value}")
                     return value
@@ -89,7 +93,7 @@ class MotionTransport(ro.SocketTransport):
         raise RuntimeError("Hand error query timed out; no further targets sent")
 
 
-def trajectory(start, target, step=24):
+def trajectory(start, target, step=12):
     start, target = positions_checked(start), positions_checked(target)
     count = max(1, math.ceil(max(abs(a-b) for a, b in zip(start, target)) / step))
     for i in range(1, count + 1):
@@ -111,6 +115,21 @@ def run_motion(transport, target, report, sleep=time.sleep, now=time.monotonic):
     transport.check_error()
     report["planning_start"] = start
     report["samples"] = []
+    report["requested_preset"] = list(target)
+    target = positions_checked(target)
+    for axis in PRESERVED_AXES:
+        target[axis - 1] = start[axis - 1]
+    report["target"] = list(target)
+    report["preserved_axes"] = list(PRESERVED_AXES)
+    report["motion_scope"] = "Six-axis hand closure; full official fist geometry is not validated"
+    print("Keeping axes 1/4/7/9 at current positions; effective target:", target, flush=True)
+    # Replace any previous run's residual targets with current-position targets.
+    # Do not leave these axes tracking the interrupted official preset.
+    for axis in PRESERVED_AXES:
+        feedback[axis - 1] = transport.set_axis(axis, start[axis - 1])
+        if abs(feedback[axis - 1] - start[axis - 1]) > 128:
+            raise RuntimeError(f"Preserved axis {axis} did not remain near its starting position")
+    transport.check_error()
     moved_axes = [i for i in range(10) if start[i] != target[i]]
     lag_since = {}
     last = list(start)
@@ -118,10 +137,14 @@ def run_motion(transport, target, report, sleep=time.sleep, now=time.monotonic):
     def tick(command):
         nonlocal feedback
         begin = now()
+        sample = {"target": list(command), "feedback": list(feedback), "sent_axes": [], "complete": False}
+        report["samples"].append(sample)
         for i in moved_axes:
             # Only changed goals or lagging axes need a write, with reply per axis.
             if command[i] != last[i] or abs(feedback[i] - command[i]) > 64:
+                sample["sent_axes"].append(i + 1)
                 feedback[i] = transport.set_axis(i + 1, command[i])
+                sample["feedback"] = list(feedback)
                 last[i] = command[i]
             error = abs(feedback[i] - command[i])
             if error > 512:
@@ -133,10 +156,10 @@ def run_motion(transport, target, report, sleep=time.sleep, now=time.monotonic):
             else:
                 lag_since.pop(i, None)
         transport.check_error()
-        report["samples"].append({"target": list(command), "feedback": list(feedback)})
+        sample["complete"] = True
         sleep(max(0., .1 - (now() - begin)))
 
-    # Max 24 counts per step, max ten steps/sec (240 counts/sec).
+    # Max 12 counts per step, max ten steps/sec (120 counts/sec).
     for command in trajectory(start, target):
         tick(command)
     end = now() + 2.
@@ -161,7 +184,8 @@ def main():
     args = parser.parse_args()
     profile = json.loads(PROFILE.read_text(encoding="utf-8"))
     target = positions_checked(profile[args.gesture])
-    print("RIGHT O10 / can1 / ID 0x09 /", args.gesture, "target:", target, flush=True)
+    print("RIGHT O10 / can1 / ID 0x09 /", args.gesture, "reference preset:", target, flush=True)
+    print("Axes 1/4/7/9 will retain live starting positions. Only axes 2/3/5/6/8/10 follow the preset.", flush=True)
     if not args.execute:
         print("PREVIEW ONLY: no CAN socket opened. Add --execute to move the empty hand.")
         return 0
