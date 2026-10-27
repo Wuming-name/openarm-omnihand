@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "default_pose": "closed_hand",
+  "initial_position_error_rad": 2.384185793236071e-08,
+  "dof_count": 23,
+  "mimic_constraints": [
+    "/Robot/joints/omni_R_thumb_pip_joint",
+    "/Robot/joints/omni_R_thumb_dip_joint",
+    "/Robot/joints/omni_R_index_dip_joint",
+    "/Robot/joints/omni_R_middle_dip_joint",
+    "/Robot/joints/omni_R_ring_dip_joint",
+    "/Robot/joints/omni_R_pinky_dip_joint"
+  ],
+  "layers": [
+    "/workspace/local_projects/OPENARM_OMNIHAND_PORTABLE_MODEL_20261025_173300/simulation/usd/openarm_omnihand.usda"
+  ],
+  "position_reset_calls": 0
+}

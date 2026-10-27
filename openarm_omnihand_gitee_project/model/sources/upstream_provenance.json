@@ -1,0 +1,2346 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-09T20:19:55.565184+08:00",
+  "purpose": "Stage 1 evidence and source baseline; not an executable robot configuration.",
+  "root": "/home/yh/isaaclab-dev/openarm_bringup/gravity_compensation",
+  "approved_stage": 1,
+  "next_stage_authorized": false,
+  "can_commands_sent": false,
+  "can_socket_opened": false,
+  "upstream": {
+    "openarm_ros2": {
+      "url": "https://github.com/enactic/openarm_ros2",
+      "commit": "39271ef167fb647bc51dc6da089bcd855476149c",
+      "note": "Parent of v2 support migration commit 01b9f3815222b490a593f01379d8e2106c8da6a0; official archive extracted without changes."
+    },
+    "openarm_description": {
+      "url": "https://github.com/enactic/openarm_description",
+      "commit": "73ca62f3e4d04f61d2d1efa112927fe763d4b1f1",
+      "note": "All 75 included files individually verified against upstream Git blob hashes. Three GitHub workflow/release files omitted; no model or package files modified."
+    }
+  },
+  "official_teleop_commit": "eb2d49338bf70ace95282ea724903849397b7811",
+  "openarm_can_required_version": "1.4.0",
+  "hand_model_selected": null,
+  "snapshot_policy": "Key local source, hand assets, CAN headers, official reference and historical evidence copied. Official v1 live source tracked by hash and preserved in upstream_v1_sources.tar.gz. Installed binaries are hash-only.",
+  "files": [
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/CMakeLists.txt",
+      "bytes": 2238,
+      "sha256": "775dcb635f45cd23e4e39ef07c26f7b9e7bbbf74db6c480ba1a0653066a2f53a",
+      "snapshot": "snapshots/local_hardware/CMakeLists.txt"
+    },
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/include/openarm_v1_right_hardware/hardware.hpp",
+      "bytes": 4303,
+      "sha256": "6158650c45bc83f525970bda858db0c43bb41f14c8ff72738e0f792cb1d386ed",
+      "snapshot": "snapshots/local_hardware/include/openarm_v1_right_hardware/hardware.hpp"
+    },
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/package.xml",
+      "bytes": 636,
+      "sha256": "1219b2f219498c4a882625facf9bb984a6eb5f261ba4b4a97bdc2843612d06ab",
+      "snapshot": "snapshots/local_hardware/package.xml"
+    },
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/plugin.xml",
+      "bytes": 298,
+      "sha256": "cb94e86545fcb9a212dc8557487b740fa71f5aa13fa336616177e1640e45f23c",
+      "snapshot": "snapshots/local_hardware/plugin.xml"
+    },
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/src/hardware.cpp",
+      "bytes": 6678,
+      "sha256": "6c696619259f140c558436175a635eee5aed23ec6ff42c715582d15788c95954",
+      "snapshot": "snapshots/local_hardware/src/hardware.cpp"
+    },
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/src/transport.cpp",
+      "bytes": 8937,
+      "sha256": "e39d8d1241a73512781be28a85c8cd66e08a510c8ae9b3a7eba1ca022b832ea9",
+      "snapshot": "snapshots/local_hardware/src/transport.cpp"
+    },
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/test/test_controller_handoff.cpp",
+      "bytes": 5805,
+      "sha256": "f520768417386cf31fcaa95a169060189434299788df50dbf38464470f86929e",
+      "snapshot": "snapshots/local_hardware/test/test_controller_handoff.cpp"
+    },
+    {
+      "group": "local_hardware",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_v1_right_hardware/test/test_hardware.cpp",
+      "bytes": 7749,
+      "sha256": "62a2f6d8b540e441bb6e8c006dd41ae2fd3d78279b8d54cb35ff0eae49dc8d34",
+      "snapshot": "snapshots/local_hardware/test/test_hardware.cpp"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/RViz虚拟实验_中文.md",
+      "bytes": 4226,
+      "sha256": "179d8deafbcebf4dc99777fa3708204112d406775c705cbfcae8c5287a1b6c4f",
+      "snapshot": "snapshots/commissioning/RViz虚拟实验_中文.md"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/controller_handoff_diagnosis.json",
+      "bytes": 1145,
+      "sha256": "c73fd3779a161893f056193a6a3a4ae89bd65769d707cbf3a817ad11a3257b11",
+      "snapshot": "snapshots/commissioning/controller_handoff_diagnosis.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/controllers.yaml",
+      "bytes": 741,
+      "sha256": "14ef8d195d79e8b5b6065f889df0575a710bacee8659f5e3574cd61faa69ac7e",
+      "snapshot": "snapshots/commissioning/controllers.yaml"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/controllers_real.yaml",
+      "bytes": 1777,
+      "sha256": "cea55912ff2cea402f7a73224b354afbd92d7b52ddf0410d2f50ac938e4903fd",
+      "snapshot": "snapshots/commissioning/controllers_real.yaml"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/model_validation.json",
+      "bytes": 1388,
+      "sha256": "317377c71fc824179d0b2c4801dd9b382d28bc4c07a3f1b82bf00b24a927b2cc",
+      "snapshot": "snapshots/commissioning/model_validation.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/prepare_terminal_mesh.py",
+      "bytes": 7749,
+      "sha256": "5ad8f64f012078e05e8efc9cc474ffe9a2c91cc6a5fd55ee0afde8e143709c33",
+      "snapshot": "snapshots/commissioning/prepare_terminal_mesh.py"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/real_client_offline_validation.json",
+      "bytes": 1116330,
+      "sha256": "c5ee32b94ef97148a4e47ffb209fed07aec80ebda33fb0b6d6a106320ac8380e",
+      "snapshot": "snapshots/commissioning/real_client_offline_validation.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/real_client_offset_validation.json",
+      "bytes": 375671,
+      "sha256": "b7b1cad6655280e5bf235023d99e6d577061f8c1d7ce61ec3a9ee934742310a5",
+      "snapshot": "snapshots/commissioning/real_client_offset_validation.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/real_hardware_validation.json",
+      "bytes": 4541,
+      "sha256": "8bff01b2ee45f411c9ec6b3e61ad743172784b7763a9846f5513fa587ab81b1a",
+      "snapshot": "snapshots/commissioning/real_hardware_validation.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/ros2_experiment_validation.json",
+      "bytes": 1055,
+      "sha256": "7a9598b742545a9ab585e71c8751df07e3b4f4d84f19311ec0c3425b40f33fb1",
+      "snapshot": "snapshots/commissioning/ros2_experiment_validation.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/run_mock_experiment.py",
+      "bytes": 10616,
+      "sha256": "12cd269f45e5811ab2271aad9b03e96dce5fe6df0c5a93cfc3d955042e0fd070",
+      "snapshot": "snapshots/commissioning/run_mock_experiment.py"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/run_real_experiment.py",
+      "bytes": 10656,
+      "sha256": "5638376d0aa6f73979bf4cd4eb8dd61d923df210dfeaaa203e3a9fd294f68f03",
+      "snapshot": "snapshots/commissioning/run_real_experiment.py"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/runtime_validation_no_j8.json",
+      "bytes": 6223,
+      "sha256": "10ac41adf2a2270217ce0078cb0956ccbabdd7351ad6b8d8cb57e0de3d677c60",
+      "snapshot": "snapshots/commissioning/runtime_validation_no_j8.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/runtime_validation_right_on_body.json",
+      "bytes": 6215,
+      "sha256": "8e7efc63cc86e0bad2e70fae5ae12caddee179a3cf1c60181cfb54b58e4f93e2",
+      "snapshot": "snapshots/commissioning/runtime_validation_right_on_body.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/runtime_validation_tool_mount.json",
+      "bytes": 7096,
+      "sha256": "46ecd7818efcfc9146711011e0cf4d734ee54da2f7a996b416d86740ddd481d0",
+      "snapshot": "snapshots/commissioning/runtime_validation_tool_mount.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/sources.json",
+      "bytes": 3819,
+      "sha256": "f6723fb3d0315a3c4cba5e81d75f661694156524c0e8af7a94f7453d015977a2",
+      "snapshot": "snapshots/commissioning/sources.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/v1_right_mock.launch.py",
+      "bytes": 4600,
+      "sha256": "04919ecd1dfc6597a21607ba0eb619b01d78592f3edcf7734644666ee158b51e",
+      "snapshot": "snapshots/commissioning/v1_right_mock.launch.py"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/v1_right_on_body.urdf.xacro",
+      "bytes": 2117,
+      "sha256": "7da2d5b464dcd32aef7207f79edfbbbe8cd43dc8af45e77cfa83005c2964112d",
+      "snapshot": "snapshots/commissioning/v1_right_on_body.urdf.xacro"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/v1_right_real.launch.py",
+      "bytes": 3566,
+      "sha256": "11e42576ab1fc4ae492b3817012f337c3a2f7cad7185c4bc9befbee019f78e2f",
+      "snapshot": "snapshots/commissioning/v1_right_real.launch.py"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/validation.json",
+      "bytes": 2065,
+      "sha256": "89f0826bc393212e559d8f8093a5ad5000f5c5d981a9ac6b034a27bf9dfcc255",
+      "snapshot": "snapshots/commissioning/validation.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/verify_right_model.py",
+      "bytes": 5913,
+      "sha256": "82602e48db54782a87f623a112b1858004d13f50888b3a06e06fa33dab2d29f1",
+      "snapshot": "snapshots/commissioning/verify_right_model.py"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/操作流程_中文.md",
+      "bytes": 17469,
+      "sha256": "9fb5e7adf8860f87f66fa3ec8c7ffc449726dcb42ab36146c74ceab9a696a4db",
+      "snapshot": "snapshots/commissioning/操作流程_中文.md"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/真机实验_中文.md",
+      "bytes": 13750,
+      "sha256": "dd8b6394396ed51af0daad8c6202c8fa0fbdfd9391bd976ffc2cda55ec1ae6bd",
+      "snapshot": "snapshots/commissioning/真机实验_中文.md"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/重启后复现official_终端流程.md",
+      "bytes": 9278,
+      "sha256": "2aa50e97da953a3183375eebb72690bc67afbd4d4f9dc7fc3ae6ab5ba97cf242",
+      "snapshot": "snapshots/commissioning/重启后复现official_终端流程.md"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/meshes/j7_tool_mount_no_j8.stl",
+      "bytes": 1936384,
+      "sha256": "6bb7af43aa575dfc1c75a7136f68cb33d1d2a08c1ddf8848a94aaad527ea5df7",
+      "snapshot": "snapshots/commissioning/meshes/j7_tool_mount_no_j8.stl"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/meshes/j7_tool_mount_no_j8.json",
+      "bytes": 7496,
+      "sha256": "794b55c9926fdd0fc6eb2286bc50b78c8e8ea26d3dc7b6eafe4bbf214720f7b6",
+      "snapshot": "snapshots/commissioning/meshes/j7_tool_mount_no_j8.json"
+    },
+    {
+      "group": "commissioning",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/meshes/j7_output_plate_no_j8.json",
+      "bytes": 3520,
+      "sha256": "0717592b4411ce420062f450a2ce2de7335105f35c2593215783131ebed32685",
+      "snapshot": "snapshots/commissioning/meshes/j7_output_plate_no_j8.json"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/README_中文.md",
+      "bytes": 34980,
+      "sha256": "6231d979385123973246f478197ee206c605772563dccdf90df36e6ebd4c947f",
+      "snapshot": "snapshots/bringup_history/README_中文.md"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/can_probe.py",
+      "bytes": 6563,
+      "sha256": "1f57ad5b7375a02407f4bdc4485180e667922d6084fbf3a3d527ae840e6774a0",
+      "snapshot": "snapshots/bringup_history/can_probe.py"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/calibrate_v1_right_no_gripper.py",
+      "bytes": 29926,
+      "sha256": "843449019d3e3d1cde56c91ed6a594e0cca930d110b4ac99a901bfcd503699b0",
+      "snapshot": "snapshots/bringup_history/calibrate_v1_right_no_gripper.py"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/return_to_zero_v1_right.py",
+      "bytes": 14065,
+      "sha256": "8bc649d0401d40b35f01cd2de284c8cc58636e754d788612f67b5c6aed9edf92",
+      "snapshot": "snapshots/bringup_history/return_to_zero_v1_right.py"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/慢速回零_操作说明.md",
+      "bytes": 5288,
+      "sha256": "0c3dedd634d8d93419035654084003f33bdd843e0c79305c5f41b839f40bad0d",
+      "snapshot": "snapshots/bringup_history/慢速回零_操作说明.md"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/upstream/provenance.json",
+      "bytes": 363,
+      "sha256": "c1910c09289f01e35c855fb0aa64855ac3aa14b09e89635660f277d4eef9bf15",
+      "snapshot": "snapshots/bringup_history/upstream/provenance.json"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/demo_no_gripper/demo_core.hpp",
+      "bytes": 9742,
+      "sha256": "cd49c2f19c2775e663686cd2d887a9f381469d40caa9d50718b734873d6aff98",
+      "snapshot": "snapshots/bringup_history/demo_no_gripper/demo_core.hpp"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/demo_no_gripper/demo.cpp",
+      "bytes": 18403,
+      "sha256": "7b59ca7e6900d4287b892fc216db7eefa34890b21e3b4f643a12747b7074a824",
+      "snapshot": "snapshots/bringup_history/demo_no_gripper/demo.cpp"
+    },
+    {
+      "group": "bringup_history",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/demo_no_gripper/CMakeLists.txt",
+      "bytes": 1162,
+      "sha256": "82e250d5f608d0f4c80bb9383e2047991a373a2b2f7fea1f46c42f3f6d82af8b",
+      "snapshot": "snapshots/bringup_history/demo_no_gripper/CMakeLists.txt"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/logs/zero_reference_20260930_193051.json",
+      "bytes": 2234,
+      "sha256": "b0d39d407580aa9c2960967c269de25d169bcad2181f991b915c27510ed4ad2e",
+      "snapshot": "snapshots/history_logs/logs/zero_reference_20260930_193051.json"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/logs/zero_recheck_20260930_193744.json",
+      "bytes": 2060,
+      "sha256": "8e082ed15b06768452a706019233507b49ed9a9683a59c773a54d4ef5d45893a",
+      "snapshot": "snapshots/history_logs/logs/zero_recheck_20260930_193744.json"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/logs/calibration_20260930_193051_137505.json",
+      "bytes": 26728230,
+      "sha256": "7ff62e2393b2c4c78e48ff33289169cb8c297e2fc34cf6f115a838050f5a88f4",
+      "snapshot": "snapshots/history_logs/logs/calibration_20260930_193051_137505.json"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/logs/calibration_20260930_193744_162526.json",
+      "bytes": 36439,
+      "sha256": "43de5a8e32fa9a461c0d9c2bfbbc853149237ad9d6a0da9a495e3718621c1597",
+      "snapshot": "snapshots/history_logs/logs/calibration_20260930_193744_162526.json"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/logs/after_canfd.json",
+      "bytes": 95225,
+      "sha256": "8bb3be535f9fe0ba9f38c68484a74480f0b19f44edd32b5c81fc84fad8328732",
+      "snapshot": "snapshots/history_logs/logs/after_canfd.json"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/logs/final_interface.json",
+      "bytes": 2569,
+      "sha256": "ffa602c284df89e6c0cc12d279780cf542dab8c67b5976592ef46f6a6fa15a1e",
+      "snapshot": "snapshots/history_logs/logs/final_interface.json"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/logs/slow_home_20261009_180708_651873.json",
+      "bytes": 411154,
+      "sha256": "0488649f0b5096b66ae0427b6651f44c1278bdea3968cc6f416a43037a569c54",
+      "snapshot": "snapshots/history_logs/logs/slow_home_20261009_180708_651873.json"
+    },
+    {
+      "group": "history_logs",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/logs/ros2_real_20261001_031108_490096.json",
+      "bytes": 332526,
+      "sha256": "6c6e89943637c26b3ed5d8162962a46abe87664f49a723a5947621636e386ea5",
+      "snapshot": "snapshots/history_logs/ros2_v1_no_gripper/logs/ros2_real_20261001_031108_490096.json"
+    },
+    {
+      "group": "upstream_v1",
+      "source_path": "/home/yh/isaaclab-dev/openarm_bringup/ros2_v1_no_gripper/upstream_v1_sources.tar.gz",
+      "bytes": 29877294,
+      "sha256": "bd725605efe9915f41454d30c839dd4a78c42bfb0f2b779c2fb006b3e001bfc0",
+      "snapshot": "snapshots/upstream_v1/upstream_v1_sources.tar.gz"
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.clang-format",
+      "bytes": 603,
+      "sha256": "ef9823bcbe61cc4ac414dfad424a9443ccf1ca6336678fe0edc6fa9ebaa3fa04",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.docker/COLCON_IGNORE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.docker/Dockerfile",
+      "bytes": 510,
+      "sha256": "958fd57625253435d2281fbf3c15ac2362b231d98f8d4caac0102d26e39e2b6a",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.docker/README.md",
+      "bytes": 562,
+      "sha256": "e6719f8467e754ab9abaf8cb0d7485d706fecd86ae0bf8d886280516960223d4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.docker/ros_entrypoint.sh",
+      "bytes": 98,
+      "sha256": "0c964945690a21b2f49d6eee994dd4bda23ea0b8f8e2d5ee7a333dd72d0631e1",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.github/ISSUE_TEMPLATE/1-bug-report.yml",
+      "bytes": 859,
+      "sha256": "9481529380f804224ca3592ad7ac7658102e470143c3368c83b2699a1bd37bd8",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.github/ISSUE_TEMPLATE/2-feature-request.yml",
+      "bytes": 856,
+      "sha256": "b155b669ce91db8a54a6e1acf8cb7307f826a728932000025fba92d7c7903008",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.github/ISSUE_TEMPLATE/config.yml",
+      "bytes": 909,
+      "sha256": "72dfdfbb3761d9feef220f589aa9c03d7d5d6167ff54c801d73d645fe341d3c1",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.github/dependabot.yml",
+      "bytes": 704,
+      "sha256": "76c1dce5a1b2c31a739ae23a82042944d9567bcf713cb9c4ab0297c3ce69996b",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.github/release.yml",
+      "bytes": 637,
+      "sha256": "d354039cdd733003cf575e49dd73fdd8727a789cbe0a6bca3d45c5d8bb9d4b00",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.github/workflows/lint.yml",
+      "bytes": 1327,
+      "sha256": "6108994478013f10201ec067e8831d9e86041e7f477c5fd370d3b9d11e43d644",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.github/workflows/release.yaml",
+      "bytes": 1744,
+      "sha256": "2e9ee6264ad9667ca14a02ccf86924a33b5b359c4a8a09009f2cf568323b0815",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.gitignore",
+      "bytes": 38,
+      "sha256": "eb140c99449702cabd644984942e6a88b19e0d4b079772d99996379037b9c1f9",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/.pre-commit-config.yaml",
+      "bytes": 803,
+      "sha256": "582a83d8dc9022cd805ba168acf3a6a9870f32338be7d5692842c45a32e64d83",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/CODE_OF_CONDUCT.md",
+      "bytes": 5484,
+      "sha256": "e900efb61d49d1a40550bafd0682ec38d8b322691aa1f54661e43bf6d317fa88",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/CONTRIBUTING.md",
+      "bytes": 664,
+      "sha256": "27985b6a5d4032831087f89bc59addb73cd08c075f39e1870affb056fc5265eb",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/README.md",
+      "bytes": 705,
+      "sha256": "8219a0a7c525da66ccc1dba3a127b84db919985f364e69d5e4dd7ca0c6d5720a",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/dev/README.md",
+      "bytes": 166,
+      "sha256": "72dc78d076e86dec26f08a910c28f3a2d9bbc8dee28b470878746b614126b741",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/dev/release.sh",
+      "bytes": 1414,
+      "sha256": "801e3d17c94a4f03e9df60b81c00d9d1c5fe4c0dedf8abe87cd48adf4aa34700",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm/CMakeLists.txt",
+      "bytes": 813,
+      "sha256": "c545957d62bf50d5e2e808d1b5dcd69dd40a10bfb3a539cc2bfc60a77a5fbf5b",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm/package.xml",
+      "bytes": 1324,
+      "sha256": "eee75c0f10da9657b2e0e8548b9e13c476f7806229bf01a123b0ae78fe16dd7b",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm.repos",
+      "bytes": 690,
+      "sha256": "bb157e29d6081cc4ccaa23bb47b483edbdfacd4ad945b879b2d23a9b7f4e5461",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/.setup_assistant",
+      "bytes": 1178,
+      "sha256": "0af6e323da67a2f22cdfa36859d6dbcf443baa91fec3672fa067391fcfe2e0a4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/CMakeLists.txt",
+      "bytes": 1008,
+      "sha256": "4553f001612279b6181bb27e091515edd29c5d4a9ab36afa39512395c52ea85d",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/initial_positions.yaml",
+      "bytes": 1085,
+      "sha256": "18aaa6e354409724db49a998c6fd0d8f7d633cf90bffb95e1c5e0d9864e76e4e",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/joint_limits.yaml",
+      "bytes": 3419,
+      "sha256": "1a3be6f9fb322afa483d45538942afea416a91a660a4f80c537fe8a423657520",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/kinematics.yaml",
+      "bytes": 951,
+      "sha256": "646c98b144cf2b6629cf8218862f19c390617deeaf9c939a0055877762f07fb2",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/moveit.rviz",
+      "bytes": 12872,
+      "sha256": "cab884a03a97b371b06cdf7e50a8a721d931bd1badb27ec50cafb73ae7ac484f",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/moveit_controllers.yaml",
+      "bytes": 1889,
+      "sha256": "2c55481dfbabaf4ebed4815c7d7c5152cc2942bf5247981ecf90a07503b36f83",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/openarm_bimanual.srdf",
+      "bytes": 19714,
+      "sha256": "5c8ec5512f12a36ccc42fc2791c7cb14823afa8380914090cb5801b090fb492d",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/openarm_bimanual.urdf.xacro",
+      "bytes": 1183,
+      "sha256": "c479c8c7c033116c90efe5bd9c857633a22e39d4d89b60977250f7ba7a2de442",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/pilz_cartesian_limits.yaml",
+      "bytes": 710,
+      "sha256": "443ccadedaf3efd0fd480d840f79de6d1f4f21ad8beedbb72418cf59c725629d",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/ros2_controllers.yaml",
+      "bytes": 2209,
+      "sha256": "f0479172269a6174b40abc9b4f78f688c89d39408fef62fcd42d6a2db1b52735",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/config/sensors_3d.yaml",
+      "bytes": 926,
+      "sha256": "66ca9f45e960baaf038fb883cecaaae0a94fa1721ff1afb28c7c5471709bb487",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/launch/demo.launch.py",
+      "bytes": 8390,
+      "sha256": "864b93c803c91109a83454736060d457be3a4efd0efa34785a516a01bee8d3e4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/launch/move_group.launch.py",
+      "bytes": 341,
+      "sha256": "1a800cfc4efb1bcf3d7b9cbf7c8aaa9dee4434d21569afe42622ad21e4b55687",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/launch/moveit_rviz.launch.py",
+      "bytes": 343,
+      "sha256": "41d8307a9a5d9d5ab66ffc036d20f9ab7e51e5b057c851385e3669541f4c5eeb",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/launch/setup_assistant.launch.py",
+      "bytes": 351,
+      "sha256": "901032af81fe65cb15ef9e33d5c322f322ae62c921bf2521374317d394833c96",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/launch/spawn_controllers.launch.py",
+      "bytes": 355,
+      "sha256": "daaa9dfe828338cf6be18505f4b6282fa048a91af76c041086e1e7f0d4017b22",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/launch/static_virtual_joint_tfs.launch.py",
+      "bytes": 369,
+      "sha256": "ce3631fe9cbf55d649baeecf12036200871e65a61877af95c306e959c63a639e",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bimanual_moveit_config/package.xml",
+      "bytes": 2326,
+      "sha256": "9bdc6531a6bbbb15b38093c9db748994cd0e5986c59d62f5d251ebf96cd244f1",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/CMakeLists.txt",
+      "bytes": 1558,
+      "sha256": "eee6d27ab9951c7e814e370dfaf81c1ba188973c1bc15e1e19be86be47d65cb5",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/README.md",
+      "bytes": 886,
+      "sha256": "dfee1cd34fc08b73e4be4e653129efc3edc722ef9eb20177939161e9843d1bc4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/config/v10_controllers/openarm_v10_bimanual_controllers.yaml",
+      "bytes": 4751,
+      "sha256": "479c10c7f6cbe878dd0a2a47f35339a43dc2e680c1717be816fca3189fda3e61",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/config/v10_controllers/openarm_v10_bimanual_controllers_namespaced.yaml",
+      "bytes": 4261,
+      "sha256": "ba9f04cc7933a29d8a047b60d73247c08514b2abcc11ae6822d6ea75c3603ebf",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/config/v10_controllers/openarm_v10_controllers.yaml",
+      "bytes": 2583,
+      "sha256": "c6cb474ff7754f69dbff38e98d867198a271b6db8c0e0a17c02834149d269101",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/launch/openarm.bimanual.launch.py",
+      "bytes": 10806,
+      "sha256": "ef1beba9f91d154a1ed9e21e46505201fe8048089d292b9b7b6d1b9e229529a8",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/launch/openarm.launch.py",
+      "bytes": 8337,
+      "sha256": "62ce000bd511c4c453acd313f7f6a4a2922f2f87ad32d35411c19d3d08ed9db9",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/package.xml",
+      "bytes": 1290,
+      "sha256": "a672de98779242f24e6be6aff61dd19cebbb3d56ae3591d5cefd1a73ce8c0db5",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_bringup/rviz/bimanual.rviz",
+      "bytes": 9429,
+      "sha256": "9cee4b2e43f7d787e22de8398953a32c3fa29d8f42a7b59c348750581e3e6da1",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_hardware/CMakeLists.txt",
+      "bytes": 1726,
+      "sha256": "bc66042f280c4c49591a3f7dd4778c3f110729bc208cabfb5bd40f300e389e9c",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_hardware/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_hardware/include/openarm_hardware/v10_simple_hardware.hpp",
+      "bytes": 5277,
+      "sha256": "868ab6b90a1fb1709f8042fdc19a9099c360d29e919314dd04df8b49c45ff1f7",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_hardware/include/openarm_hardware/visibility_control.h",
+      "bytes": 2119,
+      "sha256": "86169aaebc5e75f9621b104f7b7e05955dccb6d717e2bb02a266baf92e50b73c",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_hardware/openarm_hardware.xml",
+      "bytes": 901,
+      "sha256": "83ba7e44dbb8c5a39679866d1116b1171548c6af6d72d0162bb5dee60e258cfa",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_hardware/package.xml",
+      "bytes": 1380,
+      "sha256": "fb0744f6fe2787b3604ded1d23d7cdbcd26126533a1340ae11e9a990d93effc4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_ros2/openarm_hardware/src/v10_simple_hardware.cpp",
+      "bytes": 12799,
+      "sha256": "e5d7cb5f79744f6a8c516b4395b5a65c7c0e1ebb3fb49eb3f4fc5abefc28fad3",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/.cmake-format.py",
+      "bytes": 680,
+      "sha256": "6e17d556f5e1278c30d6276202ae14f1c2bad4529a7206774055ca512464b3d2",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/.github/ISSUE_TEMPLATE/1-bug-report.yml",
+      "bytes": 859,
+      "sha256": "9481529380f804224ca3592ad7ac7658102e470143c3368c83b2699a1bd37bd8",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/.github/ISSUE_TEMPLATE/2-feature-request.yml",
+      "bytes": 856,
+      "sha256": "b155b669ce91db8a54a6e1acf8cb7307f826a728932000025fba92d7c7903008",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/.github/ISSUE_TEMPLATE/config.yml",
+      "bytes": 916,
+      "sha256": "7a7fe3a391f98dda4bca3f2aa23df256d856beb1929c00ac854fdb6bce54e9a5",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/.github/dependabot.yml",
+      "bytes": 770,
+      "sha256": "fd029fd6c77d32693a01cdfc5e577267cf9b57431372146fc95fd4c0e96fc978",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/.gitignore",
+      "bytes": 585,
+      "sha256": "58c35f9ec899257aec11bd2744c1b7e703b120b6785a73188fd3e790bac089de",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/.pre-commit-config.yaml",
+      "bytes": 892,
+      "sha256": "06292b7b1d501e7c49521e632c1b262c686785192b5efc7e2aa687fa648b280f",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/CMakeLists.txt",
+      "bytes": 1311,
+      "sha256": "a23e2f638b0e19f0d16e2516907d829d8cdf772eaff5cfcf69a84c5c4571a49d",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/CODE_OF_CONDUCT.md",
+      "bytes": 5484,
+      "sha256": "e900efb61d49d1a40550bafd0682ec38d8b322691aa1f54661e43bf6d317fa88",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/CONTRIBUTING.md",
+      "bytes": 696,
+      "sha256": "2f96bddc84f8c23ad5e0983fe900c3ddfc366ec4b6b77f4d7832722c8f469ecd",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/LICENSE.txt",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/README.md",
+      "bytes": 634,
+      "sha256": "b3d03ef66a4a8abed89a3a8e0a2d9392dc488ba4df4387a03d4bbc8cdcc56f0f",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/arm/v10/control_gains.yaml",
+      "bytes": 788,
+      "sha256": "4faa4ea10acced3db9c46a58c8041809d52668cd65772436f34e09b06f90dfb4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/arm/v10/inertials.yaml",
+      "bytes": 2250,
+      "sha256": "e5dd7521e32480bec405b3a7537fd402a01f96859de1cba80f9ca2d4f56b3107",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/arm/v10/joint_limits.yaml",
+      "bytes": 882,
+      "sha256": "8aba7342392fcfedfb7880f70424c56049ade951e13ab71a7adaa06acfaf9d9c",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/arm/v10/kinematics.yaml",
+      "bytes": 1003,
+      "sha256": "265b2821a5893fde86c777a76749e1919e56c9b3bac938ec3b32fef9366568d4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/arm/v10/kinematics_link.yaml",
+      "bytes": 936,
+      "sha256": "b124d389f1c78f8f1634eb61a148522f764c08e0f719b6095dfaf899465b96de",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/arm/v10/kinematics_offset.yaml",
+      "bytes": 799,
+      "sha256": "038b3d564ab00ac9be487ef5ffd27d4b7301c995b416a22805fae7e74fa7d9d9",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/body/v10/inertials.yaml",
+      "bytes": 172,
+      "sha256": "3d5a6970301acc29b41f8a793f556bed1e4ab16db5c87e5b06237ef0873a1572",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/body/v10/kinematics.yaml",
+      "bytes": 99,
+      "sha256": "db0f7f3e3c30edea8f7902b51cc514f8580321a87029ec85406160b976ba5597",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/body/v10/kinematics_link.yaml",
+      "bytes": 99,
+      "sha256": "db0f7f3e3c30edea8f7902b51cc514f8580321a87029ec85406160b976ba5597",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/hand/openarm_hand/inertials.yaml",
+      "bytes": 1070,
+      "sha256": "0fa6137ac35bf09f1e618ade2023e03f5fdce6f0a99af2b7c52b2efb20771bd4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/hand/openarm_hand/joint_limits.yaml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/hand/openarm_hand/kinematics.yaml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/config/hand/openarm_hand/kinematics_link.yaml",
+      "bytes": 818,
+      "sha256": "7c05a1d1eb806c0ac5d7a98be5616a8695ad22cb3720821c107f97a5b7094712",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/dev/README.md",
+      "bytes": 180,
+      "sha256": "b574bf1adc0f73584d2a12f9d4cb0da08d4da307705c8604afbd495861efbdc3",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/dev/release.sh",
+      "bytes": 1434,
+      "sha256": "e4894f5eab599461101f6c939d084f17d330ab5343ad8bca735c91e0666831df",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/launch/display_openarm.launch.py",
+      "bytes": 3599,
+      "sha256": "162d9aed83a6318f714fb5c36c6e23dc1800fd5a8d5ace5efa7135c6bb81894a",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link0_symp.stl",
+      "bytes": 40284,
+      "sha256": "baf52578e1d9e6225f3818cae82b6074a0b948d3cef8e9a3e6dfafca78507590",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link1_symp.stl",
+      "bytes": 17784,
+      "sha256": "066113d13d5cc85098609003bc7ebb73c570015350877f5ed7162ef1b6601852",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link2_symp.stl",
+      "bytes": 13384,
+      "sha256": "382ab32e4ae0880e8a1512e7a6ca6ce1f478a6c125db4efa977429ffb1d6b02a",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link3_symp.stl",
+      "bytes": 156984,
+      "sha256": "00c908cefab152c00416a570a48bf9aafed1549085f19ff2d882dc3f355d9f59",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link4_symp.stl",
+      "bytes": 1139984,
+      "sha256": "b54883b8c7c96268a68a5879f95998a53ad0b0c4fe74325fad63a6caef669c73",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link5_symp.stl",
+      "bytes": 751484,
+      "sha256": "678a2802906eff7b45a836d2f34a2d8e51def50b6599376968f888e05c72739e",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link6_symp.stl",
+      "bytes": 30084,
+      "sha256": "95529bec23733476dfdbbb266c7db0d25a473a568de73c8337a82440fe4a9ac3",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link7_symp.stl",
+      "bytes": 23884,
+      "sha256": "434f207f21f75f5f0bd604e390b8e5bc7b62b619265222846770e06b3f9b5cfb",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link0.dae",
+      "bytes": 2872567,
+      "sha256": "cc54c874e3da9c33e4386fb691b49a9a6df0ddce2d89e84ae342075c57fc0230",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link0.stl",
+      "bytes": 4148234,
+      "sha256": "c77bdc9419947088e1dfc452e29c6092cc7b02b239ff4f2f5be3d77e393af185",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link1.dae",
+      "bytes": 7655919,
+      "sha256": "c25937f901a4c15730927e08bf5fd26a072e801c529f0bd9678ba9758330647d",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link1.stl",
+      "bytes": 5741534,
+      "sha256": "2a182c7fd4d25226aff6d9e2dd9d1008a85fce7df8e16525722a5c5053f8b055",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link2.dae",
+      "bytes": 6288652,
+      "sha256": "5d2a1ec857a22eaa180034e2dcd989c54611abab6ce6659eb4999570c34cc124",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link2.stl",
+      "bytes": 4543534,
+      "sha256": "de1b190a56c16dea14546fb8e22c86eccabc2ca5e054819630c1932592381745",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link3.dae",
+      "bytes": 6846210,
+      "sha256": "97d73c4bae3f3f7570bf3e28306da719aa99a6bec662060c9e358e5625b11cce",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link3.stl",
+      "bytes": 4978834,
+      "sha256": "8d47d75d0c47a65021708ba63cb73162bf7c3b1d14e9cfc70dfa47336034ac76",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link4.dae",
+      "bytes": 6644484,
+      "sha256": "59eb1cbf44b1250ad9533176b30084179f9164fcb998ee2623d89b48968ec426",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link4.stl",
+      "bytes": 4944684,
+      "sha256": "8ca8149f2ce8b1b102270ec0b1a4b75c3e6f98c09b084430a450adce808607e1",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link5.dae",
+      "bytes": 9034473,
+      "sha256": "96fd3516df16a772a84c268529e5b53b05e6df07da6ccfe850bc091eba947156",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link5.stl",
+      "bytes": 6322984,
+      "sha256": "30ea7abfdd3661b315f897bb82a5f34fd966357b358e890e155e928e931ea975",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link6.dae",
+      "bytes": 6133097,
+      "sha256": "adcd37741f4e223bd6fe9925625e84191b525c9d27f151f9178b23989de05459",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link6.stl",
+      "bytes": 4818434,
+      "sha256": "e49f91279f109baecb9ff54f5041eeb4514f757ba6daa65c3ea01fb1991967e4",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link7.dae",
+      "bytes": 6288812,
+      "sha256": "e0e1d59b1e09c5a73198cdf175dbb94844073ec067d4b491dcab8a9e1a7faade",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link7.stl",
+      "bytes": 5114784,
+      "sha256": "a91593b67d2dec16d1dfb6f1305df3ddcd214cdef02e97d5aba30bc633e775b2",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/body/v10/collision/body_link0_symp.stl",
+      "bytes": 293284,
+      "sha256": "6c18bbf7e86b03e3faf802e61e8eb438b38dcbcf146d97cffe6e808c65e9a72a",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/body/v10/visual/body_link0.dae",
+      "bytes": 10783948,
+      "sha256": "a05f59379dcf694e5ff336b1ee3a47ea504a2425a2fa774af1b14e096d9a239a",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/body/v10/visual/body_link0.stl",
+      "bytes": 7955034,
+      "sha256": "7ab0afa9a26bebbf5c6149894c41d96622caa649555ae7c5f0f2548f86148d91",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/ee/openarm_hand/collision/finger.stl",
+      "bytes": 13284,
+      "sha256": "8e96e1314618cf434908f70df78f68dd2b049c03538964e8d41fc99abe41564d",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/ee/openarm_hand/collision/hand.stl",
+      "bytes": 18284,
+      "sha256": "8e5d373ebbd3fd001b506058644062ad71a68f1ced5ca5d5ed0f6de20137956b",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/ee/openarm_hand/visual/finger.dae",
+      "bytes": 6021838,
+      "sha256": "64492f6a80a551a7a53e3f769facc42ee4a9bce1634ff63300a9d7f5b3628cb0",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/ee/openarm_hand/visual/finger.stl",
+      "bytes": 432484,
+      "sha256": "25c115c7c55a422f30ad11581dc21576dc8fc4e09e659890772d86fe82ec04d7",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/ee/openarm_hand/visual/hand.dae",
+      "bytes": 1549205,
+      "sha256": "a7a1ff18be1b603544f36645b50e9842ee1ea94d1ba8cbccdeded50946f4bce7",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/package.xml",
+      "bytes": 1460,
+      "sha256": "ba242adcfeea31397ef28156ff226331dfa42fd23f5e11241f8afb509f9ee40e",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/rviz/arm_only.rviz",
+      "bytes": 4706,
+      "sha256": "45fbd76c63311a7ea4c45286a4df3aaef21eeaf25fa34dc182b9e4492ce5df00",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/rviz/bimanual.rviz",
+      "bytes": 6552,
+      "sha256": "64cf3e405532110f11c1075c303ff3440316bfaddadb7d2b6f92999e322071fb",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/arm/openarm_arm.xacro",
+      "bytes": 5216,
+      "sha256": "3e174e8a16add3006dc57912576d375c039d04875d43d96d565fd737548b7029",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/arm/openarm_macro.xacro",
+      "bytes": 7703,
+      "sha256": "0cb79c61e94ddc546ab333150d49f495bc9f9e97c7812830265d1a5c912aa752",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/body/openarm_body.xacro",
+      "bytes": 1196,
+      "sha256": "757d3913de2d3436a2c5a3e0a30a544e2d4105f413112715288116a85729e4d1",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/body/openarm_body_macro.xacro",
+      "bytes": 2859,
+      "sha256": "00a6c2ba219b4795c3c5fa2608a45dd0c3d1a6e9fdd80ec57ccf5b56ff12c00a",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/ee/ee_with_one_link.xacro",
+      "bytes": 1366,
+      "sha256": "c5fde7728e183bf75ebdf9ec219c59a32bc54ebe4b2f7d8af0824808b3a92f95",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/ee/openarm_hand.xacro",
+      "bytes": 3791,
+      "sha256": "3a597092661ab98a1c466d57c017e504d642f13479596ef3eda2385eaadb4600",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/ee/openarm_hand_arguments.xacro",
+      "bytes": 893,
+      "sha256": "db6603a9be5606ee615e28316009991fa61d04ec449fc77508f5d9dbe68e34c5",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/ee/openarm_hand_macro.xacro",
+      "bytes": 2670,
+      "sha256": "3e711a2a3720eb053ff3c2e82451bfae003d294aa55dc880d7655f1a9dbc0eb5",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/robot/openarm_robot.xacro",
+      "bytes": 8050,
+      "sha256": "40c2802a2dd057a8eb0caed947ebf82b29a15d25e43def12656a313a713fb504",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/robot/v10.urdf.xacro",
+      "bytes": 3385,
+      "sha256": "519d296270ff1fe557bac4781a061fa70422006cd029e859a6189e96b1d9b3f6",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/ros2_control/openarm.bimanual.ros2_control.xacro",
+      "bytes": 6656,
+      "sha256": "036710725bffc98407671a81a211c78a69c28ebc82ddd1a6153b29760a1ff599",
+      "snapshot": null
+    },
+    {
+      "group": "upstream_live_source",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/urdf/ros2_control/openarm.ros2_control.xacro",
+      "bytes": 4083,
+      "sha256": "39fb2aa010c191b91333225d5636b8c75d8bffe0df1429f40b9dd2aada100810",
+      "snapshot": null
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.clang-format",
+      "bytes": 660,
+      "sha256": "a34c3cfe9f90713c58326e76b49183b6957d99a4714c9852517a2ae062caa19a",
+      "snapshot": "snapshots/official_teleop_reference/.clang-format"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.cmake-format.py",
+      "bytes": 680,
+      "sha256": "6e17d556f5e1278c30d6276202ae14f1c2bad4529a7206774055ca512464b3d2",
+      "snapshot": "snapshots/official_teleop_reference/.cmake-format.py"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.editorconfig",
+      "bytes": 768,
+      "sha256": "b92fe67aeb37c7afae43a5f3ef68968746aabc9efbb011f12aa7adc35d739f1d",
+      "snapshot": "snapshots/official_teleop_reference/.editorconfig"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.github/ISSUE_TEMPLATE/1-bug-report.yml",
+      "bytes": 859,
+      "sha256": "9481529380f804224ca3592ad7ac7658102e470143c3368c83b2699a1bd37bd8",
+      "snapshot": "snapshots/official_teleop_reference/.github/ISSUE_TEMPLATE/1-bug-report.yml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.github/ISSUE_TEMPLATE/2-feature-request.yml",
+      "bytes": 856,
+      "sha256": "b155b669ce91db8a54a6e1acf8cb7307f826a728932000025fba92d7c7903008",
+      "snapshot": "snapshots/official_teleop_reference/.github/ISSUE_TEMPLATE/2-feature-request.yml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.github/ISSUE_TEMPLATE/config.yml",
+      "bytes": 911,
+      "sha256": "fc92b210e5925934f62a6dad2a2d519b3e578f7af71fc09a764ddcadb14d78d6",
+      "snapshot": "snapshots/official_teleop_reference/.github/ISSUE_TEMPLATE/config.yml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.github/dependabot.yml",
+      "bytes": 696,
+      "sha256": "52e11f4c951a1aef3f01535dbbaf5f7eace1d61fe7497d037261b5a1eac55e75",
+      "snapshot": "snapshots/official_teleop_reference/.github/dependabot.yml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.github/workflows/test.yaml",
+      "bytes": 2371,
+      "sha256": "c0a4672580afeadd14d03d3f25b77ce75c8bddde30322cc6253cf40e0b5162b1",
+      "snapshot": "snapshots/official_teleop_reference/.github/workflows/test.yaml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.gitignore",
+      "bytes": 670,
+      "sha256": "70dceac5008e27aa80a659da3528d5b51d42be8dc9b8d7ba6a822a3f78a7493e",
+      "snapshot": "snapshots/official_teleop_reference/.gitignore"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.pre-commit-config.yaml",
+      "bytes": 1459,
+      "sha256": "8277bedc7b040044027779ba5e000eea43c82e54ae3dc3e1a3f39f3a428bbb70",
+      "snapshot": "snapshots/official_teleop_reference/.pre-commit-config.yaml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/.shellcheckrc",
+      "bytes": 622,
+      "sha256": "9ee55baf4330cee8780cfe414a111fa90bbad0ee8a3047363b9fca3c8faafb93",
+      "snapshot": "snapshots/official_teleop_reference/.shellcheckrc"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/CMakeLists.txt",
+      "bytes": 2865,
+      "sha256": "07bbb9fe54912d948aa0dd969d6cb2718804632ca46e02226053800058ce1c36",
+      "snapshot": "snapshots/official_teleop_reference/CMakeLists.txt"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/CODE_OF_CONDUCT.md",
+      "bytes": 5484,
+      "sha256": "e900efb61d49d1a40550bafd0682ec38d8b322691aa1f54661e43bf6d317fa88",
+      "snapshot": "snapshots/official_teleop_reference/CODE_OF_CONDUCT.md"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/CONTRIBUTING.md",
+      "bytes": 676,
+      "sha256": "2877ab1e480e1c18f193e669fefd75be8fc1e805e48551aaea62a9367109943e",
+      "snapshot": "snapshots/official_teleop_reference/CONTRIBUTING.md"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/LICENSE.txt",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "snapshot": "snapshots/official_teleop_reference/LICENSE.txt"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/README.md",
+      "bytes": 630,
+      "sha256": "c140245edcebe7e4d4d364f2ea736d80857d3cc5d67da1db51d125c7e2a3146a",
+      "snapshot": "snapshots/official_teleop_reference/README.md"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/config/follower.yaml",
+      "bytes": 1554,
+      "sha256": "9c1c37db0a169e1263c6ff7d2cb8900bda9a0953c039302c03f39ff78054a093",
+      "snapshot": "snapshots/official_teleop_reference/config/follower.yaml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/config/leader.yaml",
+      "bytes": 1552,
+      "sha256": "d30551e2b908ae8185781a72da5168e4171cc5f4f59c1aca2763c3988a322ba7",
+      "snapshot": "snapshots/official_teleop_reference/config/leader.yaml"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/control/gravity_compasation.cpp",
+      "bytes": 5758,
+      "sha256": "ce3fae7de834806e4eee1cc482a9359d1166ddf0f1593adfab40d653c065e750",
+      "snapshot": "snapshots/official_teleop_reference/control/gravity_compasation.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/control/openarm_bilateral_control.cpp",
+      "bytes": 12550,
+      "sha256": "a33de848793a8768de541e2ac541ce6f85b9222c4cf1a594c2e4b32a0b2b5c8a",
+      "snapshot": "snapshots/official_teleop_reference/control/openarm_bilateral_control.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/control/openarm_communication_test.cpp",
+      "bytes": 6217,
+      "sha256": "624f6189ba847f2ca2ccf94e60cc9caf60430c24f6115d0e25907104405aba72",
+      "snapshot": "snapshots/official_teleop_reference/control/openarm_communication_test.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/control/openarm_unilateral_control.cpp",
+      "bytes": 12525,
+      "sha256": "9d5adce4c20f3e74a611ab28441f1054293aa054929d8cdf8f91ff622bcf32f9",
+      "snapshot": "snapshots/official_teleop_reference/control/openarm_unilateral_control.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/script/launch_bilateral.sh",
+      "bytes": 3235,
+      "sha256": "ccb691324380ae3ac67b65ccc3a361b1f9603d0e05006e7ecec252ea7d7e7d10",
+      "snapshot": "snapshots/official_teleop_reference/script/launch_bilateral.sh"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/script/launch_grav_comp.sh",
+      "bytes": 2316,
+      "sha256": "bb6760d01334a69e7e7a8e7169b184f0e92c3823bfef8bcc64ecab9d303a4cca",
+      "snapshot": "snapshots/official_teleop_reference/script/launch_grav_comp.sh"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/script/launch_unilateral.sh",
+      "bytes": 3220,
+      "sha256": "f1b1b99d065ce04006e6dbfc5042305c6eadc6ebce822e52359b194658c6dbd4",
+      "snapshot": "snapshots/official_teleop_reference/script/launch_unilateral.sh"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/controller/control.cpp",
+      "bytes": 19961,
+      "sha256": "621de49c7b9d40fc394824295eaf3c2eccc2152f49643507b125c7a28554d725",
+      "snapshot": "snapshots/official_teleop_reference/src/controller/control.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/controller/control.hpp",
+      "bytes": 3715,
+      "sha256": "863aa24ac0f03796d2d5c8eaad27f2a68b92938d14fd2264e5d711a6089dea72",
+      "snapshot": "snapshots/official_teleop_reference/src/controller/control.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/controller/diff.hpp",
+      "bytes": 2390,
+      "sha256": "0d9027b43fd14eb51a5e2a5391c5120aec7e42ede4e58b2894c71f6ca550a7c6",
+      "snapshot": "snapshots/official_teleop_reference/src/controller/diff.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/controller/dynamics.cpp",
+      "bytes": 7750,
+      "sha256": "c58d530f65cf29baf7742882d421217df2ca283c98ab94f1219d8025b2534296",
+      "snapshot": "snapshots/official_teleop_reference/src/controller/dynamics.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/controller/dynamics.hpp",
+      "bytes": 2359,
+      "sha256": "a42312720546dcafc7ed7a85204ac7fab6ce90dc1b058f1567d33903f80c08a1",
+      "snapshot": "snapshots/official_teleop_reference/src/controller/dynamics.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/joint_state_converter.hpp",
+      "bytes": 3512,
+      "sha256": "676b5540f2a5291e0c64bbc1ba51bff5590d944e074ca9806835bd87fb57aced",
+      "snapshot": "snapshots/official_teleop_reference/src/joint_state_converter.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/openarm_constants.hpp",
+      "bytes": 6960,
+      "sha256": "232eaededdcd68f75ff7ad12ef0cbf1a40e2e051e94d97e138a35b9be7f57d3e",
+      "snapshot": "snapshots/official_teleop_reference/src/openarm_constants.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/openarm_port/joint_mapper.cpp",
+      "bytes": 2021,
+      "sha256": "715f8c0e3bfc94738a905cbaaf41405ca2590b4469ce46340bd9af3b4df0cd61",
+      "snapshot": "snapshots/official_teleop_reference/src/openarm_port/joint_mapper.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/openarm_port/joint_mapper.hpp",
+      "bytes": 971,
+      "sha256": "a1c6806cdcb83d9cfa93434abb18b30556240336730aef9767e266e209415c57",
+      "snapshot": "snapshots/official_teleop_reference/src/openarm_port/joint_mapper.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/openarm_port/openarm_init.cpp",
+      "bytes": 3081,
+      "sha256": "d9457e6f4220d45a041f276068631d55e2927cdb9f3f32ddf483703e9837a754",
+      "snapshot": "snapshots/official_teleop_reference/src/openarm_port/openarm_init.cpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/openarm_port/openarm_init.hpp",
+      "bytes": 2057,
+      "sha256": "9d1f45d1a44a435b57b8df05e2df0932e26dd4be0a7f2de6f7dd45c84b7b5587",
+      "snapshot": "snapshots/official_teleop_reference/src/openarm_port/openarm_init.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/periodic_timer_thread.hpp",
+      "bytes": 3691,
+      "sha256": "fb8750f90567c39314c0e8925c68fd3f1f29d3b312c773a0ad130d2c399e016d",
+      "snapshot": "snapshots/official_teleop_reference/src/periodic_timer_thread.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/robot_state.hpp",
+      "bytes": 5851,
+      "sha256": "704c17e2459ec6aad9d20a4b4f1af15da5fbfee57c396803368305484a41f8ca",
+      "snapshot": "snapshots/official_teleop_reference/src/robot_state.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm-teleop-official/src/yamlloader.hpp",
+      "bytes": 2016,
+      "sha256": "cf18fa7a97bbdb206ea3f1898c22789e1ba17a3c2bee58bc78e1843b698416fa",
+      "snapshot": "snapshots/official_teleop_reference/src/yamlloader.hpp"
+    },
+    {
+      "group": "official_teleop_reference",
+      "source_path": "/tmp/openarm_teleop-tree.json",
+      "bytes": 14137,
+      "sha256": "6937961802318c94d0af53df3d277aa1cb90e9442e0b381a9057a0b0fa09c0ac",
+      "snapshot": "snapshots/official_teleop_reference/github_tree.json"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/can/socket/arm_component.hpp",
+      "bytes": 1386,
+      "sha256": "083c8f07476511bcb3bafd9c7c4097e2e7cbefa731275fd08d8655d5b2b1b94a",
+      "snapshot": "snapshots/installed_can_headers/can/socket/arm_component.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/can/socket/gripper_component.hpp",
+      "bytes": 2203,
+      "sha256": "c38cc21e8d9a9a61344daaca8c10eeb919e070194104682cca10ca4147d93fea",
+      "snapshot": "snapshots/installed_can_headers/can/socket/gripper_component.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/can/socket/openarm.hpp",
+      "bytes": 3633,
+      "sha256": "8cbf6b9eeeea2078b90a0e86f33a18ea148d28a29c8e794667e58fe88f2cfa6f",
+      "snapshot": "snapshots/installed_can_headers/can/socket/openarm.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/canbus/can_device.hpp",
+      "bytes": 1680,
+      "sha256": "9107b7857abf5658d30ca9465b7dc22d0939fd56968f04839bf61b1a23c2db3a",
+      "snapshot": "snapshots/installed_can_headers/canbus/can_device.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/canbus/can_device_collection.hpp",
+      "bytes": 2103,
+      "sha256": "37354ce690e9b826457e6253adbfe4626351278d1dcf47cc1179ca1a756f4182",
+      "snapshot": "snapshots/installed_can_headers/canbus/can_device_collection.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/canbus/can_socket.hpp",
+      "bytes": 6097,
+      "sha256": "020b14d5028bff4abd09520736a2573f9a5e5fef77d22e8994e62a7a8dac1cb1",
+      "snapshot": "snapshots/installed_can_headers/canbus/can_socket.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/damiao_motor/dm_motor.hpp",
+      "bytes": 2965,
+      "sha256": "33eccc793a53db446eb883b19e48b2fe3e645a1ddc526ec7b158753480ebcbea",
+      "snapshot": "snapshots/installed_can_headers/damiao_motor/dm_motor.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/damiao_motor/dm_motor_constants.hpp",
+      "bytes": 4242,
+      "sha256": "73d2ba589621febabad8cca9d7c525d5c5b63a9c45f13c1136dc9cfb558e3925",
+      "snapshot": "snapshots/installed_can_headers/damiao_motor/dm_motor_constants.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/damiao_motor/dm_motor_control.hpp",
+      "bytes": 5710,
+      "sha256": "2b032e2113614b3ac8f9654f22f1e9c11b889369f8d51c132c10cc95eee95b1e",
+      "snapshot": "snapshots/installed_can_headers/damiao_motor/dm_motor_control.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/damiao_motor/dm_motor_device.hpp",
+      "bytes": 4235,
+      "sha256": "b9806b93ee311d289fe52b9d7f0c2340603ef0d988266ae81cdd91d0fbfbf02e",
+      "snapshot": "snapshots/installed_can_headers/damiao_motor/dm_motor_device.hpp"
+    },
+    {
+      "group": "installed_can_headers",
+      "source_path": "/usr/include/openarm/damiao_motor/dm_motor_device_collection.hpp",
+      "bytes": 3080,
+      "sha256": "f59a434199b9395f1330ca19d47874b6e680c6d7bf9f2dcad8515d4e9437a3ba",
+      "snapshot": "snapshots/installed_can_headers/damiao_motor/dm_motor_device_collection.hpp"
+    },
+    {
+      "group": "installed_can_cmake",
+      "source_path": "/usr/lib/x86_64-linux-gnu/cmake/OpenArmCAN/OpenArmCANConfig.cmake",
+      "bytes": 1952,
+      "sha256": "d21b23203a361ef3c42a51737da7044392c8dec1d798efb89b16857eda9e7764",
+      "snapshot": "snapshots/installed_can_cmake/OpenArmCANConfig.cmake"
+    },
+    {
+      "group": "installed_can_cmake",
+      "source_path": "/usr/lib/x86_64-linux-gnu/cmake/OpenArmCAN/OpenArmCANConfigVersion.cmake",
+      "bytes": 2878,
+      "sha256": "66e8bdf5aeb20eda2702551bacb5d92e5a88f2ccd9a8e5707962af54ef1dacd9",
+      "snapshot": "snapshots/installed_can_cmake/OpenArmCANConfigVersion.cmake"
+    },
+    {
+      "group": "installed_can_cmake",
+      "source_path": "/usr/lib/x86_64-linux-gnu/cmake/OpenArmCAN/OpenArmCANTargets-relwithdebinfo.cmake",
+      "bytes": 967,
+      "sha256": "39f59f0e10029d92b389baa2506801500669775048383f0da426fa6815792ca7",
+      "snapshot": "snapshots/installed_can_cmake/OpenArmCANTargets-relwithdebinfo.cmake"
+    },
+    {
+      "group": "installed_can_cmake",
+      "source_path": "/usr/lib/x86_64-linux-gnu/cmake/OpenArmCAN/OpenArmCANTargets.cmake",
+      "bytes": 3762,
+      "sha256": "5a1b08c577275b7dc9c380a047b2cb4f05681b7df8e3f0c0b56ab4e6a82f2f2c",
+      "snapshot": "snapshots/installed_can_cmake/OpenArmCANTargets.cmake"
+    },
+    {
+      "group": "installed_runtime",
+      "source_path": "/usr/lib/x86_64-linux-gnu/libopenarm_can.so",
+      "bytes": 92328,
+      "sha256": "3121a5d3a7091b4c9c3fc83fede3034237945ed69f9c28e6da2161e6959cc374",
+      "snapshot": null
+    },
+    {
+      "group": "installed_runtime",
+      "source_path": "/home/yh/isaaclab-dev/openarm_ros2_v1_ws/build/openarm_v1_right_hardware/libopenarm_v1_right_hardware.so",
+      "bytes": 1301736,
+      "sha256": "fcf1794c048a1c1bc1f5bf371f9726e2502bf2047a1abc5e4d88e6a74d815747",
+      "snapshot": null
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/finger_abad.STL",
+      "bytes": 201084,
+      "sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/finger_abad.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/finger_dip.STL",
+      "bytes": 837084,
+      "sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/finger_dip.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/finger_pip.STL",
+      "bytes": 627584,
+      "sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/finger_pip.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/l_palm.STL",
+      "bytes": 1366284,
+      "sha256": "a1a0b08079f55476dbeafa4fa8698160697d4c19c13ee2385652f42ac893c7eb",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/l_palm.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/l_thumb_roll.STL",
+      "bytes": 1835284,
+      "sha256": "2d3e0a37ae75776d29f443bbdecb7ec005b813859374952fbb66917a2eecbeb3",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/l_thumb_roll.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/r_palm.STL",
+      "bytes": 1502984,
+      "sha256": "9788724443a62bc22552f4b8e9a5636a603973b6e880befba2063310a7d0c518",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/r_palm.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/r_thumb_roll.STL",
+      "bytes": 1849884,
+      "sha256": "61426e6098eed1af49301fe8ed2f8af3847bdb3c09087731337d487af6bd12f1",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/r_thumb_roll.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/thumb_abad.STL",
+      "bytes": 334784,
+      "sha256": "61ec8a85dea39d81a11d8df2de7dccd4b23b4fd9e012d8ba4446aab7d92d1909",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_abad.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/thumb_dip.STL",
+      "bytes": 293784,
+      "sha256": "c449c5cad11c8521431781ffe073f3280960935018400ec565b44842aad91dfe",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_dip.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/thumb_mcp.STL",
+      "bytes": 454184,
+      "sha256": "e4d0325b1244ab4b7bcf1b0101fae6267a2932d96a88f36cc32e0621d3428d60",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_mcp.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/meshes/thumb_pip.STL",
+      "bytes": 249284,
+      "sha256": "f5e35eb9b346ab5ed09f25c8144de53e7ef775abadf152468bc13bf4f311c4bd",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_pip.STL"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/rviz/omnihand.rviz",
+      "bytes": 6901,
+      "sha256": "355d477415e82fc80d25ac8c99ada5a0fc30b7d0608d8ffeb3f52e0980d940a4",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/rviz/omnihand.rviz"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/rviz/omnihand_left.rviz",
+      "bytes": 8328,
+      "sha256": "cf1b6e0a8e75c252f34a4b0aaf3a92e84c30690f316413556a00b60ae3000d5d",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/rviz/omnihand_left.rviz"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/rviz/omnihand_right.rviz",
+      "bytes": 8329,
+      "sha256": "a8fc94c12178860075122da8c34a565001ffeef384ecab536356a0114c38c739",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/rviz/omnihand_right.rviz"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/omnihand_left.urdf",
+      "bytes": 19262,
+      "sha256": "3254940d243eae8490879163b462d7b92cd295658cf79a98d4df0d856010e0c3",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/omnihand_left.urdf"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/omnihand_right.urdf",
+      "bytes": 19704,
+      "sha256": "bb7b3b7fa2929e4b4a21c84c07c3c9a2b3776a47396b4b270e91db259a4438b8",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/omnihand_right.urdf"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/const.xacro",
+      "bytes": 13324,
+      "sha256": "eb5a0938fe6e010f308934f54ec88ac7418bbff15cb8638a19ca8ffd51b6c7f3",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/const.xacro"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/finger.xacro",
+      "bytes": 4665,
+      "sha256": "b5754b2eb453ae088d4056a2d0dacb9bd9e385dc8f8c197b17e4626e00e62e3c",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/finger.xacro"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/hand.xacro",
+      "bytes": 17000,
+      "sha256": "b1a77be3d4e8d23c51d52c4fd4e2fe48d39bf892b9aa90fd4e271fddd6b4f2cf",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/hand.xacro"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/material.xacro",
+      "bytes": 865,
+      "sha256": "fca1bbb3920c91436a854ab4f3edfac96bc85f72263d60f5f62d35b613c61b2f",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/material.xacro"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/omnihand_left.urdf",
+      "bytes": 19262,
+      "sha256": "43e7d351ba85abcb6460e9ec00b19abe68d56a33fb2b70b437bebcb2929a2f76",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/omnihand_left.urdf"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/omnihand_left.xacro",
+      "bytes": 500,
+      "sha256": "4ee6de8d1bd13d44991c5385de3f464b284084c8eb609f42488bd47e3cda6a15",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/omnihand_left.xacro"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/omnihand_right.urdf",
+      "bytes": 19236,
+      "sha256": "fe39c05676506b5dff889447a2ce5d795152385ddb97da5a7cb8a5ac70e4502a",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/omnihand_right.urdf"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0/assets",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/assets/urdf/xacro/omnihand_right.xacro",
+      "bytes": 500,
+      "sha256": "3033cf18275ec8a06dbb1dec01efe39a6475f216d141323f89d9ec2a6d897b83",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/assets/urdf/xacro/omnihand_right.xacro"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/README.md",
+      "bytes": 4663,
+      "sha256": "a77c1a08fceb2f78dcd6e06beb4b04133527be2e21d19ad3fbaab998341ec3d8",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/README.md"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/README.zh_CN.md",
+      "bytes": 4119,
+      "sha256": "4cf105090c9a047c0663d86325c4b5ee61fdc7617e9a1bcb6cec6e4673bdc42a",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/README.zh_CN.md"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/CMakeLists.txt",
+      "bytes": 2213,
+      "sha256": "ae7ddae56be9991e2d0f57d82569cba33373077401e9a64dfd4be308c374e93c",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/CMakeLists.txt"
+    },
+    {
+      "group": "omnihand_sdk_2025_0_8_0",
+      "source_path": "/home/yh/Download/omnihand-work/Omnihand-2025-SDK-0.8.0/LICENSE",
+      "bytes": 4979,
+      "sha256": "8ec2da323f1731deb730849be461857dbd02dde9ee635107f91d0e891b8e9028",
+      "snapshot": "snapshots/omnihand_sdk_2025_0_8_0/LICENSE"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/MJCF/omnihand_asset.xml",
+      "bytes": 2191,
+      "sha256": "605ed3a6f07a88977f220058dca275ffa4755f8e1d2cb6d8b992c8d1502e7e16",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/MJCF/omnihand_asset.xml"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/MJCF/omnihand_left.xml",
+      "bytes": 13006,
+      "sha256": "dfb6ce44e24b17cb775ac3b2f57347a939a27c2b75d6ac99604608bc0aa7608f",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/MJCF/omnihand_left.xml"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/MJCF/omnihand_right.xml",
+      "bytes": 12983,
+      "sha256": "fca8c46104b25ec55218d95ebe54b9ca670fdf0309c354e854dbc15ac6e939df",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/MJCF/omnihand_right.xml"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/MJCF/scene.xml",
+      "bytes": 912,
+      "sha256": "4a8ea419c61cf4cb0c03df4ff13f9244e7cbcc4fdc7339fa028e786be5c9085f",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/MJCF/scene.xml"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/finger_dip_col.STL",
+      "bytes": 215134,
+      "sha256": "8571ee5995ef65fce7c6260d70325b5a13fc973a907d4dd71bde12d8197c1369",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/finger_dip_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/finger_pip_col.STL",
+      "bytes": 156084,
+      "sha256": "f21addfacca63335a70029e8ad90e49d07e77bd973a23c0b17aef5d706704479",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/finger_pip_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/l_palm_col.STL",
+      "bytes": 134584,
+      "sha256": "ada62d8df29ea31d726e3d3046b5ed52b1b00a608e1b00fb8932f10485e5a1b2",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/l_palm_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/l_thumb_roll_col.STL",
+      "bytes": 55984,
+      "sha256": "9b5393e1149cef4a55aebe5ae09841d3593ed042ba30004ac9ebd48cf8173341",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/l_thumb_roll_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/r_palm_col.STL",
+      "bytes": 134584,
+      "sha256": "77b624bf38498b52978d0b28fdafbbaf0794f294881dc1bb76b85bc6da1f0488",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/r_palm_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/r_thumb_roll_col.STL",
+      "bytes": 62384,
+      "sha256": "a49028dfbdfdf5823f11a71f690a6cc510d672e7173305180c015d3ec0b94534",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/r_thumb_roll_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/thumb_abad_col.STL",
+      "bytes": 59084,
+      "sha256": "b1a069f2181c4ccb03c36470fe939efe4ef6d8420cd0ae9d42bdb27cce4724b9",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/thumb_abad_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/thumb_dip_col.STL",
+      "bytes": 246984,
+      "sha256": "f6c5965b8a4fe3e7a7f99aa14570a8e4d63f610f86533b46d770017c1212cc0c",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/thumb_dip_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/thumb_mcp_col.STL",
+      "bytes": 214684,
+      "sha256": "30505261da47b29b556e56bf1030f6a1c7ad691f9ce28d9d0513bfba6eecb3f8",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/thumb_mcp_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/collision/thumb_pip_col.STL",
+      "bytes": 101684,
+      "sha256": "2b380821a43bb0e88a0eba747d0e5148c8fd649eab471a476cccbbbd8fb4e368",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/collision/thumb_pip_col.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/finger_abad.STL",
+      "bytes": 429184,
+      "sha256": "9d1a2d92825713ed1501273ca39bcdf3cbfc4657ca9c2ce7db72cd2929d831ec",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/finger_abad.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/finger_dip.STL",
+      "bytes": 1052684,
+      "sha256": "595bb13585ef4704336c90b7ddd0ac7910a47d48fecfde2d27484c4847a0426f",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/finger_dip.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/finger_pip.STL",
+      "bytes": 498284,
+      "sha256": "ec2162a525fd0432c46cadb34bab3fba5bec75f75ec09e10796f67a332f4de6e",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/finger_pip.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/l_palm.STL",
+      "bytes": 3397734,
+      "sha256": "1ed7474b0c6b5e568294fae8c63d26a4b8d1605f70f986502600963c2ceb3984",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/l_palm.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/l_thumb_roll.STL",
+      "bytes": 1835284,
+      "sha256": "2d3e0a37ae75776d29f443bbdecb7ec005b813859374952fbb66917a2eecbeb3",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/l_thumb_roll.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/r_palm.STL",
+      "bytes": 3397784,
+      "sha256": "6e5f63838af93da0aec9654de02287fa3d66a5af970cf4cb1177ca20c50ffa0d",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/r_palm.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/r_thumb_roll.STL",
+      "bytes": 1214884,
+      "sha256": "78bfe2799a0cec14b1a30ad39a807da37208fb6f1060c95345eec0f9606acc9f",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/r_thumb_roll.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/thumb_abad.STL",
+      "bytes": 453584,
+      "sha256": "fa33570023311e0944753be441e5b50af7914f7fe738dc00f2d58f2707539285",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/thumb_abad.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/thumb_dip.STL",
+      "bytes": 513584,
+      "sha256": "d95c5d23d5969876f575f45cee6113907833ba98478962b2949c7345a14d7690",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/thumb_dip.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/thumb_mcp.STL",
+      "bytes": 948784,
+      "sha256": "641e576547829f68aff373874fa7b1de9aae26a5e37fd8cf12324acf9b4d1d39",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/thumb_mcp.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/meshes/thumb_pip.STL",
+      "bytes": 274784,
+      "sha256": "d353c076debc891d3d404fc15f64403f9fc0bab5b941235a8b30274fd8b54291",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/meshes/thumb_pip.STL"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/rviz/omnihand_left.rviz",
+      "bytes": 8328,
+      "sha256": "cf1b6e0a8e75c252f34a4b0aaf3a92e84c30690f316413556a00b60ae3000d5d",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/rviz/omnihand_left.rviz"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/rviz/omnihand_right.rviz",
+      "bytes": 8329,
+      "sha256": "a8fc94c12178860075122da8c34a565001ffeef384ecab536356a0114c38c739",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/rviz/omnihand_right.rviz"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/omnihand_left.urdf",
+      "bytes": 19705,
+      "sha256": "f92d89e4a173e4cf9cbb3bd3edb548d6d14d2da878e07c5d22ec948ba64ae572",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/omnihand_left.urdf"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/omnihand_right.urdf",
+      "bytes": 19676,
+      "sha256": "7a9150a3865eb40cb8434951efe63787da94c15c068ef81e157a252b09871bed",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/omnihand_right.urdf"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/xacro/const.xacro",
+      "bytes": 13516,
+      "sha256": "44dd6c84744d387181bf7f82c41b767acaacfc121a47f170d52114d9043d6977",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/xacro/const.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/xacro/finger.xacro",
+      "bytes": 4705,
+      "sha256": "df475eb31d26c868b23c4b011c5b76254156d429f84523cb33c4a102874a399e",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/xacro/finger.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/xacro/hand.xacro",
+      "bytes": 17095,
+      "sha256": "4cf709b06d685f7768262852bd43a5318c1c0762373d42d511f09784df5b92b9",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/xacro/hand.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/xacro/material.xacro",
+      "bytes": 865,
+      "sha256": "fca1bbb3920c91436a854ab4f3edfac96bc85f72263d60f5f62d35b613c61b2f",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/xacro/material.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/xacro/omnihand_left.xacro",
+      "bytes": 500,
+      "sha256": "4ee6de8d1bd13d44991c5385de3f464b284084c8eb609f42488bd47e3cda6a15",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/xacro/omnihand_left.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf/xacro/omnihand_right.xacro",
+      "bytes": 500,
+      "sha256": "3033cf18275ec8a06dbb1dec01efe39a6475f216d141323f89d9ec2a6d897b83",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf/xacro/omnihand_right.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/omnihand_left.urdf",
+      "bytes": 20436,
+      "sha256": "8013bf57c333dd4bcb56b4c32f0677313b27015bf4a6fbf3b0363c2d77290e35",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/omnihand_left.urdf"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/omnihand_right.urdf",
+      "bytes": 20396,
+      "sha256": "deff7bf447304c26a9ed107e0ea07d541e8929944bc78173781e96ced4952129",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/omnihand_right.urdf"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/xacro/const.xacro",
+      "bytes": 11439,
+      "sha256": "8f782dcd9d1337b5df5c2e25dc56ee4441eac9ca4fee06cfe7cba57c3e5b308f",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/xacro/const.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/xacro/finger.xacro",
+      "bytes": 4616,
+      "sha256": "d05bb830e8eca6e03ecd29c1a5082b1015e1c843b1c63378c0d2b5470a908bc5",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/xacro/finger.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/xacro/hand.xacro",
+      "bytes": 18179,
+      "sha256": "ecba3d88965b90010ce9a2fa695a8218a081e1cfc25c9cfe5fcdd103924c7031",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/xacro/hand.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/xacro/material.xacro",
+      "bytes": 865,
+      "sha256": "fca1bbb3920c91436a854ab4f3edfac96bc85f72263d60f5f62d35b613c61b2f",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/xacro/material.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/xacro/omnihand_left.xacro",
+      "bytes": 509,
+      "sha256": "0a3c5ffa2c2b2f5f01cee82c31cdae7e54945b65ec9a9ea796d5d3583add9bec",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/xacro/omnihand_left.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1/assets",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/assets/urdf_mesh_col/xacro/omnihand_right.xacro",
+      "bytes": 509,
+      "sha256": "6d49e00cf0c0dc20d2f840996f1828b6bc04d704e11438832bf8ca29b0be7567",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/assets/urdf_mesh_col/xacro/omnihand_right.xacro"
+    },
+    {
+      "group": "omnihand_description_2026_2_1",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/README.md",
+      "bytes": 2839,
+      "sha256": "48d7f50fc8f33c33f0e087e7a172da6eb778020b7d86ba2375036ccb129a2438",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/README.md"
+    },
+    {
+      "group": "omnihand_description_2026_2_1",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/README_EN.md",
+      "bytes": 3117,
+      "sha256": "0bf2d173e3136392c9d02edc32b4805ad6b3ecd764d748d662e559f9eb1ab0f1",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/README_EN.md"
+    },
+    {
+      "group": "omnihand_description_2026_2_1",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/package.xml",
+      "bytes": 599,
+      "sha256": "19ba9002f491fd96a5e2b5d1fa99534bf035813f3ade7cda2992a92ac2d545f3",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/package.xml"
+    },
+    {
+      "group": "omnihand_description_2026_2_1",
+      "source_path": "/home/yh/Download/omnihand-work/OmniHand URDF-2026.2.1/omnihand_description-omnihandT2_1/CMakeLists.txt",
+      "bytes": 1049,
+      "sha256": "5ee00a11a0b9b7f4ceecca11b2d5d5abb32b2e031857bb4472bdd4967879bd52",
+      "snapshot": "snapshots/omnihand_description_2026_2_1/CMakeLists.txt"
+    },
+    {
+      "group": "user_photo",
+      "source_path": "/tmp/codex-clipboard-fe5a1eca-9e7d-4196-8f22-9220d7dfa51f.jpg",
+      "bytes": 2290192,
+      "sha256": "2d9bdadfaf5dd8dd7351d7caaf914e093ab01b584a65e5df7c53224b89357963",
+      "snapshot": "evidence/assembly_photo_01.jpg"
+    },
+    {
+      "group": "user_photo",
+      "source_path": "/tmp/codex-clipboard-dc83ad33-959a-4d09-b291-f6567c39f83b.jpg",
+      "bytes": 2647554,
+      "sha256": "86411cdf9554892f2dab9304526654557ed44e02e5bda93727cf2e0f3421f15d",
+      "snapshot": "evidence/assembly_photo_02.jpg"
+    }
+  ],
+  "stage1_status": "completed_with_explicit_unknowns",
+  "stage2_authorized": false,
+  "deliverables": [
+    {
+      "path": "README_中文.md",
+      "sha256": "558b05c9619e500e890b8ea93c6279e595acbbf0095851c8d9ff969ea0e7437d"
+    },
+    {
+      "path": "hardware_inventory.yaml",
+      "sha256": "19e218d64593d2442b7a8a6b14c3c96678d88f3e90b2098bf7167613f397f69f"
+    },
+    {
+      "path": "measurement_sheet.md",
+      "sha256": "0df550acd6dfa851431e96fdad4909b1c87e404c4a8d797f11734d810960d985"
+    },
+    {
+      "path": "reports/stage_1.md",
+      "sha256": "75b4b0f20fc31278cd90c456f82b674f69fe1731c9ddc3ab960914659dfb75c1"
+    },
+    {
+      "path": "reports/differences.md",
+      "sha256": "04bcc2d10c09df537b737188f016d1eea896e0dd885269e7ed5cd51f6e750e81"
+    },
+    {
+      "path": "reports/upstream_comparison.json",
+      "sha256": "18b59054b4d8b7f6b87dea504f8fb869a3cae3e07128dd88df3f5e3132c67380"
+    },
+    {
+      "path": "reports/teleop_source_verification.json",
+      "sha256": "a78092f628a7a808525f3d7ef9c53bbdd2b11898023f3dc1951625c66d9396e0"
+    },
+    {
+      "path": "reports/hand_model_audit.json",
+      "sha256": "7627d0c4e28d246081f9acc8dd0bdce9954dcc6573d1779f56d044909cbde3bf"
+    },
+    {
+      "path": "reports/dependencies.json",
+      "sha256": "cfbf984457a5e663188c16134a230fc6a512dd7eee94704e5512c82682a3dece"
+    },
+    {
+      "path": "reports/history_audit.json",
+      "sha256": "782a5fc9bbb2435fcde068bb43d71182b73995a1ad75a7a354cf6ad7a33136e6"
+    },
+    {
+      "path": "reports/dependency_probe/CMakeLists.txt",
+      "sha256": "83249576ea128bb9db58b8fa8b15b757ad6af4b0ed928e8903e7c242e04a4352"
+    },
+    {
+      "path": "reports/dependency_probe/configure.log",
+      "sha256": "2a1a4be89ca42e0ec9892e7f009a0842a611a204f8ef139b364797627e29dac1"
+    },
+    {
+      "path": "evidence/user_confirmation.md",
+      "sha256": "bf2c2438cf76b4e19df406ca51e24221184ed2dbdef4a638da8301c49f8a780e"
+    },
+    {
+      "path": "evidence/stage1_collection_script.py",
+      "sha256": "7b6bd07f0d6dd12a0fd1287ddb78e0b2708754c8878359871de1d1a81298a8a7"
+    },
+    {
+      "path": "tools/verify_baseline.py",
+      "sha256": "4812627738f138db286c531141eb86c33a5b49a26bd3769432b849b6bc17a327"
+    }
+  ]
+}

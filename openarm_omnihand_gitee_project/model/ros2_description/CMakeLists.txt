@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project(openarm_omnihand_description)
+find_package(ament_cmake REQUIRED)
+install(DIRECTORY urdf xacro meshes config launch rviz DESTINATION share/${PROJECT_NAME})
+install(PROGRAMS scripts/pose_player.py DESTINATION lib/${PROJECT_NAME})
+ament_package()

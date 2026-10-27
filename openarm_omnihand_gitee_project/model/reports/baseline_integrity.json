@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "checked_input_files": 91,
+  "changed": [],
+  "scope": "Every copied model/resource/utility input registered in source_hashes_before; not all unrelated historical workspace files"
+}

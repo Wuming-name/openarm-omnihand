@@ -1,0 +1,332 @@
+scope: S2C collision model correction only
+input_urdf_sha256: 6eb52056a35caf5bb81572c607543359d12c10ae6e2185ceb58ad86e1398a5a6
+method: Per physical hand visual link, convex hull + Minkowski cube +/-0.5mm; separate
+  links preserve spaces between fingers.
+not_changed:
+- visual
+- joint origins/axes/limits
+- fixed hand pose
+- inertias
+- TCP
+- arm/body/mount collision meshes
+no_acm_created: true
+generated_assets:
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/r_palm.STL
+  source_sha256: 9788724443a62bc22552f4b8e9a5636a603973b6e880befba2063310a7d0c518
+  output: meshes/collision_hulls/r_palm_31a0d42f11.stl
+  output_sha256: 9e4e6f48d1c343927c444737c6708a1f95f46af778c674a0f102a1e349273eef
+  source_vertices: 14960
+  source_triangles: 30058
+  hull_triangles: 2142
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.000499999150633812
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 2142
+  unique_vertices: 1073
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0348301642
+    - -0.0434107929
+    - -0.000500028
+  - - 0.0242435709
+    - 0.0412097014
+    - 0.1137651205
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/r_thumb_roll.STL
+  source_sha256: 61426e6098eed1af49301fe8ed2f8af3847bdb3c09087731337d487af6bd12f1
+  output: meshes/collision_hulls/r_thumb_roll_b487ee6dff.stl
+  output_sha256: 5f90b2a73065c09b54f936addccccaa9a92a9b13332602caa11a586283964d70
+  source_vertices: 18458
+  source_triangles: 36996
+  hull_triangles: 1312
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.000499999150633812
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 1312
+  unique_vertices: 658
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - 0.0008011305
+    - -0.0214999989
+    - -0.0216514617
+  - - 0.0288012139
+    - 0.0154933613
+    - 0.0206514597
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_abad.STL
+  source_sha256: 61ec8a85dea39d81a11d8df2de7dccd4b23b4fd9e012d8ba4446aab7d92d1909
+  output: meshes/collision_hulls/thumb_abad_6d3ec2f8f8.stl
+  output_sha256: c7d9e6f91559c5b988e2f54037d22c8cf41f62bbd1d2c0481bc5713b9fb5461d
+  source_vertices: 3323
+  source_triangles: 6694
+  hull_triangles: 1550
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.000499999150633812
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 1550
+  unique_vertices: 777
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0119000003
+    - -0.0055003064
+    - -0.0216214247
+  - - 0.0119000003
+    - 0.0299666189
+    - 0.0214213505
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_mcp.STL
+  source_sha256: e4d0325b1244ab4b7bcf1b0101fae6267a2932d96a88f36cc32e0621d3428d60
+  output: meshes/collision_hulls/thumb_mcp_75ab3256cd.stl
+  output_sha256: e97ef436122ace179c0bf1a41b6ad2c9ef735e60ed25be82f8e2fef52d00b294
+  source_vertices: 4486
+  source_triangles: 9082
+  hull_triangles: 3364
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.000499999150633812
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 3364
+  unique_vertices: 1684
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0151905166
+    - -0.0076965378
+    - -0.014405231
+  - - 0.0152224135
+    - 0.0427651517
+    - 0.0192286298
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_pip.STL
+  source_sha256: f5e35eb9b346ab5ed09f25c8144de53e7ef775abadf152468bc13bf4f311c4bd
+  output: meshes/collision_hulls/thumb_pip_c426f05ff7.stl
+  output_sha256: 92487da06c25a44d37d279187ad9981472775ab49c965764612b38c39d4c3ba9
+  source_vertices: 2472
+  source_triangles: 4984
+  hull_triangles: 3178
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.000499999150633812
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 3178
+  unique_vertices: 1591
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0106879575
+    - -0.0099249231
+    - -0.0168524962
+  - - 0.0106875179
+    - 0.0301030055
+    - 0.0110436548
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_dip.STL
+  source_sha256: c449c5cad11c8521431781ffe073f3280960935018400ec565b44842aad91dfe
+  output: meshes/collision_hulls/thumb_dip_a030b5ad87.stl
+  output_sha256: 4557d44172b139d1b6fe1e1d0e1adfb62bedec4f2f27d55951f0400c7ec64455
+  source_vertices: 2987
+  source_triangles: 5874
+  hull_triangles: 3586
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.000499999150633812
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 3586
+  unique_vertices: 1795
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0115668559
+    - -0.0107045639
+    - -0.0148888007
+  - - 0.0116274012
+    - 0.0248914137
+    - 0.0112598604
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_abad.STL
+  source_sha256: f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52
+  output: meshes/collision_hulls/finger_abad_607c549cfc.stl
+  output_sha256: 0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90
+  source_vertices: 2002
+  source_triangles: 4020
+  hull_triangles: 878
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.000499999150633812
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 878
+  unique_vertices: 441
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0148513746
+    - -0.0064999945
+    - -0.0050750207
+  - - 0.0137416264
+    - 0.0065000001
+    - 0.0271164738
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_pip.STL
+  source_sha256: d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0
+  output: meshes/collision_hulls/finger_pip_c3626a8a3f.stl
+  output_sha256: 7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2
+  source_vertices: 6263
+  source_triangles: 12550
+  hull_triangles: 3534
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.0005000000819563866
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 3534
+  unique_vertices: 1769
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0122284079
+    - -0.009992376
+    - -0.0097555155
+  - - 0.0105860541
+    - 0.0098434957
+    - 0.0441774465
+- source: /home/yh/isaaclab-dev/openarm_omnihand_moveit2_ws/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_dip.STL
+  source_sha256: 0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05
+  output: meshes/collision_hulls/finger_dip_5ba24a607b.stl
+  output_sha256: ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e
+  source_vertices: 7249
+  source_triangles: 16740
+  hull_triangles: 3958
+  padding_axis_m: 0.0005
+  max_source_vertex_signed_plane_distance_m: -0.0005000000819563866
+  guarantee: All original mesh triangles are inside emitted convex hull; convexity
+    extends vertex test to complete faces.
+  caveat: May overfill local concavities. 0.5mm meshing margin is not physical calibration
+    uncertainty.
+  triangles: 3958
+  unique_vertices: 1981
+  nonmanifold_or_boundary_edges: 0
+  aabb_m:
+  - - -0.0091116736
+    - -0.007752792
+    - -0.0091126068
+  - - 0.0092011923
+    - 0.0077527966
+    - 0.0367074162
+changed_links:
+- link: omni_R_palm
+  old_collision_elements: 2
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.00725\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.0145\" radius=\"0.028\" />\n      </geometry>\n\
+    \    </collision>\n    "
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.057\" />\n      <geometry>\n\
+    \        <box size=\"0.04 0.082 0.085\" />\n      </geometry>\n    </collision>\n\
+    \    "
+- link: omni_R_thumb_roll
+  old_collision_elements: 0
+  new_collision_elements: 1
+  old_xml: []
+- link: omni_R_thumb_abad
+  old_collision_elements: 0
+  new_collision_elements: 1
+  old_xml: []
+- link: omni_R_thumb_mcp
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0.0065 0.00237\" />\n      <geometry>\n\
+    \        <box size=\"0.029 0.042 0.0325\" />\n      </geometry>\n    </collision>\n\
+    \    "
+- link: omni_R_thumb_pip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"-0.2 0 0\" xyz=\"0 0.0116 -0.0032\" />\n   \
+    \   <geometry>\n        <box size=\"0.019 0.035 0.0225\" />\n      </geometry>\n\
+    \    </collision>\n    "
+- link: omni_R_thumb_dip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"-1.8 0 0\" xyz=\"0 0.0134 -0.0026\" />\n   \
+    \   <geometry>\n        <cylinder length=\"0.023\" radius=\"0.011\" />\n     \
+    \ </geometry>\n    </collision>\n    "
+- link: omni_R_index_abad
+  old_collision_elements: 0
+  new_collision_elements: 1
+  old_xml: []
+- link: omni_R_index_pip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.014\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.044\" radius=\"0.01\" />\n      </geometry>\n  \
+    \  </collision>\n    "
+- link: omni_R_index_dip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.018\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.034\" radius=\"0.007\" />\n      </geometry>\n \
+    \   </collision>\n    "
+- link: omni_R_middle_abad
+  old_collision_elements: 0
+  new_collision_elements: 1
+  old_xml: []
+- link: omni_R_middle_pip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.014\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.044\" radius=\"0.01\" />\n      </geometry>\n  \
+    \  </collision>\n    "
+- link: omni_R_middle_dip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.018\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.034\" radius=\"0.007\" />\n      </geometry>\n \
+    \   </collision>\n    "
+- link: omni_R_ring_abad
+  old_collision_elements: 0
+  new_collision_elements: 1
+  old_xml: []
+- link: omni_R_ring_pip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.014\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.044\" radius=\"0.01\" />\n      </geometry>\n  \
+    \  </collision>\n    "
+- link: omni_R_ring_dip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.018\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.034\" radius=\"0.007\" />\n      </geometry>\n \
+    \   </collision>\n    "
+- link: omni_R_pinky_abad
+  old_collision_elements: 0
+  new_collision_elements: 1
+  old_xml: []
+- link: omni_R_pinky_pip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.014\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.044\" radius=\"0.01\" />\n      </geometry>\n  \
+    \  </collision>\n    "
+- link: omni_R_pinky_dip
+  old_collision_elements: 1
+  new_collision_elements: 1
+  old_xml:
+  - "<collision>\n      <origin rpy=\"0 0 0\" xyz=\"0 0 0.018\" />\n      <geometry>\n\
+    \        <cylinder length=\"0.034\" radius=\"0.007\" />\n      </geometry>\n \
+    \   </collision>\n    "

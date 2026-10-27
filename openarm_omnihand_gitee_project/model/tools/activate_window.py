@@ -1,0 +1,5 @@
+import ctypes,re,subprocess,sys,time
+x=ctypes.CDLL('libX11.so.6');D=ctypes.c_void_p;U=ctypes.c_ulong;x.XOpenDisplay.restype=D;d=x.XOpenDisplay(None);x.XDefaultRootWindow.argtypes=[D];x.XDefaultRootWindow.restype=U;root=x.XDefaultRootWindow(d);x.XInternAtom.argtypes=[D,ctypes.c_char_p,ctypes.c_int];x.XInternAtom.restype=U
+class Data(ctypes.Union):_fields_=[('b',ctypes.c_char*20),('s',ctypes.c_short*10),('l',ctypes.c_long*5)]
+class Event(ctypes.Structure):_fields_=[('type',ctypes.c_int),('serial',U),('send_event',ctypes.c_int),('display',D),('window',U),('message_type',U),('format',ctypes.c_int),('data',Data),('padding',ctypes.c_char*96)]
+lines=subprocess.check_output(['xwininfo','-root','-tree'],text=True).splitlines();w=int(re.search('0x[0-9a-f]+',next(l for l in lines if sys.argv[1] in l))[0],16);e=Event();e.type=33;e.display=d;e.window=w;e.message_type=x.XInternAtom(d,b'_NET_ACTIVE_WINDOW',0);e.format=32;e.data.l[0]=2;e.data.l[1]=0;x.XSendEvent.argtypes=[D,U,ctypes.c_int,ctypes.c_long,ctypes.c_void_p];x.XSendEvent(d,root,0,(1<<20)|(1<<19),ctypes.byref(e));x.XFlush.argtypes=[D];x.XFlush(d);time.sleep(1)

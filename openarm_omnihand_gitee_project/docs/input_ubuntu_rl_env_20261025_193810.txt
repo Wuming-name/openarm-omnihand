@@ -1,0 +1,117 @@
+========== Ubuntu 与内核 ==========
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+Linux 5.15.0-198-generic x86_64 GNU/Linux
+========== CPU、内存与磁盘 ==========
+型号名称：                               Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
+               total        used        free      shared  buff/cache   available
+内存：       15Gi       4.3Gi       1.1Gi        42Mi        10Gi        10Gi
+交换：      9.8Gi        15Mi       9.8Gi
+文件系统       类型  大小  已用  可用 已用% 挂载点
+/dev/sda9      ext4  192G   63G  120G   35% /home
+/dev/sda8      ext4   58G   34G   22G   62% /
+========== NVIDIA 显卡与驱动 ==========
+Sun Oct 25 19:38:10 2026       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.256.02   Driver Version: 470.256.02   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0  On |                  N/A |
+| 33%   31C    P8     8W / 120W |    272MiB /  6077MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      3502      G   /usr/lib/xorg/Xorg                164MiB |
+|    0   N/A  N/A      3655      G   /usr/bin/gnome-shell               29MiB |
+|    0   N/A  N/A    116221      G   ...6/usr/lib/firefox/firefox        6MiB |
+|    0   N/A  N/A    256982      G   kdeconnect-app                      9MiB |
+|    0   N/A  N/A   2031433      G   ...-uuid=3190708988185955192       56MiB |
+|    0   N/A  N/A   3256473      G   gnome-control-center                1MiB |
++-----------------------------------------------------------------------------+
+========== CUDA Toolkit ==========
+找不到命令 “nvcc”，但可以通过以下软件包安装它：
+sudo apt install nvidia-cuda-toolkit
+========== 当前 ROS 与 Python 环境 ==========
+ROS_DISTRO=<未设置>
+ROS_VERSION=<未设置>
+ROS_DOMAIN_ID=<未设置>
+RMW_IMPLEMENTATION=<未设置>
+AMENT_PREFIX_PATH=<未设置>
+COLCON_PREFIX_PATH=<未设置>
+CONDA_PREFIX=<未设置>
+VIRTUAL_ENV=<未设置>
+colcon 是 /usr/bin/colcon
+colcon 是 /bin/colcon
+python3 是 /usr/bin/python3
+python3 是 /bin/python3
+python 是 /usr/bin/python
+python 是 /bin/python
+========== ROS 安装目录 ==========
+drwxr-xr-x  3 root root 4096 10月 12 17:55 /opt/ros
+drwxr-xr-x 12 root root 4096 10月 13 16:00 /opt/ros/humble
+家目录内发现的 ROS 环境入口：
+/home/lsk/catkin_ws/devel/setup.bash
+/home/lsk/catkin_ws/build/catkin_generated/installspace/setup.bash
+/home/lsk/quadruped_ctrl-master/build/devel/setup.bash
+/home/lsk/quadruped_ctrl-master/build/catkin_generated/installspace/setup.bash
+/home/lsk/quadruped_ctrl-master/build/atomic_configure/setup.bash
+/home/lsk/quadruped-robot-mpc-wbc/devel/setup.bash
+/home/lsk/quadruped-robot-mpc-wbc/build/catkin_generated/installspace/setup.bash
+========== ROS 软件包版本 ==========
+ros-humble-desktop	0.10.0-1jammy.20260908.101832	installed
+ros-humble-joint-state-publisher-gui	2.4.0-1jammy.20260907.220733	installed
+ros-humble-rclpy	3.3.22-1jammy.20260907.213431	installed
+ros-humble-robot-state-publisher	3.0.3-2jammy.20260907.225951	installed
+ros-humble-ros-base	0.10.0-1jammy.20260908.101203	installed
+ros-humble-ros2cli	0.18.20-1jammy.20260907.215122	installed
+ros-humble-rviz2	11.2.29-1jammy.20260908.014614	installed
+ros-humble-xacro	2.1.1-1jammy.20260304.195513	installed
+========== 各标准 ROS 安装的关键包位置 ==========
+入口：/opt/ros/humble/setup.bash
+ROS_DISTRO=humble
+/opt/ros/humble/bin/ros2
+--- rclpy
+/opt/ros/humble
+--- robot_state_publisher
+/opt/ros/humble
+--- joint_state_publisher_gui
+/opt/ros/humble
+--- rviz2
+/opt/ros/humble
+--- xacro
+/opt/ros/humble
+--- moveit_core
+Package not found
+========== Conda 环境列表 ==========
+找不到命令 “conda”，您的意思是：
+  “conga” 命令来自 Snap 软件包 conga (1.5.0)
+输入 “snap info <snapname>” 以查看更多版本。
+========== 当前 Python、训练库与 GPU 可用性 ==========
+Python 路径: /usr/bin/python3
+Python 版本: 3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]
+numpy 1.21.5
+scipy 1.8.0
+========== Isaac 安装候选位置 ==========
+========== 容器环境 ==========
+Docker version 29.8.0, build 88096ef
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+========== 检查结束 ==========

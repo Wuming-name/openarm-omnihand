@@ -1,0 +1,43 @@
+source: SYNTHETIC_MODEL_POSE
+position:
+  openarm_right_joint1: 0.15
+  openarm_right_joint2: 0.15
+  openarm_right_joint3: -0.15
+  openarm_right_joint4: 0.15
+  openarm_right_joint5: 0.1
+  openarm_right_joint6: -0.1
+  openarm_right_joint7: 0.1
+  omni_R_thumb_roll_joint: 0.0
+  omni_R_thumb_abad_joint: 0.0
+  omni_R_thumb_mcp_joint: 0.0
+  omni_R_thumb_pip_joint: 0.0
+  omni_R_thumb_dip_joint: 0.0
+  omni_R_index_abad_joint: 0.0
+  omni_R_index_pip_joint: 0.0
+  omni_R_index_dip_joint: 0.0
+  omni_R_middle_pip_joint: 0.0
+  omni_R_middle_dip_joint: 0.0
+  omni_R_ring_abad_joint: 0.0
+  omni_R_ring_pip_joint: 0.0
+  omni_R_ring_dip_joint: 0.0
+  omni_R_pinky_abad_joint: 0.0
+  omni_R_pinky_pip_joint: 0.0
+  omni_R_pinky_dip_joint: 0.0
+independent_names:
+- openarm_right_joint1
+- openarm_right_joint2
+- openarm_right_joint3
+- openarm_right_joint4
+- openarm_right_joint5
+- openarm_right_joint6
+- openarm_right_joint7
+- omni_R_thumb_roll_joint
+- omni_R_thumb_abad_joint
+- omni_R_thumb_mcp_joint
+- omni_R_index_abad_joint
+- omni_R_index_pip_joint
+- omni_R_middle_pip_joint
+- omni_R_ring_abad_joint
+- omni_R_ring_pip_joint
+- omni_R_pinky_abad_joint
+- omni_R_pinky_pip_joint

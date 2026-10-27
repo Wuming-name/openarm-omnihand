@@ -1,0 +1,49 @@
+{
+  "profile_date": "2026-10-25",
+  "source_report": "docs/input_ubuntu_rl_env_20261025_193810.txt",
+  "source_report_sha256": "44cef772a4611215f603d8081b480597e96f3d9653756a08e8030d6bad90f120",
+  "os": "Ubuntu 22.04.5 LTS",
+  "architecture": "x86_64",
+  "kernel": "5.15.0-198-generic",
+  "cpu": "Intel Core i7-7700",
+  "memory_reported_GiB": 15,
+  "gpu": {
+    "name": null,
+    "name_status": "NVIDIA GeForce name was truncated in report; do not infer specific GPU",
+    "memory_MiB": 6077,
+    "driver": "470.256.02",
+    "driver_cuda_support": "11.4",
+    "compute_capability": null
+  },
+  "storage_available_GiB": {
+    "home": 120,
+    "root": 22
+  },
+  "python": "3.10.12",
+  "ros": {
+    "distribution": "humble",
+    "setup": "/opt/ros/humble/setup.bash",
+    "ros2": "/opt/ros/humble/bin/ros2",
+    "rclpy_version": "3.3.22",
+    "rviz2_version": "11.2.29",
+    "joint_state_publisher_gui_version": "2.4.0",
+    "moveit_core_found": false
+  },
+  "not_detected_in_report": [
+    "nvcc",
+    "conda",
+    "torch in current python",
+    "mujoco in current python",
+    "Isaac in scanned locations"
+  ],
+  "docker": "29.8.0; daemon inspection denied to reporting account",
+  "project_defaults": {
+    "ros_domain_id": 188,
+    "ros_python": "/usr/bin/python3",
+    "build_executor": "sequential",
+    "simulation_inspection": "MuJoCo CPU forward without rendering",
+    "isaac_default_enabled": false,
+    "gpu_torch_pin_selected": false
+  },
+  "target_machine_validation": "pending; package authored on Windows"
+}

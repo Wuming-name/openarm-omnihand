@@ -1,0 +1,12 @@
+{
+  "steps": 4800,
+  "simulated_seconds": 24.0,
+  "wall_seconds": 29.150239255046472,
+  "contact_steps": 0,
+  "max_tracking_error_rad": 0.003428525784185954,
+  "max_mimic_error_rad": 2.872259028663393e-05,
+  "max_fk_element_error": 5.105290661333584e-07,
+  "final_target_error_rad": 1.5497207639381116e-07,
+  "source": "SYNTHETIC_MODEL_POSE",
+  "pose_reset_during_dynamic_loops": 0
+}

@@ -1,0 +1,44 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Background Color: 38; 42; 49
+    Fixed Frame: world
+    Frame Rate: 30
+  Displays:
+  - Class: rviz_default_plugins/RobotModel
+    Name: Articulated model - SYNTHETIC
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /robot_description
+      Durability Policy: Transient Local
+      Reliability Policy: Reliable
+      History Policy: Keep Last
+      Depth: 1
+    Visual Enabled: true
+    Collision Enabled: false
+    Alpha: 1.0
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.7
+      Focal Point:
+        X: 0.0
+        Y: 0.0
+        Z: 0.48
+      Pitch: 0.25
+      Yaw: 3.43
+      Target Frame: world
+      Near Clip Distance: 0.01
+Window Geometry:
+  Width: 1100
+  Height: 850

@@ -1,0 +1,58 @@
+S5A AF_CAN seccomp barrier installed
+[INFO] [launch]: All log files can be found below /home/yh/.ros/log/2026-10-25-17-39-14-975147-yh-MS-7D06-901692
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [robot_state_publisher-1]: process started with pid [901717]
+[INFO] [pose_player.py-2]: process started with pid [901719]
+[INFO] [rviz2-3]: process started with pid [901721]
+[robot_state_publisher-1] [INFO] [1792921155.128293414] [robot_state_publisher]: got segment omni_R_index_abad
+[robot_state_publisher-1] [INFO] [1792921155.128395733] [robot_state_publisher]: got segment omni_R_index_dip
+[robot_state_publisher-1] [INFO] [1792921155.128403538] [robot_state_publisher]: got segment omni_R_index_pip
+[robot_state_publisher-1] [INFO] [1792921155.128408363] [robot_state_publisher]: got segment omni_R_index_tip
+[robot_state_publisher-1] [INFO] [1792921155.128412466] [robot_state_publisher]: got segment omni_R_middle_abad
+[robot_state_publisher-1] [INFO] [1792921155.128416622] [robot_state_publisher]: got segment omni_R_middle_dip
+[robot_state_publisher-1] [INFO] [1792921155.128421189] [robot_state_publisher]: got segment omni_R_middle_pip
+[robot_state_publisher-1] [INFO] [1792921155.128425525] [robot_state_publisher]: got segment omni_R_middle_tip
+[robot_state_publisher-1] [INFO] [1792921155.128429581] [robot_state_publisher]: got segment omni_R_palm
+[robot_state_publisher-1] [INFO] [1792921155.128433767] [robot_state_publisher]: got segment omni_R_pinky_abad
+[robot_state_publisher-1] [INFO] [1792921155.128437962] [robot_state_publisher]: got segment omni_R_pinky_dip
+[robot_state_publisher-1] [INFO] [1792921155.128441631] [robot_state_publisher]: got segment omni_R_pinky_pip
+[robot_state_publisher-1] [INFO] [1792921155.128444535] [robot_state_publisher]: got segment omni_R_pinky_tip
+[robot_state_publisher-1] [INFO] [1792921155.128447157] [robot_state_publisher]: got segment omni_R_ring_abad
+[robot_state_publisher-1] [INFO] [1792921155.128449738] [robot_state_publisher]: got segment omni_R_ring_dip
+[robot_state_publisher-1] [INFO] [1792921155.128452412] [robot_state_publisher]: got segment omni_R_ring_pip
+[robot_state_publisher-1] [INFO] [1792921155.128456751] [robot_state_publisher]: got segment omni_R_ring_tip
+[robot_state_publisher-1] [INFO] [1792921155.128461009] [robot_state_publisher]: got segment omni_R_thumb_abad
+[robot_state_publisher-1] [INFO] [1792921155.128464947] [robot_state_publisher]: got segment omni_R_thumb_dip
+[robot_state_publisher-1] [INFO] [1792921155.128468854] [robot_state_publisher]: got segment omni_R_thumb_mcp
+[robot_state_publisher-1] [INFO] [1792921155.128472938] [robot_state_publisher]: got segment omni_R_thumb_pip
+[robot_state_publisher-1] [INFO] [1792921155.128476548] [robot_state_publisher]: got segment omni_R_thumb_roll
+[robot_state_publisher-1] [INFO] [1792921155.128480193] [robot_state_publisher]: got segment omni_R_thumb_tip
+[robot_state_publisher-1] [INFO] [1792921155.128483748] [robot_state_publisher]: got segment omni_base_link
+[robot_state_publisher-1] [INFO] [1792921155.128487376] [robot_state_publisher]: got segment omnihand_adapter
+[robot_state_publisher-1] [INFO] [1792921155.128491001] [robot_state_publisher]: got segment openarm_body_link0
+[robot_state_publisher-1] [INFO] [1792921155.128494769] [robot_state_publisher]: got segment openarm_right_link0
+[robot_state_publisher-1] [INFO] [1792921155.128499233] [robot_state_publisher]: got segment openarm_right_link1
+[robot_state_publisher-1] [INFO] [1792921155.128503068] [robot_state_publisher]: got segment openarm_right_link2
+[robot_state_publisher-1] [INFO] [1792921155.128506632] [robot_state_publisher]: got segment openarm_right_link3
+[robot_state_publisher-1] [INFO] [1792921155.128510330] [robot_state_publisher]: got segment openarm_right_link4
+[robot_state_publisher-1] [INFO] [1792921155.128514447] [robot_state_publisher]: got segment openarm_right_link5
+[robot_state_publisher-1] [INFO] [1792921155.128518487] [robot_state_publisher]: got segment openarm_right_link6
+[robot_state_publisher-1] [INFO] [1792921155.128523024] [robot_state_publisher]: got segment openarm_right_link7
+[robot_state_publisher-1] [INFO] [1792921155.128526555] [robot_state_publisher]: got segment tool_tcp
+[robot_state_publisher-1] [INFO] [1792921155.128530112] [robot_state_publisher]: got segment world
+[rviz2-3] [INFO] [1792921155.705819181] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-3] [INFO] [1792921155.705905183] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-3] [INFO] [1792921155.745530591] [rviz2]: Stereo is NOT SUPPORTED
+[pose_player.py-2] [INFO] [1792921176.905782787] [model_pose_player]: SYNTHETIC_MODEL_POSE closed_hand
+[pose_player.py-2] [INFO] [1792921187.323149900] [model_pose_player]: SYNTHETIC_MODEL_POSE intermediate_hand
+[pose_player.py-2] [INFO] [1792921197.751260240] [model_pose_player]: SYNTHETIC_MODEL_POSE open_hand
+[pose_player.py-2] [INFO] [1792921208.179319685] [model_pose_player]: SYNTHETIC_MODEL_POSE closed_hand
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [rviz2-3]: sending signal 'SIGINT' to process[rviz2-3]
+[INFO] [pose_player.py-2]: sending signal 'SIGINT' to process[pose_player.py-2]
+[INFO] [robot_state_publisher-1]: sending signal 'SIGINT' to process[robot_state_publisher-1]
+[rviz2-3] [INFO] [1792921535.417245815] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[robot_state_publisher-1] [INFO] [1792921535.417691393] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [robot_state_publisher-1]: process has finished cleanly [pid 901717]
+[INFO] [pose_player.py-2]: process has finished cleanly [pid 901719]
+[INFO] [rviz2-3]: process has finished cleanly [pid 901721]

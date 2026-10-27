@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-25",
+  "authoring_platform": "Windows; Python 3.14.4",
+  "target": "Ubuntu 22.04.5 x86_64 / ROS 2 Humble / Python 3.10.12",
+  "checks": {
+    "python_syntax": "passed",
+    "json_and_xml_parsing": "passed",
+    "shell_LF_line_endings": "passed; Linux Bash execution not available",
+    "policy_coordinate_tests": 4,
+    "ros_environment_isolation_tests": 3,
+    "unit_tests": "7 passed on final implementation",
+    "model_hashes": "249 passed",
+    "source_reconstruction": "byte-identical with POSIX path portability fix",
+    "model_structure": {
+      "links": 36,
+      "joints": 35,
+      "independent": 17,
+      "movable": 23,
+      "unique_urdf_meshes": 35,
+      "missing_meshes": 0
+    },
+    "target_python_3_10_syntax": "passed via ast feature_version=(3,10)"
+  },
+  "not_executed": [
+    "Ubuntu colcon build",
+    "ROS runtime / RViz GUI",
+    "MuJoCo installation / engine check",
+    "Isaac runtime",
+    "policy training",
+    "hardware control"
+  ],
+  "training_ready": false,
+  "git_adaptation_date": "2026-10-26",
+  "git_adaptation": {
+    "platform": "Gitee",
+    "usd_chunks": 3,
+    "max_chunk_bytes": 20971520,
+    "unit_tests": "11 passed",
+    "cloud_repository_created": false,
+    "target_ubuntu_runtime_tested": false,
+    "test_environment": "Windows tests passed after allowing access to system temporary directories",
+    "windows_git_autocrlf_checkout": "passed; all tracked bytes preserved",
+    "fresh_checkout_usd_restore_and_verification": "passed",
+    "tracked_max_file_bytes": 20971520,
+    "ignore_rules": "passed"
+  }
+}

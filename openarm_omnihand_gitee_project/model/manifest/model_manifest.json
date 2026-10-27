@@ -1,0 +1,279 @@
+{
+  "version": "1.0.0",
+  "resources": [
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/body/v10/visual/body_link0.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/body/v10/visual/body_link0.dae",
+      "sha256": "a05f59379dcf694e5ff336b1ee3a47ea504a2425a2fa774af1b14e096d9a239a"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/body/v10/collision/body_link0_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/body/v10/collision/body_link0_symp.stl",
+      "sha256": "6c18bbf7e86b03e3faf802e61e8eb438b38dcbcf146d97cffe6e808c65e9a72a"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/visual/link0.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link0.dae",
+      "sha256": "cc54c874e3da9c33e4386fb691b49a9a6df0ddce2d89e84ae342075c57fc0230"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/collision/link0_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link0_symp.stl",
+      "sha256": "baf52578e1d9e6225f3818cae82b6074a0b948d3cef8e9a3e6dfafca78507590"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/visual/link1.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link1.dae",
+      "sha256": "c25937f901a4c15730927e08bf5fd26a072e801c529f0bd9678ba9758330647d"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/collision/link1_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link1_symp.stl",
+      "sha256": "066113d13d5cc85098609003bc7ebb73c570015350877f5ed7162ef1b6601852"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/visual/link2.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link2.dae",
+      "sha256": "5d2a1ec857a22eaa180034e2dcd989c54611abab6ce6659eb4999570c34cc124"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/collision/link2_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link2_symp.stl",
+      "sha256": "382ab32e4ae0880e8a1512e7a6ca6ce1f478a6c125db4efa977429ffb1d6b02a"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/visual/link3.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link3.dae",
+      "sha256": "97d73c4bae3f3f7570bf3e28306da719aa99a6bec662060c9e358e5625b11cce"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/collision/link3_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link3_symp.stl",
+      "sha256": "00c908cefab152c00416a570a48bf9aafed1549085f19ff2d882dc3f355d9f59"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/visual/link4.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link4.dae",
+      "sha256": "59eb1cbf44b1250ad9533176b30084179f9164fcb998ee2623d89b48968ec426"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/collision/link4_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link4_symp.stl",
+      "sha256": "b54883b8c7c96268a68a5879f95998a53ad0b0c4fe74325fad63a6caef669c73"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/visual/link5.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link5.dae",
+      "sha256": "96fd3516df16a772a84c268529e5b53b05e6df07da6ccfe850bc091eba947156"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/collision/link5_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link5_symp.stl",
+      "sha256": "678a2802906eff7b45a836d2f34a2d8e51def50b6599376968f888e05c72739e"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/visual/link6.dae",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link6.dae",
+      "sha256": "adcd37741f4e223bd6fe9925625e84191b525c9d27f151f9178b23989de05459"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/openarm_v10/arm/v10/collision/link6_symp.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link6_symp.stl",
+      "sha256": "95529bec23733476dfdbbb266c7db0d25a473a568de73c8337a82440fe4a9ac3"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/commissioning/j7_tool_mount_no_j8.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/commissioning/j7_tool_mount_no_j8.stl",
+      "sha256": "6bb7af43aa575dfc1c75a7136f68cb33d1d2a08c1ddf8848a94aaad527ea5df7"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/commissioning/j7_tool_mount_no_j8.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_description/commissioning/j7_tool_mount_no_j8.stl",
+      "sha256": "6bb7af43aa575dfc1c75a7136f68cb33d1d2a08c1ddf8848a94aaad527ea5df7"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/r_palm.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/r_palm.STL",
+      "sha256": "9788724443a62bc22552f4b8e9a5636a603973b6e880befba2063310a7d0c518"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/r_palm_31a0d42f11.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/r_palm_31a0d42f11.stl",
+      "sha256": "9e4e6f48d1c343927c444737c6708a1f95f46af778c674a0f102a1e349273eef"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/r_thumb_roll.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/r_thumb_roll.STL",
+      "sha256": "61426e6098eed1af49301fe8ed2f8af3847bdb3c09087731337d487af6bd12f1"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/r_thumb_roll_b487ee6dff.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/r_thumb_roll_b487ee6dff.stl",
+      "sha256": "5f90b2a73065c09b54f936addccccaa9a92a9b13332602caa11a586283964d70"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_abad.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_abad.STL",
+      "sha256": "61ec8a85dea39d81a11d8df2de7dccd4b23b4fd9e012d8ba4446aab7d92d1909"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/thumb_abad_6d3ec2f8f8.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_abad_6d3ec2f8f8.stl",
+      "sha256": "c7d9e6f91559c5b988e2f54037d22c8cf41f62bbd1d2c0481bc5713b9fb5461d"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_mcp.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_mcp.STL",
+      "sha256": "e4d0325b1244ab4b7bcf1b0101fae6267a2932d96a88f36cc32e0621d3428d60"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/thumb_mcp_75ab3256cd.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_mcp_75ab3256cd.stl",
+      "sha256": "e97ef436122ace179c0bf1a41b6ad2c9ef735e60ed25be82f8e2fef52d00b294"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_pip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_pip.STL",
+      "sha256": "f5e35eb9b346ab5ed09f25c8144de53e7ef775abadf152468bc13bf4f311c4bd"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/thumb_pip_c426f05ff7.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_pip_c426f05ff7.stl",
+      "sha256": "92487da06c25a44d37d279187ad9981472775ab49c965764612b38c39d4c3ba9"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/thumb_dip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_dip.STL",
+      "sha256": "c449c5cad11c8521431781ffe073f3280960935018400ec565b44842aad91dfe"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/thumb_dip_a030b5ad87.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_dip_a030b5ad87.stl",
+      "sha256": "4557d44172b139d1b6fe1e1d0e1adfb62bedec4f2f27d55951f0400c7ec64455"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_abad.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL",
+      "sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_abad_607c549cfc.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl",
+      "sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_pip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL",
+      "sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_dip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL",
+      "sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_dip_5ba24a607b.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl",
+      "sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_abad.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL",
+      "sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_abad_607c549cfc.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl",
+      "sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_pip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL",
+      "sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_dip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL",
+      "sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_dip_5ba24a607b.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl",
+      "sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_abad.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL",
+      "sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_abad_607c549cfc.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl",
+      "sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_pip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL",
+      "sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_dip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL",
+      "sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_dip_5ba24a607b.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl",
+      "sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_abad.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL",
+      "sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_abad_607c549cfc.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl",
+      "sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_pip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL",
+      "sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl",
+      "sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_description/meshes/omnihand_sdk_0_8_0/finger_dip.STL",
+      "target": "ros2_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL",
+      "sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05"
+    },
+    {
+      "source": "/home/yh/isaaclab-dev/local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123/workspace/src/openarm_omnihand_collision_description/meshes/collision_hulls/finger_dip_5ba24a607b.stl",
+      "target": "ros2_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl",
+      "sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e"
+    }
+  ],
+  "selection": "SDK 0.8.0 joint definitions match accepted meshes; 2026 geometry/limits differ",
+  "physical_match": "not measured",
+  "closed_hand": "accepted thumb pose, not a full fist",
+  "runtime_source": "SYNTHETIC_MODEL_POSE"
+}

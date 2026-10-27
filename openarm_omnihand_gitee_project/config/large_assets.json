@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "target": "model/simulation/usd/openarm_omnihand.usda",
+      "bytes": 54153384,
+      "sha256": "0f739d2c392d6df26e38b49a38771868a01ea72085f24cbea3b6159bc68fecd3",
+      "parts": [
+        {
+          "path": "assets/usd_parts/openarm_omnihand.usda.part001.bin",
+          "bytes": 20971520,
+          "sha256": "225f39ee04e993ba777d0d6fc96f4d30b7bdbc99d0b0433599d50aeb60353745"
+        },
+        {
+          "path": "assets/usd_parts/openarm_omnihand.usda.part002.bin",
+          "bytes": 20971520,
+          "sha256": "89c4037f3411795527ecf3c31740b660d9dc730684a8825c873b10eb2c5ca3f9"
+        },
+        {
+          "path": "assets/usd_parts/openarm_omnihand.usda.part003.bin",
+          "bytes": 12210344,
+          "sha256": "d7704ee00f59d5678a334d62f60ae098eb26c264b4265958cd32368b4c3b2929"
+        }
+      ]
+    }
+  ]
+}

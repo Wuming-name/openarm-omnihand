@@ -1,0 +1,8 @@
+[INFO] [1792920783.166589052] [moveit_robot_model.robot_model]: Loading robot model 'openarm_omnihand'...
+[INFO] [1792920783.166614890] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1792920783.231539143] [moveit_robot_model.robot_model]: Link omni_base_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792920783.238537822] [moveit_robot_model.robot_model]: Link omni_R_index_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792920783.243978074] [moveit_robot_model.robot_model]: Link omni_R_middle_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792920783.249491425] [moveit_robot_model.robot_model]: Link omni_R_pinky_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792920783.255032936] [moveit_robot_model.robot_model]: Link omni_R_ring_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792920783.263727706] [moveit_robot_model.robot_model]: Link omni_R_thumb_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.

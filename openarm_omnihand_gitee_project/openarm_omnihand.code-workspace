@@ -1,0 +1,16 @@
+{
+  "folders": [{"path": ".", "name": "OpenArm OmniHand Humble"}],
+  "settings": {
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "files.exclude": {"**/__pycache__": true, "workspace/build": true, "workspace/log": true},
+    "search.exclude": {"workspace/**": true, ".venv-mujoco/**": true, "model/reports/**": true}
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {"label": "OpenArm: Check", "type": "process", "command": "bash", "args": ["project.sh", "check"], "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []},
+      {"label": "OpenArm: Build", "type": "process", "command": "bash", "args": ["project.sh", "build"], "options": {"cwd": "${workspaceFolder}"}, "group": "build", "problemMatcher": []},
+      {"label": "OpenArm: Display", "type": "process", "command": "bash", "args": ["project.sh", "display"], "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []}
+    ]
+  }
+}

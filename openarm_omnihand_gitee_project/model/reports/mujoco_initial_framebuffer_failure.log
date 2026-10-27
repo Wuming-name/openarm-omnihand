@@ -1,0 +1,19 @@
+S5A AF_CAN seccomp barrier installed
+Traceback (most recent call last):
+  File "/home/yh/isaaclab-dev/local_projects/OPENARM_OMNIHAND_PORTABLE_MODEL_20261025_173300/tools/mujoco_check.py", line 8, in <module>
+    renderer=mujoco.Renderer(model,720,960);camera=mujoco.MjvCamera();camera.lookat[:]=[.12,-.22,.22];camera.distance=.65;camera.azimuth=210;camera.elevation=-12
+  File "/home/yh/.local/lib/python3.10/site-packages/mujoco/renderer.py", line 56, in __init__
+    raise ValueError(f"""
+ValueError: Image width 960 > framebuffer width 640. Either reduce the image
+width or specify a larger offscreen framebuffer in the model XML using the
+clause:
+<visual>
+  <global offwidth="my_width"/>
+</visual>
+Exception ignored in: <function Renderer.__del__ at 0x7c68769caf80>
+Traceback (most recent call last):
+  File "/home/yh/.local/lib/python3.10/site-packages/mujoco/renderer.py", line 340, in __del__
+    self.close()
+  File "/home/yh/.local/lib/python3.10/site-packages/mujoco/renderer.py", line 325, in close
+    if self._gl_context:
+AttributeError: 'Renderer' object has no attribute '_gl_context'

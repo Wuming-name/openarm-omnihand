@@ -1,0 +1,4 @@
+# Optional isolated CPU model inspection environment; no PyTorch/CUDA dependency.
+# Version matches the delivered model's historical MuJoCo load/FK checks.
+numpy==1.26.4
+mujoco==3.4.0

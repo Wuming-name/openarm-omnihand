@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="openarm_v10_omnihand_collision_s2c">
+  <group name="right_arm">
+    <chain base_link="openarm_right_link0" tip_link="tool_tcp" />
+  </group>
+  <group_state name="initial_start" group="right_arm">
+    <joint name="openarm_right_joint1" value="0.15" />
+    <joint name="openarm_right_joint2" value="0.15" />
+    <joint name="openarm_right_joint3" value="-0.15" />
+    <joint name="openarm_right_joint4" value="0.15" />
+    <joint name="openarm_right_joint5" value="0.1" />
+    <joint name="openarm_right_joint6" value="-0.1" />
+    <joint name="openarm_right_joint7" value="0.1" />
+  </group_state>
+  <group_state name="zero" group="right_arm">
+    <joint name="openarm_right_joint1" value="0.0" />
+    <joint name="openarm_right_joint2" value="0.0" />
+    <joint name="openarm_right_joint3" value="0.0" />
+    <joint name="openarm_right_joint4" value="0.0" />
+    <joint name="openarm_right_joint5" value="0.0" />
+    <joint name="openarm_right_joint6" value="0.0" />
+    <joint name="openarm_right_joint7" value="0.0" />
+  </group_state>
+  <group_state name="reference" group="right_arm">
+    <joint name="openarm_right_joint1" value="0" />
+    <joint name="openarm_right_joint2" value="0" />
+    <joint name="openarm_right_joint3" value="0" />
+    <joint name="openarm_right_joint4" value="0.01" />
+    <joint name="openarm_right_joint5" value="0" />
+    <joint name="openarm_right_joint6" value="0" />
+    <joint name="openarm_right_joint7" value="0" />
+  </group_state>
+  <disable_collisions link1="openarm_right_link1" link2="openarm_right_link2" reason="articulated_mount_interface_source_overlap" />
+  <disable_collisions link1="openarm_right_link2" link2="openarm_right_link3" reason="articulated_mount_interface_source_overlap" />
+  <disable_collisions link1="openarm_right_link3" link2="openarm_right_link4" reason="articulated_mount_interface_source_overlap" />
+  <disable_collisions link1="openarm_right_link6" link2="openarm_right_link7" reason="articulated_mount_interface_source_overlap" />
+  <disable_collisions link1="omnihand_adapter" link2="openarm_right_link7" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_palm" link2="omnihand_adapter" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_palm" link2="omni_R_thumb_roll" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_palm" link2="omni_R_thumb_abad" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_thumb_abad" link2="omni_R_thumb_roll" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_thumb_abad" link2="omni_R_thumb_mcp" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_thumb_mcp" link2="omni_R_thumb_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_thumb_dip" link2="omni_R_thumb_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_index_abad" link2="omni_R_palm" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_index_pip" link2="omni_R_palm" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_index_abad" link2="omni_R_index_pip" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_index_dip" link2="omni_R_index_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_middle_abad" link2="omni_R_palm" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_middle_pip" link2="omni_R_palm" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_index_pip" link2="omni_R_middle_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_middle_abad" link2="omni_R_middle_pip" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_middle_dip" link2="omni_R_middle_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_palm" link2="omni_R_ring_abad" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_palm" link2="omni_R_ring_pip" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_middle_pip" link2="omni_R_ring_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_ring_abad" link2="omni_R_ring_pip" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_ring_dip" link2="omni_R_ring_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_palm" link2="omni_R_pinky_abad" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_palm" link2="omni_R_pinky_pip" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_pinky_pip" link2="omni_R_ring_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+  <disable_collisions link1="omni_R_pinky_abad" link2="omni_R_pinky_pip" reason="fixed_assembly_source_surface_overlap" />
+  <disable_collisions link1="omni_R_pinky_dip" link2="omni_R_pinky_pip" reason="fixed_assembly_conservative_envelope_overlap" />
+</robot>

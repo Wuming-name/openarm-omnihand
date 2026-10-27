@@ -1,0 +1,46 @@
+{
+  "ROS2_RViz": {
+    "generated": true,
+    "parsed": true,
+    "visualized": true,
+    "joint_motion": true,
+    "physics": false,
+    "version": "Humble",
+    "note": "Actual GUI slider and example publisher; 35 TF checked"
+  },
+  "Isaac_Sim": {
+    "generated": true,
+    "parsed": true,
+    "visualized": true,
+    "joint_motion": true,
+    "physics": true,
+    "version": "6.0.1-rc.7+release.42383.32955d8d.gl",
+    "note": "Finite 24s zero-gravity PhysX demo only; not validated real dynamics"
+  },
+  "MuJoCo": {
+    "generated": true,
+    "parsed": true,
+    "visualized": true,
+    "joint_motion": "kinematic only",
+    "physics": false,
+    "version": "3.4.0",
+    "note": "Actual offscreen rendering/FK; convex-envelope link5/link7 contact prevents integration"
+  },
+  "Gazebo": {
+    "generated": false,
+    "parsed": false,
+    "visualized": false,
+    "joint_motion": false,
+    "physics": false,
+    "note": "No gz/ign executable found; no unvalidated SDF delivered"
+  },
+  "Isaac_Lab_RL": {
+    "generated": false,
+    "parsed": false,
+    "visualized": false,
+    "joint_motion": false,
+    "physics": false,
+    "version_present": "3.0.0",
+    "note": "USD reusable but no RL environment/task tested"
+  }
+}

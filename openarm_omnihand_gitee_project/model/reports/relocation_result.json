@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "extracted_directory": "/tmp/openarm_portable_s6rty52o/openarm_omnihand_portable_model",
+  "hash_validation_before_execution": 228,
+  "built_in_extracted_directory": true,
+  "rviz_actually_started": true,
+  "tf_count": 35,
+  "max_tf_error": 7.494005416219807e-16,
+  "publishers": [
+    [
+      "joint_state_publisher",
+      "/"
+    ]
+  ],
+  "same_model_and_platform_payload_files": 123,
+  "socket_calls": 189,
+  "AF_CAN_socket_calls": 0,
+  "original_workspace_asset_loads": 0,
+  "shell_directory_or_failed_probes": [
+    "906537 openat(AT_FDCWD, \"/home/yh/isaaclab-dev/local_projects/OPENARM_OMNIHAND_PORTABLE_MODEL_20261025_173300\", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3",
+    "906538 openat(AT_FDCWD, \"/home/yh/isaaclab-dev/local_projects/OPENARM_OMNIHAND_PORTABLE_MODEL_20261025_173300\", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3"
+  ],
+  "syscall_trace_sha256": "130065d2d12057159b92ab2dfedf7a972d3635c11adc28802bb9dc9c0ad53cb9",
+  "launch_cwd_fix": "display.sh now cd to portable root before launch; final extracted starter matches delivered version",
+  "gui_joint_changes": {
+    "omni_R_thumb_abad_joint": [
+      -0.5000368306963754,
+      -0.5026548245743669
+    ],
+    "omni_R_index_pip_joint": [
+      0.049951323192077714,
+      0.049480084294039245
+    ],
+    "omni_R_index_dip_joint": [
+      0.05479660154170925,
+      0.05427965247056105
+    ],
+    "omni_R_middle_pip_joint": [
+      0.049951323192077714,
+      0.05230751768227006
+    ],
+    "omni_R_middle_dip_joint": [
+      0.05479660154170925,
+      0.05738134689745025
+    ]
+  }
+}

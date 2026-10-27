@@ -1,0 +1,11 @@
+# New editable source uses LF on both Windows and Ubuntu.
+* text=auto eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.code-workspace text eol=lf
+*.bin -text
+# Frozen model files have byte-based provenance hashes; preserve their bytes.
+model/** -text
+docs/input_*.txt -text

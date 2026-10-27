@@ -1,0 +1,10 @@
+{
+  "openarm_omnihand_portable_model.tar.gz": {
+    "bytes": 59349599,
+    "sha256": "6b2cdd6f0af987d43115a003913c8fdf0627d330b17f8aac673e31f4d06a756a"
+  },
+  "openarm_omnihand_portable_model.zip": {
+    "bytes": 59371148,
+    "sha256": "1117065fa3a1cdfdddf8961c4ed9eb221ec4cf3911475818113d9d26a9a2347d"
+  }
+}

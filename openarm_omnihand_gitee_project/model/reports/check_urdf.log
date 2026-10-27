@@ -1,0 +1,38 @@
+robot name is: openarm_omnihand
+---------- Successfully Parsed XML ---------------
+root Link: world has 1 child(ren)
+    child(1):  openarm_body_link0
+        child(1):  openarm_right_link0
+            child(1):  openarm_right_link1
+                child(1):  openarm_right_link2
+                    child(1):  openarm_right_link3
+                        child(1):  openarm_right_link4
+                            child(1):  openarm_right_link5
+                                child(1):  openarm_right_link6
+                                    child(1):  openarm_right_link7
+                                        child(1):  omnihand_adapter
+                                            child(1):  omni_base_link
+                                                child(1):  omni_R_palm
+                                                    child(1):  omni_R_index_abad
+                                                        child(1):  omni_R_index_pip
+                                                            child(1):  omni_R_index_dip
+                                                                child(1):  omni_R_index_tip
+                                                    child(2):  omni_R_middle_abad
+                                                        child(1):  omni_R_middle_pip
+                                                            child(1):  omni_R_middle_dip
+                                                                child(1):  omni_R_middle_tip
+                                                    child(3):  omni_R_pinky_abad
+                                                        child(1):  omni_R_pinky_pip
+                                                            child(1):  omni_R_pinky_dip
+                                                                child(1):  omni_R_pinky_tip
+                                                    child(4):  omni_R_ring_abad
+                                                        child(1):  omni_R_ring_pip
+                                                            child(1):  omni_R_ring_dip
+                                                                child(1):  omni_R_ring_tip
+                                                    child(5):  omni_R_thumb_roll
+                                                        child(1):  omni_R_thumb_abad
+                                                            child(1):  omni_R_thumb_mcp
+                                                                child(1):  omni_R_thumb_pip
+                                                                    child(1):  omni_R_thumb_dip
+                                                                        child(1):  omni_R_thumb_tip
+                                                child(2):  tool_tcp

@@ -1,0 +1,54 @@
+S5A AF_CAN seccomp barrier installed
+Starting >>> portable_collision_check
+--- stderr: portable_collision_check
+CMake Warning (policy) at /opt/ros/humble/share/moveit_core/cmake/ConfigExtras.cmake:3 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+Call Stack (most recent call first):
+  /opt/ros/humble/share/moveit_core/cmake/moveit_coreConfig.cmake:41 (include)
+  CMakeLists.txt:4 (find_package)
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+CMake Warning (policy) at /opt/ros/humble/share/geometric_shapes/cmake/ConfigExtras.cmake:31 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+Call Stack (most recent call first):
+  /opt/ros/humble/share/geometric_shapes/cmake/geometric_shapesConfig.cmake:41 (include)
+  /opt/ros/humble/share/moveit_core/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/humble/share/moveit_core/cmake/moveit_coreConfig.cmake:41 (include)
+  CMakeLists.txt:4 (find_package)
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+CMake Warning (policy) at /opt/ros/humble/share/moveit_ros_planning/cmake/ConfigExtras.cmake:3 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+Call Stack (most recent call first):
+  /opt/ros/humble/share/moveit_ros_planning/cmake/moveit_ros_planningConfig.cmake:41 (include)
+  CMakeLists.txt:5 (find_package)
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+CMake Warning (unused-cli):
+  Manually-specified variables were not used by the project:
+
+    CATKIN_INSTALL_INTO_PREFIX_ROOT
+
+
+---
+Finished <<< portable_collision_check [5.46s]
+
+Summary: 1 package finished [5.62s]
+  1 package had stderr output: portable_collision_check
+[INFO] [1792921949.065400175] [moveit_robot_model.robot_model]: Loading robot model 'openarm_omnihand'...
+[INFO] [1792921949.065423679] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1792921949.129914809] [moveit_robot_model.robot_model]: Link omni_base_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792921949.136967952] [moveit_robot_model.robot_model]: Link omni_R_index_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792921949.142399209] [moveit_robot_model.robot_model]: Link omni_R_middle_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792921949.147633009] [moveit_robot_model.robot_model]: Link omni_R_pinky_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792921949.153312739] [moveit_robot_model.robot_model]: Link omni_R_ring_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+[WARN] [1792921949.161616231] [moveit_robot_model.robot_model]: Link omni_R_thumb_tip has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.

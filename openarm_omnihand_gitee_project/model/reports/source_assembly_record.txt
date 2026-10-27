@@ -1,0 +1,41 @@
+from pathlib import Path
+import shutil,hashlib,json,copy,xml.etree.ElementTree as E
+import numpy as np
+from scipy.spatial.transform import Rotation as R
+P=Path('local_projects/OPENARM_OMNIHAND_PORTABLE_MODEL_20261025_173300').resolve();B=Path('local_projects/MOTION_MVP_CLOSED_HAND_PHYSX_20261024_163123').resolve();src=B/'workspace/src';O=Path('openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0').resolve();N=Path('openarm_bringup/gravity_compensation/snapshots/omnihand_description_2026_2_1').resolve()
+for d in ['LICENSES','manifest','ros2_description/urdf','ros2_description/xacro','ros2_description/config','ros2_description/launch','ros2_description/scripts','ros2_description/rviz','simulation/usd','simulation/mjcf','simulation/platform_adapters','tools','tests','screenshots','reports','dist','sources']:(P/d).mkdir(parents=True,exist_ok=True)
+inputs={}
+def cp(a,b):
+ a=Path(a);inputs[str(a)]=hashlib.sha256(a.read_bytes()).hexdigest();b.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(a,b)
+cp(src/'openarm_omnihand_collision_description/urdf/openarm_omnihand_collision.urdf',P/'sources/accepted_closed.urdf')
+cp(O/'assets/urdf/omnihand_right.urdf',P/'sources/omnihand_sdk_0_8_0_right.urdf')
+cp(N/'assets/urdf/omnihand_right.urdf',P/'sources/omnihand_2026_2_1_comparison.urdf')
+for f in (src/'openarm_omnihand_description').rglob('*'):
+ if f.is_file() and ('license' in str(f).lower() or f.name in ['THIRD_PARTY.md','model_provenance.yaml']):cp(f,P/'LICENSES'/f.name)
+cp(O/'LICENSE',P/'LICENSES/OmniHand_MulanPSL-2.0.txt')
+cp(src/'openarm_omnihand_moveit_config/config/openarm_omnihand.srdf',P/'ros2_description/config/accepted_arm.srdf')
+for n in ['model_math.py','no_can.py','capture_rviz.py'] :cp(B/'tools'/n,P/'tools'/n)
+root=E.parse(P/'sources/accepted_closed.urdf').getroot();official=E.parse(P/'sources/omnihand_sdk_0_8_0_right.urdf').getroot();oj={j.get('name'):j for j in official.findall('joint')};closed={};rows=[]
+for j in list(root.findall('joint')):
+ n=j.get('name');old=copy.deepcopy(j)
+ if n.startswith('omni_') and n[5:] in oj and oj[n[5:]].get('type')!='fixed':
+  new=copy.deepcopy(oj[n[5:]]);new.set('name',n)
+  for tag in ['parent','child']:new.find(tag).set('link','omni_'+new.find(tag).get('link'))
+  if new.find('mimic') is not None:new.find('mimic').set('joint','omni_'+new.find('mimic').get('joint'))
+  a=np.fromstring(new.find('axis').get('xyz'),sep=' ');rv=R.from_euler('xyz',np.fromstring(old.find('origin').get('rpy'),sep=' ')).as_rotvec();q=float(rv@a);assert np.linalg.norm(rv-q*a)<1e-10
+  closed[n]=q;root.remove(j);root.append(new);j=new
+ elif j.get('type')!='fixed':closed[n]=[.15,.15,-.15,.15,.1,-.1,.1][int(n[-1])-1]
+ rows.append({'name':n,'type':j.get('type'),'parent':j.find('parent').get('link'),'child':j.find('child').get('link'),'origin':j.find('origin').attrib,'axis':j.find('axis').attrib if j.find('axis') is not None else None,'limit':j.find('limit').attrib if j.find('limit') is not None else None,'mimic':j.find('mimic').attrib if j.find('mimic') is not None else None,'source':'OmniHand SDK 0.8.0' if n.startswith('omni_') else 'accepted assembled arm'})
+resources=[]
+for el in root.findall('.//mesh'):
+ uri=el.get('filename');pkg,rel=uri[10:].split('/',1);a=src/pkg/rel;b=P/'ros2_description/meshes'/pkg/Path(rel).relative_to('meshes');cp(a,b);el.set('filename','package://openarm_omnihand_description/'+str(b.relative_to(P/'ros2_description')));resources.append({'source':str(a),'target':str(b.relative_to(P)),'sha256':inputs[str(a)]})
+root.set('name','openarm_omnihand');E.indent(root);E.ElementTree(root).write(P/'ros2_description/urdf/openarm_omnihand.urdf',encoding='unicode',xml_declaration=True)
+(P/'ros2_description/xacro/openarm_omnihand.urdf.xacro').write_text('<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="openarm_omnihand"><xacro:include filename="../urdf/openarm_omnihand.urdf"/></robot>\n')
+ind=[j.get('name') for j in root.findall('joint') if j.get('type')!='fixed' and j.find('mimic') is None]
+openq={n:(0. if n.startswith('omni_') else q) for n,q in closed.items()};poses={'closed_hand':closed,'intermediate_hand':{n:(closed[n]+openq[n])/2 for n in closed},'open_hand':openq}
+import yaml
+for name,q in poses.items():
+ (P/'examples'/name).mkdir(parents=True);(P/'examples'/name/'joint_states.yaml').write_text(yaml.safe_dump({'source':'SYNTHETIC_MODEL_POSE','position':q,'independent_names':ind},sort_keys=False))
+(P/'ros2_description/config/poses.json').write_text(json.dumps(poses,indent=2));(P/'ros2_description/config/joint_manifest.json').write_text(json.dumps({'joints':rows,'independent':ind,'arm_dof':7,'hand_independent_dof':10,'hand_revolute_count':16,'mimic_count':6},indent=2));shutil.copy2(P/'ros2_description/config/joint_manifest.json',P/'manifest/joint_manifest.json')
+(P/'manifest/source_hashes_before.json').write_text(json.dumps(inputs,indent=2));(P/'manifest/model_manifest.json').write_text(json.dumps({'version':'1.0.0','resources':resources,'selection':'SDK 0.8.0 joint definitions match accepted meshes; 2026 geometry/limits differ','physical_match':'not measured','closed_hand':'accepted thumb pose, not a full fist','runtime_source':'SYNTHETIC_MODEL_POSE'},indent=2))
+print(P);print('links',len(root.findall('link')),'independent',len(ind),'joints',len(rows))

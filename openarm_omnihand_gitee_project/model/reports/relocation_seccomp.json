@@ -1,0 +1,34 @@
+[
+  {
+    "pid": 906080,
+    "cmd": "/usr/bin/python3 /opt/ros/humble/bin/ros2 launch openarm_omnihand_description display.launch.py ",
+    "seccomp": [
+      "Seccomp:\t2",
+      "Seccomp_filters:\t1"
+    ]
+  },
+  {
+    "pid": 906100,
+    "cmd": "/opt/ros/humble/lib/robot_state_publisher/robot_state_publisher --ros-args --params-file /tmp/launch_params_fczyvl7q ",
+    "seccomp": [
+      "Seccomp:\t2",
+      "Seccomp_filters:\t1"
+    ]
+  },
+  {
+    "pid": 906102,
+    "cmd": "/usr/bin/python3 /opt/ros/humble/lib/joint_state_publisher_gui/joint_state_publisher_gui --ros-args --params-file /tmp/launch_params_3ydmidm0 ",
+    "seccomp": [
+      "Seccomp:\t2",
+      "Seccomp_filters:\t1"
+    ]
+  },
+  {
+    "pid": 906104,
+    "cmd": "/opt/ros/humble/lib/rviz2/rviz2 -d /tmp/openarm_portable_s6rty52o/openarm_omnihand_portable_model/runtime/install/openarm_omnihand_description/share/openarm_omnihand_description/rviz/whole.rviz --ros-args ",
+    "seccomp": [
+      "Seccomp:\t2",
+      "Seccomp_filters:\t1"
+    ]
+  }
+]

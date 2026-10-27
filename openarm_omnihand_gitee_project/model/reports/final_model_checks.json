@@ -1,0 +1,9 @@
+{
+  "urdf_xacro_equal": true,
+  "no_control_plugins": true,
+  "mesh_reference_count": 54,
+  "joint_count": 35,
+  "independent_joint_count": 17,
+  "exact_official_joint_test": "reports/official_joints_and_coupled_limits.json",
+  "reconstruction": "byte-identical using included sources"
+}

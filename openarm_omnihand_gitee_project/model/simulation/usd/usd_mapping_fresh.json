@@ -1,0 +1,2669 @@
+{
+  "body_paths": {
+    "openarm_right_link0": "/Robot/bodies/openarm_right_link0",
+    "openarm_right_link1": "/Robot/bodies/openarm_right_link1",
+    "openarm_right_link2": "/Robot/bodies/openarm_right_link2",
+    "openarm_right_link3": "/Robot/bodies/openarm_right_link3",
+    "openarm_right_link4": "/Robot/bodies/openarm_right_link4",
+    "openarm_right_link5": "/Robot/bodies/openarm_right_link5",
+    "openarm_right_link6": "/Robot/bodies/openarm_right_link6",
+    "openarm_right_link7": "/Robot/bodies/openarm_right_link7",
+    "omni_R_thumb_roll": "/Robot/bodies/omni_R_thumb_roll",
+    "omni_R_thumb_abad": "/Robot/bodies/omni_R_thumb_abad",
+    "omni_R_thumb_mcp": "/Robot/bodies/omni_R_thumb_mcp",
+    "omni_R_thumb_pip": "/Robot/bodies/omni_R_thumb_pip",
+    "omni_R_thumb_dip": "/Robot/bodies/omni_R_thumb_dip",
+    "omni_R_index_abad": "/Robot/bodies/omni_R_index_abad",
+    "omni_R_index_pip": "/Robot/bodies/omni_R_index_pip",
+    "omni_R_index_dip": "/Robot/bodies/omni_R_index_dip",
+    "omni_R_middle_pip": "/Robot/bodies/omni_R_middle_pip",
+    "omni_R_middle_dip": "/Robot/bodies/omni_R_middle_dip",
+    "omni_R_ring_abad": "/Robot/bodies/omni_R_ring_abad",
+    "omni_R_ring_pip": "/Robot/bodies/omni_R_ring_pip",
+    "omni_R_ring_dip": "/Robot/bodies/omni_R_ring_dip",
+    "omni_R_pinky_abad": "/Robot/bodies/omni_R_pinky_abad",
+    "omni_R_pinky_pip": "/Robot/bodies/omni_R_pinky_pip",
+    "omni_R_pinky_dip": "/Robot/bodies/omni_R_pinky_dip"
+  },
+  "frame_paths": {
+    "world": "/Robot/bodies/openarm_right_link0/frames/world",
+    "openarm_body_link0": "/Robot/bodies/openarm_right_link0/frames/openarm_body_link0",
+    "openarm_right_link0": "/Robot/bodies/openarm_right_link0/frames/openarm_right_link0",
+    "openarm_right_link1": "/Robot/bodies/openarm_right_link1/frames/openarm_right_link1",
+    "openarm_right_link2": "/Robot/bodies/openarm_right_link2/frames/openarm_right_link2",
+    "openarm_right_link3": "/Robot/bodies/openarm_right_link3/frames/openarm_right_link3",
+    "openarm_right_link4": "/Robot/bodies/openarm_right_link4/frames/openarm_right_link4",
+    "openarm_right_link5": "/Robot/bodies/openarm_right_link5/frames/openarm_right_link5",
+    "openarm_right_link6": "/Robot/bodies/openarm_right_link6/frames/openarm_right_link6",
+    "openarm_right_link7": "/Robot/bodies/openarm_right_link7/frames/openarm_right_link7",
+    "omnihand_adapter": "/Robot/bodies/openarm_right_link7/frames/omnihand_adapter",
+    "omni_base_link": "/Robot/bodies/openarm_right_link7/frames/omni_base_link",
+    "omni_R_palm": "/Robot/bodies/openarm_right_link7/frames/omni_R_palm",
+    "omni_R_middle_abad": "/Robot/bodies/openarm_right_link7/frames/omni_R_middle_abad",
+    "tool_tcp": "/Robot/bodies/openarm_right_link7/frames/tool_tcp",
+    "omni_R_thumb_roll": "/Robot/bodies/omni_R_thumb_roll/frames/omni_R_thumb_roll",
+    "omni_R_thumb_abad": "/Robot/bodies/omni_R_thumb_abad/frames/omni_R_thumb_abad",
+    "omni_R_thumb_mcp": "/Robot/bodies/omni_R_thumb_mcp/frames/omni_R_thumb_mcp",
+    "omni_R_thumb_pip": "/Robot/bodies/omni_R_thumb_pip/frames/omni_R_thumb_pip",
+    "omni_R_thumb_dip": "/Robot/bodies/omni_R_thumb_dip/frames/omni_R_thumb_dip",
+    "omni_R_thumb_tip": "/Robot/bodies/omni_R_thumb_dip/frames/omni_R_thumb_tip",
+    "omni_R_index_abad": "/Robot/bodies/omni_R_index_abad/frames/omni_R_index_abad",
+    "omni_R_index_pip": "/Robot/bodies/omni_R_index_pip/frames/omni_R_index_pip",
+    "omni_R_index_dip": "/Robot/bodies/omni_R_index_dip/frames/omni_R_index_dip",
+    "omni_R_index_tip": "/Robot/bodies/omni_R_index_dip/frames/omni_R_index_tip",
+    "omni_R_middle_pip": "/Robot/bodies/omni_R_middle_pip/frames/omni_R_middle_pip",
+    "omni_R_middle_dip": "/Robot/bodies/omni_R_middle_dip/frames/omni_R_middle_dip",
+    "omni_R_middle_tip": "/Robot/bodies/omni_R_middle_dip/frames/omni_R_middle_tip",
+    "omni_R_ring_abad": "/Robot/bodies/omni_R_ring_abad/frames/omni_R_ring_abad",
+    "omni_R_ring_pip": "/Robot/bodies/omni_R_ring_pip/frames/omni_R_ring_pip",
+    "omni_R_ring_dip": "/Robot/bodies/omni_R_ring_dip/frames/omni_R_ring_dip",
+    "omni_R_ring_tip": "/Robot/bodies/omni_R_ring_dip/frames/omni_R_ring_tip",
+    "omni_R_pinky_abad": "/Robot/bodies/omni_R_pinky_abad/frames/omni_R_pinky_abad",
+    "omni_R_pinky_pip": "/Robot/bodies/omni_R_pinky_pip/frames/omni_R_pinky_pip",
+    "omni_R_pinky_dip": "/Robot/bodies/omni_R_pinky_dip/frames/omni_R_pinky_dip",
+    "omni_R_pinky_tip": "/Robot/bodies/omni_R_pinky_dip/frames/omni_R_pinky_tip"
+  },
+  "geometry": [
+    {
+      "link": "openarm_body_link0",
+      "body": "openarm_right_link0",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0000000000000002,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -3.6732051033050443e-06,
+          0.9999999999932538,
+          -0.6980001138646493
+        ],
+        [
+          0.0,
+          -0.9999999999932538,
+          -3.6732051033050448e-06,
+          -0.030997436102628763
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/body/v10/visual/body_link0.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "a05f59379dcf694e_1146f58c.npz",
+      "source_sha256": "a05f59379dcf694e5ff336b1ee3a47ea504a2425a2fa774af1b14e096d9a239a",
+      "usd_path": "/Robot/bodies/openarm_right_link0/visual/openarm_body_link0_0"
+    },
+    {
+      "link": "openarm_body_link0",
+      "body": "openarm_right_link0",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0000000000000002,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -3.6732051033050443e-06,
+          0.9999999999932538,
+          -0.6980001138646493
+        ],
+        [
+          0.0,
+          -0.9999999999932538,
+          -3.6732051033050448e-06,
+          -0.030997436102628763
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/body/v10/collision/body_link0_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "6c18bbf7e86b03e3_1146f58c.npz",
+      "source_sha256": "6c18bbf7e86b03e3faf802e61e8eb438b38dcbcf146d97cffe6e808c65e9a72a",
+      "usd_path": "/Robot/bodies/openarm_right_link0/collision/openarm_body_link0_0"
+    },
+    {
+      "link": "openarm_right_link0",
+      "body": "openarm_right_link0",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link0.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "cc54c874e3da9c33_1146f58c.npz",
+      "source_sha256": "cc54c874e3da9c33e4386fb691b49a9a6df0ddce2d89e84ae342075c57fc0230",
+      "usd_path": "/Robot/bodies/openarm_right_link0/visual/openarm_right_link0_0"
+    },
+    {
+      "link": "openarm_right_link0",
+      "body": "openarm_right_link0",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link0_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "baf52578e1d9e622_1146f58c.npz",
+      "source_sha256": "baf52578e1d9e6225f3818cae82b6074a0b948d3cef8e9a3e6dfafca78507590",
+      "usd_path": "/Robot/bodies/openarm_right_link0/collision/openarm_right_link0_0"
+    },
+    {
+      "link": "openarm_right_link1",
+      "body": "openarm_right_link1",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.0625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link1.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "c25937f901a4c157_1146f58c.npz",
+      "source_sha256": "c25937f901a4c15730927e08bf5fd26a072e801c529f0bd9678ba9758330647d",
+      "usd_path": "/Robot/bodies/openarm_right_link1/visual/openarm_right_link1_0"
+    },
+    {
+      "link": "openarm_right_link1",
+      "body": "openarm_right_link1",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.0625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link1_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "066113d13d5cc850_1146f58c.npz",
+      "source_sha256": "066113d13d5cc85098609003bc7ebb73c570015350877f5ed7162ef1b6601852",
+      "usd_path": "/Robot/bodies/openarm_right_link1/collision/openarm_right_link1_0"
+    },
+    {
+      "link": "openarm_right_link2",
+      "body": "openarm_right_link2",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.030099999999999995
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.1225
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link2.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "5d2a1ec857a22eaa_1146f58c.npz",
+      "source_sha256": "5d2a1ec857a22eaa180034e2dcd989c54611abab6ce6659eb4999570c34cc124",
+      "usd_path": "/Robot/bodies/openarm_right_link2/visual/openarm_right_link2_0"
+    },
+    {
+      "link": "openarm_right_link2",
+      "body": "openarm_right_link2",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.030099999999999995
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.1225
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link2_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "382ab32e4ae0880e_1146f58c.npz",
+      "source_sha256": "382ab32e4ae0880e8a1512e7a6ca6ce1f478a6c125db4efa977429ffb1d6b02a",
+      "usd_path": "/Robot/bodies/openarm_right_link2/collision/openarm_right_link2_0"
+    },
+    {
+      "link": "openarm_right_link3",
+      "body": "openarm_right_link3",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.18875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link3.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "97d73c4bae3f3f75_1146f58c.npz",
+      "source_sha256": "97d73c4bae3f3f7570bf3e28306da719aa99a6bec662060c9e358e5625b11cce",
+      "usd_path": "/Robot/bodies/openarm_right_link3/visual/openarm_right_link3_0"
+    },
+    {
+      "link": "openarm_right_link3",
+      "body": "openarm_right_link3",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.18875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link3_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "00c908cefab152c0_1146f58c.npz",
+      "source_sha256": "00c908cefab152c00416a570a48bf9aafed1549085f19ff2d882dc3f355d9f59",
+      "usd_path": "/Robot/bodies/openarm_right_link3/collision/openarm_right_link3_0"
+    },
+    {
+      "link": "openarm_right_link4",
+      "body": "openarm_right_link4",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0315
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.3425
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link4.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "59eb1cbf44b1250a_1146f58c.npz",
+      "source_sha256": "59eb1cbf44b1250ad9533176b30084179f9164fcb998ee2623d89b48968ec426",
+      "usd_path": "/Robot/bodies/openarm_right_link4/visual/openarm_right_link4_0"
+    },
+    {
+      "link": "openarm_right_link4",
+      "body": "openarm_right_link4",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0315
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.3425
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link4_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "b54883b8c7c96268_1146f58c.npz",
+      "source_sha256": "b54883b8c7c96268a68a5879f95998a53ad0b0c4fe74325fad63a6caef669c73",
+      "usd_path": "/Robot/bodies/openarm_right_link4/collision/openarm_right_link4_0"
+    },
+    {
+      "link": "openarm_right_link5",
+      "body": "openarm_right_link5",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.438
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link5.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "96fd3516df16a772_1146f58c.npz",
+      "source_sha256": "96fd3516df16a772a84c268529e5b53b05e6df07da6ccfe850bc091eba947156",
+      "usd_path": "/Robot/bodies/openarm_right_link5/visual/openarm_right_link5_0"
+    },
+    {
+      "link": "openarm_right_link5",
+      "body": "openarm_right_link5",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.438
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link5_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "678a2802906eff7b_1146f58c.npz",
+      "source_sha256": "678a2802906eff7b45a836d2f34a2d8e51def50b6599376968f888e05c72739e",
+      "usd_path": "/Robot/bodies/openarm_right_link5/collision/openarm_right_link5_0"
+    },
+    {
+      "link": "openarm_right_link6",
+      "body": "openarm_right_link6",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.0375
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.5585
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/visual/link6.dae",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "adcd37741f4e223b_1146f58c.npz",
+      "source_sha256": "adcd37741f4e223bd6fe9925625e84191b525c9d27f151f9178b23989de05459",
+      "usd_path": "/Robot/bodies/openarm_right_link6/visual/openarm_right_link6_0"
+    },
+    {
+      "link": "openarm_right_link6",
+      "body": "openarm_right_link6",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.0375
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.5585
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/openarm_v10/arm/v10/collision/link6_symp.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "95529bec23733476_1146f58c.npz",
+      "source_sha256": "95529bec23733476dfdbbb266c7db0d25a473a568de73c8337a82440fe4a9ac3",
+      "usd_path": "/Robot/bodies/openarm_right_link6/collision/openarm_right_link6_0"
+    },
+    {
+      "link": "openarm_right_link7",
+      "body": "openarm_right_link7",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.5585
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/commissioning/j7_tool_mount_no_j8.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "6bb7af43aa575dfc_1146f58c.npz",
+      "source_sha256": "6bb7af43aa575dfc1c75a7136f68cb33d1d2a08c1ddf8848a94aaad527ea5df7",
+      "usd_path": "/Robot/bodies/openarm_right_link7/visual/openarm_right_link7_0"
+    },
+    {
+      "link": "openarm_right_link7",
+      "body": "openarm_right_link7",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          -0.5585
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/commissioning/j7_tool_mount_no_j8.stl",
+        "scale": "0.001 0.001 0.001"
+      },
+      "mesh": "6bb7af43aa575dfc_1146f58c.npz",
+      "source_sha256": "6bb7af43aa575dfc1c75a7136f68cb33d1d2a08c1ddf8848a94aaad527ea5df7",
+      "usd_path": "/Robot/bodies/openarm_right_link7/collision/openarm_right_link7_0"
+    },
+    {
+      "link": "omnihand_adapter",
+      "body": "openarm_right_link7",
+      "kind": "visual",
+      "index": 0,
+      "type": "cylinder",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          0.05800059999999998
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "length": "0.017",
+        "radius": ".027"
+      },
+      "usd_path": "/Robot/bodies/openarm_right_link7/visual/omnihand_adapter_0"
+    },
+    {
+      "link": "omnihand_adapter",
+      "body": "openarm_right_link7",
+      "kind": "collision",
+      "index": 0,
+      "type": "cylinder",
+      "local": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          -4.235164736271502e-22,
+          1.0,
+          0.05800059999999998
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "length": "0.017",
+        "radius": ".027"
+      },
+      "usd_path": "/Robot/bodies/openarm_right_link7/collision/omnihand_adapter_0"
+    },
+    {
+      "link": "omni_base_link",
+      "body": "openarm_right_link7",
+      "kind": "visual",
+      "index": 0,
+      "type": "box",
+      "local": [
+        [
+          -1.0,
+          -3.231089148865174e-15,
+          0.0,
+          0.0
+        ],
+        [
+          3.2310891488651735e-15,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.06650059999999999
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "size": "0.001 0.001 0.001"
+      },
+      "usd_path": "/Robot/bodies/openarm_right_link7/visual/omni_base_link_0"
+    },
+    {
+      "link": "omni_R_palm",
+      "body": "openarm_right_link7",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          -1.0,
+          -3.231089148865174e-15,
+          0.0,
+          0.0
+        ],
+        [
+          3.2310891488651735e-15,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.06650059999999999
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/r_palm.STL"
+      },
+      "mesh": "9788724443a62bc2_c413f845.npz",
+      "source_sha256": "9788724443a62bc22552f4b8e9a5636a603973b6e880befba2063310a7d0c518",
+      "usd_path": "/Robot/bodies/openarm_right_link7/visual/omni_R_palm_0"
+    },
+    {
+      "link": "omni_R_palm",
+      "body": "openarm_right_link7",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          -1.0,
+          -3.231089148865174e-15,
+          0.0,
+          0.0
+        ],
+        [
+          3.2310891488651735e-15,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.06650059999999999
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/r_palm_31a0d42f11.stl"
+      },
+      "mesh": "9e4e6f48d1c34392_c413f845.npz",
+      "source_sha256": "9e4e6f48d1c343927c444737c6708a1f95f46af778c674a0f102a1e349273eef",
+      "usd_path": "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0"
+    },
+    {
+      "link": "omni_R_thumb_roll",
+      "body": "omni_R_thumb_roll",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -9.860761315262648e-32
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/r_thumb_roll.STL"
+      },
+      "mesh": "61426e6098eed1af_c413f845.npz",
+      "source_sha256": "61426e6098eed1af49301fe8ed2f8af3847bdb3c09087731337d487af6bd12f1",
+      "usd_path": "/Robot/bodies/omni_R_thumb_roll/visual/omni_R_thumb_roll_0"
+    },
+    {
+      "link": "omni_R_thumb_roll",
+      "body": "omni_R_thumb_roll",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -9.860761315262648e-32
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/r_thumb_roll_b487ee6dff.stl"
+      },
+      "mesh": "5f90b2a73065c09b_c413f845.npz",
+      "source_sha256": "5f90b2a73065c09b54f936addccccaa9a92a9b13332602caa11a586283964d70",
+      "usd_path": "/Robot/bodies/omni_R_thumb_roll/collision/omni_R_thumb_roll_0"
+    },
+    {
+      "link": "omni_R_thumb_abad",
+      "body": "omni_R_thumb_abad",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_abad.STL"
+      },
+      "mesh": "61ec8a85dea39d81_c413f845.npz",
+      "source_sha256": "61ec8a85dea39d81a11d8df2de7dccd4b23b4fd9e012d8ba4446aab7d92d1909",
+      "usd_path": "/Robot/bodies/omni_R_thumb_abad/visual/omni_R_thumb_abad_0"
+    },
+    {
+      "link": "omni_R_thumb_abad",
+      "body": "omni_R_thumb_abad",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_abad_6d3ec2f8f8.stl"
+      },
+      "mesh": "c7d9e6f91559c5b9_c413f845.npz",
+      "source_sha256": "c7d9e6f91559c5b988e2f54037d22c8cf41f62bbd1d2c0481bc5713b9fb5461d",
+      "usd_path": "/Robot/bodies/omni_R_thumb_abad/collision/omni_R_thumb_abad_0"
+    },
+    {
+      "link": "omni_R_thumb_mcp",
+      "body": "omni_R_thumb_mcp",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_mcp.STL"
+      },
+      "mesh": "e4d0325b1244ab4b_c413f845.npz",
+      "source_sha256": "e4d0325b1244ab4b7bcf1b0101fae6267a2932d96a88f36cc32e0621d3428d60",
+      "usd_path": "/Robot/bodies/omni_R_thumb_mcp/visual/omni_R_thumb_mcp_0"
+    },
+    {
+      "link": "omni_R_thumb_mcp",
+      "body": "omni_R_thumb_mcp",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_mcp_75ab3256cd.stl"
+      },
+      "mesh": "e97ef436122ace17_c413f845.npz",
+      "source_sha256": "e97ef436122ace179c0bf1a41b6ad2c9ef735e60ed25be82f8e2fef52d00b294",
+      "usd_path": "/Robot/bodies/omni_R_thumb_mcp/collision/omni_R_thumb_mcp_0"
+    },
+    {
+      "link": "omni_R_thumb_pip",
+      "body": "omni_R_thumb_pip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_pip.STL"
+      },
+      "mesh": "f5e35eb9b346ab5e_c413f845.npz",
+      "source_sha256": "f5e35eb9b346ab5ed09f25c8144de53e7ef775abadf152468bc13bf4f311c4bd",
+      "usd_path": "/Robot/bodies/omni_R_thumb_pip/visual/omni_R_thumb_pip_0"
+    },
+    {
+      "link": "omni_R_thumb_pip",
+      "body": "omni_R_thumb_pip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_pip_c426f05ff7.stl"
+      },
+      "mesh": "92487da06c25a44d_c413f845.npz",
+      "source_sha256": "92487da06c25a44d37d279187ad9981472775ab49c965764612b38c39d4c3ba9",
+      "usd_path": "/Robot/bodies/omni_R_thumb_pip/collision/omni_R_thumb_pip_0"
+    },
+    {
+      "link": "omni_R_thumb_dip",
+      "body": "omni_R_thumb_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          6.938893903907228e-18
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/thumb_dip.STL"
+      },
+      "mesh": "c449c5cad11c8521_c413f845.npz",
+      "source_sha256": "c449c5cad11c8521431781ffe073f3280960935018400ec565b44842aad91dfe",
+      "usd_path": "/Robot/bodies/omni_R_thumb_dip/visual/omni_R_thumb_dip_0"
+    },
+    {
+      "link": "omni_R_thumb_dip",
+      "body": "omni_R_thumb_dip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          6.938893903907228e-18
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/thumb_dip_a030b5ad87.stl"
+      },
+      "mesh": "4557d44172b139d1_c413f845.npz",
+      "source_sha256": "4557d44172b139d1b6fe1e1d0e1adfb62bedec4f2f27d55951f0400c7ec64455",
+      "usd_path": "/Robot/bodies/omni_R_thumb_dip/collision/omni_R_thumb_dip_0"
+    },
+    {
+      "link": "omni_R_thumb_tip",
+      "body": "omni_R_thumb_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "sphere",
+      "local": [
+        [
+          1.0,
+          -2.775557561562845e-17,
+          0.0,
+          -1.734723475976807e-17
+        ],
+        [
+          2.7755575615629154e-17,
+          1.0,
+          0.0,
+          0.023919999999999997
+        ],
+        [
+          -1.504632769052528e-36,
+          4.235164736271502e-22,
+          1.0,
+          -0.01157999999999998
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "radius": "1e-3"
+      },
+      "usd_path": "/Robot/bodies/omni_R_thumb_dip/visual/omni_R_thumb_tip_0"
+    },
+    {
+      "link": "omni_R_index_abad",
+      "body": "omni_R_index_abad",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -9.860761315262648e-32
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL"
+      },
+      "mesh": "f4eea085b0258591_c413f845.npz",
+      "source_sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52",
+      "usd_path": "/Robot/bodies/omni_R_index_abad/visual/omni_R_index_abad_0"
+    },
+    {
+      "link": "omni_R_index_abad",
+      "body": "omni_R_index_abad",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -9.860761315262648e-32
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl"
+      },
+      "mesh": "0821790b84ac9db0_c413f845.npz",
+      "source_sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90",
+      "usd_path": "/Robot/bodies/omni_R_index_abad/collision/omni_R_index_abad_0"
+    },
+    {
+      "link": "omni_R_index_pip",
+      "body": "omni_R_index_pip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          5.421010862427522e-20
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL"
+      },
+      "mesh": "d8ce8426ee47d4ad_c413f845.npz",
+      "source_sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0",
+      "usd_path": "/Robot/bodies/omni_R_index_pip/visual/omni_R_index_pip_0"
+    },
+    {
+      "link": "omni_R_index_pip",
+      "body": "omni_R_index_pip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          5.421010862427522e-20
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl"
+      },
+      "mesh": "7fa500e3aaec80eb_c413f845.npz",
+      "source_sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2",
+      "usd_path": "/Robot/bodies/omni_R_index_pip/collision/omni_R_index_pip_0"
+    },
+    {
+      "link": "omni_R_index_dip",
+      "body": "omni_R_index_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL"
+      },
+      "mesh": "0089d5f21d2bbe4e_c413f845.npz",
+      "source_sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05",
+      "usd_path": "/Robot/bodies/omni_R_index_dip/visual/omni_R_index_dip_0"
+    },
+    {
+      "link": "omni_R_index_dip",
+      "body": "omni_R_index_dip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl"
+      },
+      "mesh": "ef886244b955e2ab_c413f845.npz",
+      "source_sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e",
+      "usd_path": "/Robot/bodies/omni_R_index_dip/collision/omni_R_index_dip_0"
+    },
+    {
+      "link": "omni_R_index_tip",
+      "body": "omni_R_index_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "sphere",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -0.0011000000000000003
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.03612
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "radius": "1e-3"
+      },
+      "usd_path": "/Robot/bodies/omni_R_index_dip/visual/omni_R_index_tip_0"
+    },
+    {
+      "link": "omni_R_middle_abad",
+      "body": "openarm_right_link7",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          -1.0,
+          -3.231089148865174e-15,
+          0.0,
+          0.0024999999999999745
+        ],
+        [
+          3.2310891488651735e-15,
+          -1.0,
+          0.0,
+          -0.007949999999999985
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.1630486
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL"
+      },
+      "mesh": "f4eea085b0258591_c413f845.npz",
+      "source_sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52",
+      "usd_path": "/Robot/bodies/openarm_right_link7/visual/omni_R_middle_abad_0"
+    },
+    {
+      "link": "omni_R_middle_abad",
+      "body": "openarm_right_link7",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          -1.0,
+          -3.231089148865174e-15,
+          0.0,
+          0.0024999999999999745
+        ],
+        [
+          3.2310891488651735e-15,
+          -1.0,
+          0.0,
+          -0.007949999999999985
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.1630486
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl"
+      },
+      "mesh": "0821790b84ac9db0_c413f845.npz",
+      "source_sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90",
+      "usd_path": "/Robot/bodies/openarm_right_link7/collision/omni_R_middle_abad_0"
+    },
+    {
+      "link": "omni_R_middle_pip",
+      "body": "omni_R_middle_pip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL"
+      },
+      "mesh": "d8ce8426ee47d4ad_c413f845.npz",
+      "source_sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0",
+      "usd_path": "/Robot/bodies/omni_R_middle_pip/visual/omni_R_middle_pip_0"
+    },
+    {
+      "link": "omni_R_middle_pip",
+      "body": "omni_R_middle_pip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl"
+      },
+      "mesh": "7fa500e3aaec80eb_c413f845.npz",
+      "source_sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2",
+      "usd_path": "/Robot/bodies/omni_R_middle_pip/collision/omni_R_middle_pip_0"
+    },
+    {
+      "link": "omni_R_middle_dip",
+      "body": "omni_R_middle_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -4.336808689942018e-19
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          6.938893903907228e-18
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL"
+      },
+      "mesh": "0089d5f21d2bbe4e_c413f845.npz",
+      "source_sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05",
+      "usd_path": "/Robot/bodies/omni_R_middle_dip/visual/omni_R_middle_dip_0"
+    },
+    {
+      "link": "omni_R_middle_dip",
+      "body": "omni_R_middle_dip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -4.336808689942018e-19
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          6.938893903907228e-18
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl"
+      },
+      "mesh": "ef886244b955e2ab_c413f845.npz",
+      "source_sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e",
+      "usd_path": "/Robot/bodies/omni_R_middle_dip/collision/omni_R_middle_dip_0"
+    },
+    {
+      "link": "omni_R_middle_tip",
+      "body": "omni_R_middle_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "sphere",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -0.0011000000000000007
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          -2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.036120000000000006
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "radius": "1e-3"
+      },
+      "usd_path": "/Robot/bodies/omni_R_middle_dip/visual/omni_R_middle_tip_0"
+    },
+    {
+      "link": "omni_R_ring_abad",
+      "body": "omni_R_ring_abad",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -2.168404344971009e-19
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL"
+      },
+      "mesh": "f4eea085b0258591_c413f845.npz",
+      "source_sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52",
+      "usd_path": "/Robot/bodies/omni_R_ring_abad/visual/omni_R_ring_abad_0"
+    },
+    {
+      "link": "omni_R_ring_abad",
+      "body": "omni_R_ring_abad",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -2.168404344971009e-19
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl"
+      },
+      "mesh": "0821790b84ac9db0_c413f845.npz",
+      "source_sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90",
+      "usd_path": "/Robot/bodies/omni_R_ring_abad/collision/omni_R_ring_abad_0"
+    },
+    {
+      "link": "omni_R_ring_pip",
+      "body": "omni_R_ring_pip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL"
+      },
+      "mesh": "d8ce8426ee47d4ad_c413f845.npz",
+      "source_sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0",
+      "usd_path": "/Robot/bodies/omni_R_ring_pip/visual/omni_R_ring_pip_0"
+    },
+    {
+      "link": "omni_R_ring_pip",
+      "body": "omni_R_ring_pip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl"
+      },
+      "mesh": "7fa500e3aaec80eb_c413f845.npz",
+      "source_sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2",
+      "usd_path": "/Robot/bodies/omni_R_ring_pip/collision/omni_R_ring_pip_0"
+    },
+    {
+      "link": "omni_R_ring_dip",
+      "body": "omni_R_ring_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL"
+      },
+      "mesh": "0089d5f21d2bbe4e_c413f845.npz",
+      "source_sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05",
+      "usd_path": "/Robot/bodies/omni_R_ring_dip/visual/omni_R_ring_dip_0"
+    },
+    {
+      "link": "omni_R_ring_dip",
+      "body": "omni_R_ring_dip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl"
+      },
+      "mesh": "ef886244b955e2ab_c413f845.npz",
+      "source_sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e",
+      "usd_path": "/Robot/bodies/omni_R_ring_dip/collision/omni_R_ring_dip_0"
+    },
+    {
+      "link": "omni_R_ring_tip",
+      "body": "omni_R_ring_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "sphere",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -0.0011000000000000003
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          2.7755575615628914e-17
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.03612
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "radius": "1e-3"
+      },
+      "usd_path": "/Robot/bodies/omni_R_ring_dip/visual/omni_R_ring_tip_0"
+    },
+    {
+      "link": "omni_R_pinky_abad",
+      "body": "omni_R_pinky_abad",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -9.860761315262648e-32
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_abad.STL"
+      },
+      "mesh": "f4eea085b0258591_c413f845.npz",
+      "source_sha256": "f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52",
+      "usd_path": "/Robot/bodies/omni_R_pinky_abad/visual/omni_R_pinky_abad_0"
+    },
+    {
+      "link": "omni_R_pinky_abad",
+      "body": "omni_R_pinky_abad",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -9.860761315262648e-32
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_abad_607c549cfc.stl"
+      },
+      "mesh": "0821790b84ac9db0_c413f845.npz",
+      "source_sha256": "0821790b84ac9db045802b99cead01d59432e172f2e3fff262c9c8db71677f90",
+      "usd_path": "/Robot/bodies/omni_R_pinky_abad/collision/omni_R_pinky_abad_0"
+    },
+    {
+      "link": "omni_R_pinky_pip",
+      "body": "omni_R_pinky_pip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          5.421010862427522e-20
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_pip.STL"
+      },
+      "mesh": "d8ce8426ee47d4ad_c413f845.npz",
+      "source_sha256": "d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0",
+      "usd_path": "/Robot/bodies/omni_R_pinky_pip/visual/omni_R_pinky_pip_0"
+    },
+    {
+      "link": "omni_R_pinky_pip",
+      "body": "omni_R_pinky_pip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          5.421010862427522e-20
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          1.3877787807814457e-17
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_pip_c3626a8a3f.stl"
+      },
+      "mesh": "7fa500e3aaec80eb_c413f845.npz",
+      "source_sha256": "7fa500e3aaec80eb2847534de5b11e897f58684551019558d51f06e3ce763ed2",
+      "usd_path": "/Robot/bodies/omni_R_pinky_pip/collision/omni_R_pinky_pip_0"
+    },
+    {
+      "link": "omni_R_pinky_dip",
+      "body": "omni_R_pinky_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_description/omnihand_sdk_0_8_0/finger_dip.STL"
+      },
+      "mesh": "0089d5f21d2bbe4e_c413f845.npz",
+      "source_sha256": "0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05",
+      "usd_path": "/Robot/bodies/omni_R_pinky_dip/visual/omni_R_pinky_dip_0"
+    },
+    {
+      "link": "omni_R_pinky_dip",
+      "body": "omni_R_pinky_dip",
+      "kind": "collision",
+      "index": 0,
+      "type": "mesh",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          0.0
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "filename": "package://openarm_omnihand_description/meshes/openarm_omnihand_collision_description/collision_hulls/finger_dip_5ba24a607b.stl"
+      },
+      "mesh": "ef886244b955e2ab_c413f845.npz",
+      "source_sha256": "ef886244b955e2ab96f1a5bcda313bdf6ba322d458862f5bab719826a4ba8a1e",
+      "usd_path": "/Robot/bodies/omni_R_pinky_dip/collision/omni_R_pinky_dip_0"
+    },
+    {
+      "link": "omni_R_pinky_tip",
+      "body": "omni_R_pinky_dip",
+      "kind": "visual",
+      "index": 0,
+      "type": "sphere",
+      "local": [
+        [
+          1.0,
+          4.6261377061748385e-31,
+          0.0,
+          -0.0011000000000000003
+        ],
+        [
+          4.6261377061748385e-31,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.235164736271502e-22,
+          1.0,
+          0.03612
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "geometry": {
+        "radius": "1e-3"
+      },
+      "usd_path": "/Robot/bodies/omni_R_pinky_dip/visual/omni_R_pinky_tip_0"
+    }
+  ],
+  "exact_filtered_collider_pairs": [
+    [
+      "/Robot/bodies/openarm_right_link1/collision/openarm_right_link1_0",
+      "/Robot/bodies/openarm_right_link2/collision/openarm_right_link2_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link2/collision/openarm_right_link2_0",
+      "/Robot/bodies/openarm_right_link3/collision/openarm_right_link3_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link3/collision/openarm_right_link3_0",
+      "/Robot/bodies/openarm_right_link4/collision/openarm_right_link4_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link6/collision/openarm_right_link6_0",
+      "/Robot/bodies/openarm_right_link7/collision/openarm_right_link7_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omnihand_adapter_0",
+      "/Robot/bodies/openarm_right_link7/collision/openarm_right_link7_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0",
+      "/Robot/bodies/openarm_right_link7/collision/omnihand_adapter_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0",
+      "/Robot/bodies/omni_R_thumb_roll/collision/omni_R_thumb_roll_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0",
+      "/Robot/bodies/omni_R_thumb_abad/collision/omni_R_thumb_abad_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_thumb_abad/collision/omni_R_thumb_abad_0",
+      "/Robot/bodies/omni_R_thumb_roll/collision/omni_R_thumb_roll_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_thumb_abad/collision/omni_R_thumb_abad_0",
+      "/Robot/bodies/omni_R_thumb_mcp/collision/omni_R_thumb_mcp_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_thumb_mcp/collision/omni_R_thumb_mcp_0",
+      "/Robot/bodies/omni_R_thumb_pip/collision/omni_R_thumb_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_thumb_dip/collision/omni_R_thumb_dip_0",
+      "/Robot/bodies/omni_R_thumb_pip/collision/omni_R_thumb_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_index_abad/collision/omni_R_index_abad_0",
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_index_pip/collision/omni_R_index_pip_0",
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_index_abad/collision/omni_R_index_abad_0",
+      "/Robot/bodies/omni_R_index_pip/collision/omni_R_index_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_index_dip/collision/omni_R_index_dip_0",
+      "/Robot/bodies/omni_R_index_pip/collision/omni_R_index_pip_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_middle_abad_0",
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_middle_pip/collision/omni_R_middle_pip_0",
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_index_pip/collision/omni_R_index_pip_0",
+      "/Robot/bodies/omni_R_middle_pip/collision/omni_R_middle_pip_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_middle_abad_0",
+      "/Robot/bodies/omni_R_middle_pip/collision/omni_R_middle_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_middle_dip/collision/omni_R_middle_dip_0",
+      "/Robot/bodies/omni_R_middle_pip/collision/omni_R_middle_pip_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0",
+      "/Robot/bodies/omni_R_ring_abad/collision/omni_R_ring_abad_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0",
+      "/Robot/bodies/omni_R_ring_pip/collision/omni_R_ring_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_middle_pip/collision/omni_R_middle_pip_0",
+      "/Robot/bodies/omni_R_ring_pip/collision/omni_R_ring_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_ring_abad/collision/omni_R_ring_abad_0",
+      "/Robot/bodies/omni_R_ring_pip/collision/omni_R_ring_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_ring_dip/collision/omni_R_ring_dip_0",
+      "/Robot/bodies/omni_R_ring_pip/collision/omni_R_ring_pip_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0",
+      "/Robot/bodies/omni_R_pinky_abad/collision/omni_R_pinky_abad_0"
+    ],
+    [
+      "/Robot/bodies/openarm_right_link7/collision/omni_R_palm_0",
+      "/Robot/bodies/omni_R_pinky_pip/collision/omni_R_pinky_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_pinky_pip/collision/omni_R_pinky_pip_0",
+      "/Robot/bodies/omni_R_ring_pip/collision/omni_R_ring_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_pinky_abad/collision/omni_R_pinky_abad_0",
+      "/Robot/bodies/omni_R_pinky_pip/collision/omni_R_pinky_pip_0"
+    ],
+    [
+      "/Robot/bodies/omni_R_pinky_dip/collision/omni_R_pinky_dip_0",
+      "/Robot/bodies/omni_R_pinky_pip/collision/omni_R_pinky_pip_0"
+    ]
+  ],
+  "gains_SI": {
+    "stiffness": [
+      4000,
+      4000,
+      2000,
+      2000,
+      800,
+      800,
+      800,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0
+    ],
+    "damping": [
+      160,
+      160,
+      80,
+      80,
+      30,
+      30,
+      30,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08,
+      0.08
+    ]
+  },
+  "sdf_resolution": 521
+}

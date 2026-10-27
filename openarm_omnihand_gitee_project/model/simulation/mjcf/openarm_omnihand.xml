@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="openarm_omnihand">
+  <compiler angle="radian" autolimits="true" meshdir="meshes" inertiafromgeom="false" />
+  <option timestep="0.002" gravity="0 0 0" integrator="implicitfast" />
+  <asset>
+    <mesh name="a05f59379dcf694e_1146f58c" file="a05f59379dcf694e_1146f58c.obj" />
+    <mesh name="6c18bbf7e86b03e3_1146f58c" file="6c18bbf7e86b03e3_1146f58c.obj" />
+    <mesh name="cc54c874e3da9c33_1146f58c" file="cc54c874e3da9c33_1146f58c.obj" />
+    <mesh name="baf52578e1d9e622_1146f58c" file="baf52578e1d9e622_1146f58c.obj" />
+    <mesh name="c25937f901a4c157_1146f58c" file="c25937f901a4c157_1146f58c.obj" />
+    <mesh name="066113d13d5cc850_1146f58c" file="066113d13d5cc850_1146f58c.obj" />
+    <mesh name="5d2a1ec857a22eaa_1146f58c" file="5d2a1ec857a22eaa_1146f58c.obj" />
+    <mesh name="382ab32e4ae0880e_1146f58c" file="382ab32e4ae0880e_1146f58c.obj" />
+    <mesh name="97d73c4bae3f3f75_1146f58c" file="97d73c4bae3f3f75_1146f58c.obj" />
+    <mesh name="00c908cefab152c0_1146f58c" file="00c908cefab152c0_1146f58c.obj" />
+    <mesh name="59eb1cbf44b1250a_1146f58c" file="59eb1cbf44b1250a_1146f58c.obj" />
+    <mesh name="b54883b8c7c96268_1146f58c" file="b54883b8c7c96268_1146f58c.obj" />
+    <mesh name="96fd3516df16a772_1146f58c" file="96fd3516df16a772_1146f58c.obj" />
+    <mesh name="678a2802906eff7b_1146f58c" file="678a2802906eff7b_1146f58c.obj" />
+    <mesh name="adcd37741f4e223b_1146f58c" file="adcd37741f4e223b_1146f58c.obj" />
+    <mesh name="95529bec23733476_1146f58c" file="95529bec23733476_1146f58c.obj" />
+    <mesh name="6bb7af43aa575dfc_1146f58c" file="6bb7af43aa575dfc_1146f58c.obj" />
+    <mesh name="9788724443a62bc2_c413f845" file="9788724443a62bc2_c413f845.obj" />
+    <mesh name="9e4e6f48d1c34392_c413f845" file="9e4e6f48d1c34392_c413f845.obj" />
+    <mesh name="61426e6098eed1af_c413f845" file="61426e6098eed1af_c413f845.obj" />
+    <mesh name="5f90b2a73065c09b_c413f845" file="5f90b2a73065c09b_c413f845.obj" />
+    <mesh name="61ec8a85dea39d81_c413f845" file="61ec8a85dea39d81_c413f845.obj" />
+    <mesh name="c7d9e6f91559c5b9_c413f845" file="c7d9e6f91559c5b9_c413f845.obj" />
+    <mesh name="e4d0325b1244ab4b_c413f845" file="e4d0325b1244ab4b_c413f845.obj" />
+    <mesh name="e97ef436122ace17_c413f845" file="e97ef436122ace17_c413f845.obj" />
+    <mesh name="f5e35eb9b346ab5e_c413f845" file="f5e35eb9b346ab5e_c413f845.obj" />
+    <mesh name="92487da06c25a44d_c413f845" file="92487da06c25a44d_c413f845.obj" />
+    <mesh name="c449c5cad11c8521_c413f845" file="c449c5cad11c8521_c413f845.obj" />
+    <mesh name="4557d44172b139d1_c413f845" file="4557d44172b139d1_c413f845.obj" />
+    <mesh name="f4eea085b0258591_c413f845" file="f4eea085b0258591_c413f845.obj" />
+    <mesh name="0821790b84ac9db0_c413f845" file="0821790b84ac9db0_c413f845.obj" />
+    <mesh name="d8ce8426ee47d4ad_c413f845" file="d8ce8426ee47d4ad_c413f845.obj" />
+    <mesh name="7fa500e3aaec80eb_c413f845" file="7fa500e3aaec80eb_c413f845.obj" />
+    <mesh name="0089d5f21d2bbe4e_c413f845" file="0089d5f21d2bbe4e_c413f845.obj" />
+    <mesh name="ef886244b955e2ab_c413f845" file="ef886244b955e2ab_c413f845.obj" />
+  </asset>
+  <worldbody>
+    <light pos="-1 -1 2" dir="1 1 -1" diffuse=".9 .9 .9" />
+    <body name="openarm_right_link0" pos="0 -0.031 0.698" quat="0.707105482511 0.707108079859 0 0">
+      <inertial mass="15.033228494323957" pos="-7.21179126473e-05 -0.644907441636 -0.0263003282413" quat="0.495799767368 0.504002309869 0.493368412348 0.506706889653" diaginertia="0.0550111635472 2.17031398269 2.17301984606" />
+      <body name="openarm_right_link1" pos="0 0 0.0625" quat="1 -1.05879118407e-22 0 0">
+        <inertial mass="1.1416684646202298" pos="0.00114676579118 3.31998765703e-05 0.0539528438074" quat="0.00255152192969 -0.68832398766 3.02983778428e-05 0.72539890876" diaginertia="0.00101447442578 0.00127299972513 0.00156852584908" />
+        <joint name="openarm_right_joint1" type="hinge" axis="0 0 1" range="-1.396263 3.490659" limited="true" />
+        <body name="openarm_right_link2" pos="-0.0301 0 0.06" quat="0.707106781188 0.707106781185 0 0">
+          <inertial mass="0.2775092746011571" pos="0.00839629182352 -2.01451020276e-08 0.0325664930052" quat="0.500845783774 0.000836294164664 0.865520812844 0.00515014782861" diaginertia="0.000169343249013 0.000376006041958 0.000421650709029" />
+          <joint name="openarm_right_joint2" type="hinge" axis="-1 0 0" range="-0.174532673205 3.31612532679" limited="true" />
+          <body name="openarm_right_link3" pos="0.0301 0 0.06625" quat="1 -1.05879118407e-22 0 0">
+            <inertial mass="1.073863338202347" pos="-0.00210475209963 0.000554908504261 0.0904747054572" quat="-0.00249944572613 0.706052816374 0.00947547068421 0.708091370316" diaginertia="0.000660613084781 0.0043193391677 0.00437204774752" />
+            <joint name="openarm_right_joint3" type="hinge" axis="0 0 1" range="-1.570796 1.570796" limited="true" />
+            <body name="openarm_right_link4" pos="0 0.0315 0.15375" quat="1 -1.05879118407e-22 0 0">
+              <inertial mass="0.6348534566833373" pos="-0.00290068310746 -0.0303057582663 0.063396374222" quat="0.0842329321223 -0.679748666845 -0.0567466602844 0.726378950421" diaginertia="0.00032504881463 0.000518595719205 0.000624355466165" />
+              <joint name="openarm_right_joint4" type="hinge" axis="0 1 0" range="0 2.443461" limited="true" />
+              <body name="openarm_right_link5" pos="0 -0.0315 0.0955" quat="1 -1.05879118407e-22 0 0">
+                <inertial mass="0.6156588026168502" pos="-0.00304966502422 0.000886690245733 0.043079803025" quat="0.413919868662 0.548142245732 -0.411087102261 0.599347824828" diaginertia="0.000323386889261 0.000420548797915 0.000448064312823" />
+                <joint name="openarm_right_joint5" type="hinge" axis="0 0 1" range="-1.570796 1.570796" limited="true" />
+                <body name="openarm_right_link6" pos="0.0375 0 0.1205" quat="1 -1.05879118407e-22 0 0">
+                  <inertial mass="0.475202773187987" pos="-0.0371365870054 0.000332305283434 -9.49837452231e-05" quat="0.978223153941 -0.202832462023 0.035006448274 -0.0267020977178" diaginertia="0.000142875418769 0.000156606391862 0.000159518189369" />
+                  <joint name="openarm_right_joint6" type="hinge" axis="1 0 0" range="-0.785398 0.785398" limited="true" />
+                  <body name="openarm_right_link7" pos="-0.0375 -2.77555756156e-17 0" quat="1 -1.05879118407e-22 0 0">
+                    <inertial mass="0.31588072681317375" pos="-0.00121428891389 -0.0191414850063 0.0633223294892" quat="0.715502550715 0.0445181167057 -0.687252155847 -0.117297534028" diaginertia="0.000410680594394 0.000781500015983 0.00100478321493" />
+                    <joint name="openarm_right_joint7" type="hinge" axis="0 1 0" range="-1.570796 1.570796" limited="true" />
+                    <body name="omni_R_thumb_roll" pos="-5.98430021261e-17 -0.018521 0.1140516" quat="1.61554457443e-15 0 1.05879118407e-22 1">
+                      <inertial mass="0.025" pos="-0.003851 -0.000311 0.008401" quat="-0.023228779954 -0.706354371324 0.707473694405 0.00221305641004" diaginertia="2.0085122862e-06 2.85892089439e-06 3.69256681941e-06" />
+                      <joint name="omni_R_thumb_roll_joint" type="hinge" axis="1 0 0" range="-0.174532925199 0.872664625997" limited="true" />
+                      <body name="omni_R_thumb_abad" pos="0.020801 0.004292 -0.00052506" quat="1 1.05879118407e-22 0 0">
+                        <inertial mass="0.0056" pos="-1.2e-06 0.0129928 -0.0041829" quat="0.704820448348 -0.0568166840869 0.704820448348 -0.0568166840869" diaginertia="5.1026334039e-07 8.8973665961e-07 1.03e-06" />
+                        <joint name="omni_R_thumb_abad_joint" type="hinge" axis="0 0 1" range="-1.74532925199 0" limited="true" />
+                        <body name="omni_R_thumb_mcp" pos="1.22592649214e-32 0.0265 -0.005275" quat="1 1.05879118407e-22 0 0">
+                          <inertial mass="0.0511" pos="-1.83e-05 0.0225829 0.0024013" quat="-0.488749299635 -0.510394155983 0.489502432915 0.510890688715" diaginertia="4.70792985164e-06 1.12220575994e-05 1.2740012549e-05" />
+                          <joint name="omni_R_thumb_mcp_joint" type="hinge" axis="1 0 0" range="0 0.855211333477" limited="true" />
+                          <body name="omni_R_thumb_pip" pos="1.67609595232e-32 0.036231 0.0036755" quat="1 1.05879118407e-22 0 0">
+                            <inertial mass="0.011" pos="-1e-06 0.014461 -0.00415" quat="0.53177032816 0.466069005715 0.53177032816 0.466069005715" diaginertia="7.80741759643e-07 1.31925824036e-06 1.34e-06" />
+                            <joint name="omni_R_thumb_pip_joint" type="hinge" axis="1 0 0" range="0 1.1344640138" limited="true" />
+                            <body name="omni_R_thumb_dip" pos="1.22444612807e-32 0.026468 -0.0073106" quat="1 1.05879118407e-22 0 0">
+                              <inertial mass="0.007" pos="-3e-06 0.010392 -0.001614" quat="-0.215658566872 0.673417688018 0.673417688018 0.215658566872" diaginertia="2.15810756843e-07 5.2e-07 5.54189243157e-07" />
+                              <joint name="omni_R_thumb_dip_joint" type="hinge" axis="1 0 0" range="0 1.1344640138" limited="true" />
+                              <site name="omni_R_thumb_dip" pos="0 6.93889390391e-18 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                              <site name="omni_R_thumb_tip" pos="-1.73472347598e-17 0.02392 -0.01158" quat="1 1.05879118407e-22 3.76158192263e-37 1.38777878078e-17" size=".001" rgba="0 0 0 0" />
+                              <geom name="visual_omni_R_thumb_dip_0" pos="0 6.93889390391e-18 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="c449c5cad11c8521_c413f845" />
+                              <geom name="collision_omni_R_thumb_dip_0" pos="0 6.93889390391e-18 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="4557d44172b139d1_c413f845" />
+                              <geom name="visual_omni_R_thumb_tip_0" pos="-1.73472347598e-17 0.02392 -0.01158" quat="1 1.05879118407e-22 3.76158192263e-37 1.38777878078e-17" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="sphere" size="1e-3" />
+                            </body>
+                            <site name="omni_R_thumb_pip" pos="0 0 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                            <geom name="visual_omni_R_thumb_pip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="f5e35eb9b346ab5e_c413f845" />
+                            <geom name="collision_omni_R_thumb_pip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="92487da06c25a44d_c413f845" />
+                          </body>
+                          <site name="omni_R_thumb_mcp" pos="0 0 -2.77555756156e-17" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                          <geom name="visual_omni_R_thumb_mcp_0" pos="0 0 -2.77555756156e-17" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="e4d0325b1244ab4b_c413f845" />
+                          <geom name="collision_omni_R_thumb_mcp_0" pos="0 0 -2.77555756156e-17" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="e97ef436122ace17_c413f845" />
+                        </body>
+                        <site name="omni_R_thumb_abad" pos="0 0 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                        <geom name="visual_omni_R_thumb_abad_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="61ec8a85dea39d81_c413f845" />
+                        <geom name="collision_omni_R_thumb_abad_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="c7d9e6f91559c5b9_c413f845" />
+                      </body>
+                      <site name="omni_R_thumb_roll" pos="-9.86076131526e-32 0 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                      <geom name="visual_omni_R_thumb_roll_0" pos="-9.86076131526e-32 0 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="61426e6098eed1af_c413f845" />
+                      <geom name="collision_omni_R_thumb_roll_0" pos="-9.86076131526e-32 0 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="5f90b2a73065c09b_c413f845" />
+                    </body>
+                    <body name="omni_R_index_abad" pos="-8.70778525619e-17 -0.02695 0.1610486" quat="1.61554457443e-15 0 1.05879118407e-22 1">
+                      <inertial mass="0.04" pos="-0.0018959 -9.79999999997e-06 0.0066855" quat="0.492538840321 -0.492538840321 0.507351447003 0.507351447003" diaginertia="2.64585110452e-06 7.37414889548e-06 8.82e-06" />
+                      <joint name="omni_R_index_abad_joint" type="hinge" axis="1 0 0" range="-0.209439510239 0" limited="true" />
+                      <body name="omni_R_index_pip" pos="0.00048163 2.77555756156e-17 0.017575" quat="1 1.05879118407e-22 0 0">
+                        <inertial mass="0.004" pos="-0.002884 1.5e-06 0.019997" quat="1.81940897289e-17 0.715090793972 -6.05881582732e-17 -0.699031584677" diaginertia="2.59772844545e-07 6.8e-07 7.00227155455e-07" />
+                        <joint name="omni_R_index_pip_joint" type="hinge" axis="0 1 0" range="0 1.57079632679" limited="true" />
+                        <body name="omni_R_index_dip" pos="-0.0015 -6.93920655926e-34 0.036" quat="1 1.05879118407e-22 0 0">
+                          <inertial mass="0.003" pos="0.000618 2.77555756156e-17 0.019239" quat="-7.48678426115e-23 0.707106781187 -7.48678426115e-23 0.707106781187" diaginertia="1.2e-07 4e-07 4e-07" />
+                          <joint name="omni_R_index_dip_joint" type="hinge" axis="0 1 0" range="0 1.83259571459" limited="true" />
+                          <site name="omni_R_index_dip" pos="0 2.77555756156e-17 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                          <site name="omni_R_index_tip" pos="-0.0011 2.77555756156e-17 0.03612" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                          <geom name="visual_omni_R_index_dip_0" pos="0 2.77555756156e-17 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="0089d5f21d2bbe4e_c413f845" />
+                          <geom name="collision_omni_R_index_dip_0" pos="0 2.77555756156e-17 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="ef886244b955e2ab_c413f845" />
+                          <geom name="visual_omni_R_index_tip_0" pos="-0.0011 2.77555756156e-17 0.03612" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="sphere" size="1e-3" />
+                        </body>
+                        <site name="omni_R_index_pip" pos="5.42101086243e-20 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                        <geom name="visual_omni_R_index_pip_0" pos="5.42101086243e-20 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="d8ce8426ee47d4ad_c413f845" />
+                        <geom name="collision_omni_R_index_pip_0" pos="5.42101086243e-20 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="7fa500e3aaec80eb_c413f845" />
+                      </body>
+                      <site name="omni_R_index_abad" pos="-9.86076131526e-32 2.77555756156e-17 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                      <geom name="visual_omni_R_index_abad_0" pos="-9.86076131526e-32 2.77555756156e-17 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="f4eea085b0258591_c413f845" />
+                      <geom name="collision_omni_R_index_abad_0" pos="-9.86076131526e-32 2.77555756156e-17 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="0821790b84ac9db0_c413f845" />
+                    </body>
+                    <body name="omni_R_middle_pip" pos="0.00201837 -0.00795 0.1806236" quat="1.61554457443e-15 0 1.05879118407e-22 1">
+                      <inertial mass="0.004" pos="-0.002884 1.5e-06 0.019997" quat="1.81940897289e-17 0.715090793972 -6.05881582732e-17 -0.699031584677" diaginertia="2.59772844545e-07 6.8e-07 7.00227155455e-07" />
+                      <joint name="omni_R_middle_pip_joint" type="hinge" axis="0 1 0" range="0 1.57079632679" limited="true" />
+                      <body name="omni_R_middle_dip" pos="-0.0015 -6.93920655926e-34 0.036" quat="1 1.05879118407e-22 0 0">
+                        <inertial mass="0.003" pos="0.000618 2.85895310242e-34 0.019239" quat="-7.48678426115e-23 0.707106781187 -7.48678426115e-23 0.707106781187" diaginertia="1.2e-07 4e-07 4e-07" />
+                        <joint name="omni_R_middle_dip_joint" type="hinge" axis="0 1 0" range="0 1.83259571459" limited="true" />
+                        <site name="omni_R_middle_dip" pos="-4.33680868994e-19 0 6.93889390391e-18" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                        <site name="omni_R_middle_tip" pos="-0.0011 -2.77555756156e-17 0.03612" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                        <geom name="visual_omni_R_middle_dip_0" pos="-4.33680868994e-19 0 6.93889390391e-18" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="0089d5f21d2bbe4e_c413f845" />
+                        <geom name="collision_omni_R_middle_dip_0" pos="-4.33680868994e-19 0 6.93889390391e-18" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="ef886244b955e2ab_c413f845" />
+                        <geom name="visual_omni_R_middle_tip_0" pos="-0.0011 -2.77555756156e-17 0.03612" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="sphere" size="1e-3" />
+                      </body>
+                      <site name="omni_R_middle_pip" pos="0 0 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                      <geom name="visual_omni_R_middle_pip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="d8ce8426ee47d4ad_c413f845" />
+                      <geom name="collision_omni_R_middle_pip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="7fa500e3aaec80eb_c413f845" />
+                    </body>
+                    <body name="omni_R_ring_abad" pos="0.00151 0.01105 0.1610486" quat="1.61554457443e-15 0 1.05879118407e-22 1">
+                      <inertial mass="0.04" pos="-0.0018959 -9.8e-06 0.0066855" quat="0.492538840321 -0.492538840321 0.507351447003 0.507351447003" diaginertia="2.64585110452e-06 7.37414889548e-06 8.82e-06" />
+                      <joint name="omni_R_ring_abad_joint" type="hinge" axis="1 0 0" range="0 0.174532925199" limited="true" />
+                      <body name="omni_R_ring_pip" pos="0.00048163 2.22808670342e-34 0.017575" quat="1 1.05879118407e-22 0 0">
+                        <inertial mass="0.004" pos="-0.002884 1.5e-06 0.019997" quat="1.81940897289e-17 0.715090793972 -6.05881582732e-17 -0.699031584677" diaginertia="2.59772844545e-07 6.8e-07 7.00227155455e-07" />
+                        <joint name="omni_R_ring_pip_joint" type="hinge" axis="0 1 0" range="0 1.57079632679" limited="true" />
+                        <body name="omni_R_ring_dip" pos="-0.0015 -6.93920655926e-34 0.036" quat="1 1.05879118407e-22 0 0">
+                          <inertial mass="0.003" pos="0.000618 2.85895310242e-34 0.019239" quat="-7.48678426115e-23 0.707106781187 -7.48678426115e-23 0.707106781187" diaginertia="1.2e-07 4e-07 4e-07" />
+                          <joint name="omni_R_ring_dip_joint" type="hinge" axis="0 1 0" range="0 1.83259571459" limited="true" />
+                          <site name="omni_R_ring_dip" pos="0 0 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                          <site name="omni_R_ring_tip" pos="-0.0011 2.77555756156e-17 0.03612" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                          <geom name="visual_omni_R_ring_dip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="0089d5f21d2bbe4e_c413f845" />
+                          <geom name="collision_omni_R_ring_dip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="ef886244b955e2ab_c413f845" />
+                          <geom name="visual_omni_R_ring_tip_0" pos="-0.0011 2.77555756156e-17 0.03612" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="sphere" size="1e-3" />
+                        </body>
+                        <site name="omni_R_ring_pip" pos="0 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                        <geom name="visual_omni_R_ring_pip_0" pos="0 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="d8ce8426ee47d4ad_c413f845" />
+                        <geom name="collision_omni_R_ring_pip_0" pos="0 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="7fa500e3aaec80eb_c413f845" />
+                      </body>
+                      <site name="omni_R_ring_abad" pos="-2.16840434497e-19 0 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                      <geom name="visual_omni_R_ring_abad_0" pos="-2.16840434497e-19 0 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="f4eea085b0258591_c413f845" />
+                      <geom name="collision_omni_R_ring_abad_0" pos="-2.16840434497e-19 0 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="0821790b84ac9db0_c413f845" />
+                    </body>
+                    <body name="omni_R_pinky_abad" pos="9.70942289234e-17 0.03005 0.1560486" quat="1.61554457443e-15 0 1.05879118407e-22 1">
+                      <inertial mass="0.04" pos="-0.0018959 -9.8e-06 0.0066855" quat="0.492538840321 -0.492538840321 0.507351447003 0.507351447003" diaginertia="2.64585110452e-06 7.37414889548e-06 8.82e-06" />
+                      <joint name="omni_R_pinky_abad_joint" type="hinge" axis="1 0 0" range="0 0.174532925199" limited="true" />
+                      <body name="omni_R_pinky_pip" pos="0.00048163 2.22808670342e-34 0.017575" quat="1 1.05879118407e-22 0 0">
+                        <inertial mass="0.004" pos="-0.002884 1.5e-06 0.019997" quat="1.81940897289e-17 0.715090793972 -6.05881582732e-17 -0.699031584677" diaginertia="2.59772844545e-07 6.8e-07 7.00227155455e-07" />
+                        <joint name="omni_R_pinky_pip_joint" type="hinge" axis="0 1 0" range="0 1.57079632679" limited="true" />
+                        <body name="omni_R_pinky_dip" pos="-0.0015 -6.93920655926e-34 0.036" quat="1 1.05879118407e-22 0 0">
+                          <inertial mass="0.003" pos="0.000618 2.85895310242e-34 0.019239" quat="-7.48678426115e-23 0.707106781187 -7.48678426115e-23 0.707106781187" diaginertia="1.2e-07 4e-07 4e-07" />
+                          <joint name="omni_R_pinky_dip_joint" type="hinge" axis="0 1 0" range="0 1.83259571459" limited="true" />
+                          <site name="omni_R_pinky_dip" pos="0 0 0" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                          <site name="omni_R_pinky_tip" pos="-0.0011 0 0.03612" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                          <geom name="visual_omni_R_pinky_dip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="0089d5f21d2bbe4e_c413f845" />
+                          <geom name="collision_omni_R_pinky_dip_0" pos="0 0 0" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="ef886244b955e2ab_c413f845" />
+                          <geom name="visual_omni_R_pinky_tip_0" pos="-0.0011 0 0.03612" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="sphere" size="1e-3" />
+                        </body>
+                        <site name="omni_R_pinky_pip" pos="5.42101086243e-20 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                        <geom name="visual_omni_R_pinky_pip_0" pos="5.42101086243e-20 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="d8ce8426ee47d4ad_c413f845" />
+                        <geom name="collision_omni_R_pinky_pip_0" pos="5.42101086243e-20 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="7fa500e3aaec80eb_c413f845" />
+                      </body>
+                      <site name="omni_R_pinky_abad" pos="-9.86076131526e-32 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                      <geom name="visual_omni_R_pinky_abad_0" pos="-9.86076131526e-32 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="f4eea085b0258591_c413f845" />
+                      <geom name="collision_omni_R_pinky_abad_0" pos="-9.86076131526e-32 0 1.38777878078e-17" quat="1 1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="0821790b84ac9db0_c413f845" />
+                    </body>
+                    <site name="openarm_right_link7" pos="0 -2.77555756156e-17 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                    <site name="omnihand_adapter" pos="0 -2.77555756156e-17 0.0495006" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                    <site name="omni_base_link" pos="0 0 0.0665006" quat="1.61554457443e-15 0 1.05879118407e-22 1" size=".001" rgba="0 0 0 0" />
+                    <site name="omni_R_palm" pos="0 0 0.0665006" quat="1.61554457443e-15 0 1.05879118407e-22 1" size=".001" rgba="0 0 0 0" />
+                    <site name="omni_R_middle_abad" pos="0.0025 -0.00795 0.1630486" quat="1.61554457443e-15 0 1.05879118407e-22 1" size=".001" rgba="0 0 0 0" />
+                    <site name="tool_tcp" pos="0 0 0.0665006" quat="1.61554457443e-15 0 1.05879118407e-22 1" size=".001" rgba="0 0 0 0" />
+                    <geom name="visual_openarm_right_link7_0" pos="0 -2.77555756156e-17 -0.5585" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="6bb7af43aa575dfc_1146f58c" />
+                    <geom name="collision_openarm_right_link7_0" pos="0 -2.77555756156e-17 -0.5585" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="6bb7af43aa575dfc_1146f58c" />
+                    <geom name="visual_omnihand_adapter_0" pos="0 -2.77555756156e-17 0.0580006" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="cylinder" size="0.027 0.0085" />
+                    <geom name="collision_omnihand_adapter_0" pos="0 -2.77555756156e-17 0.0580006" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="cylinder" size="0.027 0.0085" />
+                    <geom name="visual_omni_base_link_0" pos="0 0 0.0665006" quat="1.61554457443e-15 0 1.05879118407e-22 1" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="box" size="0.0005 0.0005 0.0005" />
+                    <geom name="visual_omni_R_palm_0" pos="0 0 0.0665006" quat="1.61554457443e-15 0 1.05879118407e-22 1" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="9788724443a62bc2_c413f845" />
+                    <geom name="collision_omni_R_palm_0" pos="0 0 0.0665006" quat="1.61554457443e-15 0 1.05879118407e-22 1" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="9e4e6f48d1c34392_c413f845" />
+                    <geom name="visual_omni_R_middle_abad_0" pos="0.0025 -0.00795 0.1630486" quat="1.61554457443e-15 0 1.05879118407e-22 1" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="f4eea085b0258591_c413f845" />
+                    <geom name="collision_omni_R_middle_abad_0" pos="0.0025 -0.00795 0.1630486" quat="1.61554457443e-15 0 1.05879118407e-22 1" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="0821790b84ac9db0_c413f845" />
+                  </body>
+                  <site name="openarm_right_link6" pos="0 -2.77555756156e-17 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                  <geom name="visual_openarm_right_link6_0" pos="-0.0375 -2.77555756156e-17 -0.5585" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="adcd37741f4e223b_1146f58c" />
+                  <geom name="collision_openarm_right_link6_0" pos="-0.0375 -2.77555756156e-17 -0.5585" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="95529bec23733476_1146f58c" />
+                </body>
+                <site name="openarm_right_link5" pos="0 0 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+                <geom name="visual_openarm_right_link5_0" pos="0 0 -0.438" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="96fd3516df16a772_1146f58c" />
+                <geom name="collision_openarm_right_link5_0" pos="0 0 -0.438" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="678a2802906eff7b_1146f58c" />
+              </body>
+              <site name="openarm_right_link4" pos="0 0 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+              <geom name="visual_openarm_right_link4_0" pos="0 -0.0315 -0.3425" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="59eb1cbf44b1250a_1146f58c" />
+              <geom name="collision_openarm_right_link4_0" pos="0 -0.0315 -0.3425" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="b54883b8c7c96268_1146f58c" />
+            </body>
+            <site name="openarm_right_link3" pos="0 0 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+            <geom name="visual_openarm_right_link3_0" pos="0 0 -0.18875" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="97d73c4bae3f3f75_1146f58c" />
+            <geom name="collision_openarm_right_link3_0" pos="0 0 -0.18875" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="00c908cefab152c0_1146f58c" />
+          </body>
+          <site name="openarm_right_link2" pos="-3.46944695195e-18 0 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+          <geom name="visual_openarm_right_link2_0" pos="0.0301 0 -0.1225" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="5d2a1ec857a22eaa_1146f58c" />
+          <geom name="collision_openarm_right_link2_0" pos="0.0301 0 -0.1225" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="382ab32e4ae0880e_1146f58c" />
+        </body>
+        <site name="openarm_right_link1" pos="0 0 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+        <geom name="visual_openarm_right_link1_0" pos="0 0 -0.0625" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="c25937f901a4c157_1146f58c" />
+        <geom name="collision_openarm_right_link1_0" pos="0 0 -0.0625" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="066113d13d5cc850_1146f58c" />
+      </body>
+      <site name="world" pos="0 -0.698000113865 -0.0309974361026" quat="-0.707105482511 0.707108079859 0 0" size=".001" rgba="0 0 0 0" />
+      <site name="openarm_body_link0" pos="0 -0.698000113865 -0.0309974361026" quat="-0.707105482511 0.707108079859 0 0" size=".001" rgba="0 0 0 0" />
+      <site name="openarm_right_link0" pos="0 0 0" quat="1 -1.05879118407e-22 0 0" size=".001" rgba="0 0 0 0" />
+      <geom name="visual_openarm_body_link0_0" pos="0 -0.698000113865 -0.0309974361026" quat="-0.707105482511 0.707108079859 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="a05f59379dcf694e_1146f58c" />
+      <geom name="collision_openarm_body_link0_0" pos="0 -0.698000113865 -0.0309974361026" quat="-0.707105482511 0.707108079859 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="6c18bbf7e86b03e3_1146f58c" />
+      <geom name="visual_openarm_right_link0_0" pos="0 0 0" quat="1 -1.05879118407e-22 0 0" group="2" contype="0" conaffinity="0" rgba=".65 .68 .72 1" type="mesh" mesh="cc54c874e3da9c33_1146f58c" />
+      <geom name="collision_openarm_right_link0_0" pos="0 0 0" quat="1 -1.05879118407e-22 0 0" group="3" contype="1" conaffinity="1" rgba=".7 .2 .2 0" type="mesh" mesh="baf52578e1d9e622_1146f58c" />
+    </body>
+  </worldbody>
+  <equality>
+    <joint joint1="omni_R_thumb_pip_joint" joint2="omni_R_thumb_mcp_joint" polycoef="0 1.33 0 0 0" />
+    <joint joint1="omni_R_thumb_dip_joint" joint2="omni_R_thumb_mcp_joint" polycoef="0 1.3 0 0 0" />
+    <joint joint1="omni_R_index_dip_joint" joint2="omni_R_index_pip_joint" polycoef="0 1.097 0 0 0" />
+    <joint joint1="omni_R_middle_dip_joint" joint2="omni_R_middle_pip_joint" polycoef="0 1.097 0 0 0" />
+    <joint joint1="omni_R_ring_dip_joint" joint2="omni_R_ring_pip_joint" polycoef="0 1.097 0 0 0" />
+    <joint joint1="omni_R_pinky_dip_joint" joint2="omni_R_pinky_pip_joint" polycoef="0 1.097 0 0 0" />
+  </equality>
+  <actuator>
+    <position name="openarm_right_joint1" joint="openarm_right_joint1" kp="4000" kv="160" forcerange="-40 40" ctrlrange="-1.396263 3.490659" />
+    <position name="openarm_right_joint2" joint="openarm_right_joint2" kp="4000" kv="160" forcerange="-40 40" ctrlrange="-0.174532673205 3.31612532679" />
+    <position name="openarm_right_joint3" joint="openarm_right_joint3" kp="2000" kv="80" forcerange="-27 27" ctrlrange="-1.570796 1.570796" />
+    <position name="openarm_right_joint4" joint="openarm_right_joint4" kp="2000" kv="80" forcerange="-27 27" ctrlrange="0 2.443461" />
+    <position name="openarm_right_joint5" joint="openarm_right_joint5" kp="800" kv="30" forcerange="-7 7" ctrlrange="-1.570796 1.570796" />
+    <position name="openarm_right_joint6" joint="openarm_right_joint6" kp="800" kv="30" forcerange="-7 7" ctrlrange="-0.785398 0.785398" />
+    <position name="openarm_right_joint7" joint="openarm_right_joint7" kp="800" kv="30" forcerange="-7 7" ctrlrange="-1.570796 1.570796" />
+    <position name="omni_R_thumb_roll_joint" joint="omni_R_thumb_roll_joint" kp="2.0" kv="0.08" forcerange="-0.419 0.419" ctrlrange="-0.174532925199 0.872664625997" />
+    <position name="omni_R_thumb_abad_joint" joint="omni_R_thumb_abad_joint" kp="2.0" kv="0.08" forcerange="-0.314 0.314" ctrlrange="-1.74532925199 0" />
+    <position name="omni_R_thumb_mcp_joint" joint="omni_R_thumb_mcp_joint" kp="2.0" kv="0.08" forcerange="-1.764 1.764" ctrlrange="0 0.855211333477" />
+    <position name="omni_R_index_abad_joint" joint="omni_R_index_abad_joint" kp="2.0" kv="0.08" forcerange="-1.863 1.863" ctrlrange="-0.209439510239 0" />
+    <position name="omni_R_index_pip_joint" joint="omni_R_index_pip_joint" kp="2.0" kv="0.08" forcerange="-1.764 1.764" ctrlrange="0 1.57079632679" />
+    <position name="omni_R_middle_pip_joint" joint="omni_R_middle_pip_joint" kp="2.0" kv="0.08" forcerange="-1.764 1.764" ctrlrange="0 1.57079632679" />
+    <position name="omni_R_ring_abad_joint" joint="omni_R_ring_abad_joint" kp="2.0" kv="0.08" forcerange="-2.766 2.766" ctrlrange="0 0.174532925199" />
+    <position name="omni_R_ring_pip_joint" joint="omni_R_ring_pip_joint" kp="2.0" kv="0.08" forcerange="-1.764 1.764" ctrlrange="0 1.57079632679" />
+    <position name="omni_R_pinky_abad_joint" joint="omni_R_pinky_abad_joint" kp="2.0" kv="0.08" forcerange="-3.393 3.393" ctrlrange="0 0.174532925199" />
+    <position name="omni_R_pinky_pip_joint" joint="omni_R_pinky_pip_joint" kp="2.0" kv="0.08" forcerange="-1.764 1.764" ctrlrange="0 1.57079632679" />
+  </actuator>
+  <contact>
+    <exclude body1="openarm_right_link1" body2="openarm_right_link2" />
+    <exclude body1="openarm_right_link2" body2="openarm_right_link3" />
+    <exclude body1="openarm_right_link3" body2="openarm_right_link4" />
+    <exclude body1="openarm_right_link6" body2="openarm_right_link7" />
+    <exclude body1="openarm_right_link7" body2="omni_R_thumb_roll" />
+    <exclude body1="openarm_right_link7" body2="omni_R_thumb_abad" />
+    <exclude body1="omni_R_thumb_abad" body2="omni_R_thumb_roll" />
+    <exclude body1="omni_R_thumb_abad" body2="omni_R_thumb_mcp" />
+    <exclude body1="omni_R_thumb_mcp" body2="omni_R_thumb_pip" />
+    <exclude body1="omni_R_thumb_dip" body2="omni_R_thumb_pip" />
+    <exclude body1="omni_R_index_abad" body2="openarm_right_link7" />
+    <exclude body1="omni_R_index_pip" body2="openarm_right_link7" />
+    <exclude body1="omni_R_index_abad" body2="omni_R_index_pip" />
+    <exclude body1="omni_R_index_dip" body2="omni_R_index_pip" />
+    <exclude body1="omni_R_middle_pip" body2="openarm_right_link7" />
+    <exclude body1="omni_R_index_pip" body2="omni_R_middle_pip" />
+    <exclude body1="omni_R_middle_dip" body2="omni_R_middle_pip" />
+    <exclude body1="openarm_right_link7" body2="omni_R_ring_abad" />
+    <exclude body1="openarm_right_link7" body2="omni_R_ring_pip" />
+    <exclude body1="omni_R_middle_pip" body2="omni_R_ring_pip" />
+    <exclude body1="omni_R_ring_abad" body2="omni_R_ring_pip" />
+    <exclude body1="omni_R_ring_dip" body2="omni_R_ring_pip" />
+    <exclude body1="openarm_right_link7" body2="omni_R_pinky_abad" />
+    <exclude body1="openarm_right_link7" body2="omni_R_pinky_pip" />
+    <exclude body1="omni_R_pinky_pip" body2="omni_R_ring_pip" />
+    <exclude body1="omni_R_pinky_abad" body2="omni_R_pinky_pip" />
+    <exclude body1="omni_R_pinky_dip" body2="omni_R_pinky_pip" />
+  </contact>
+  <keyframe>
+    <key name="closed_hand" qpos="0.15 0.15 -0.15 0.15 0.1 -0.1 0.1 0.6 -0.5 0.45 0.5985 0.585 0 0.05 0.05485 0.05 0.05485 0 0.05 0.05485 0 0.05 0.05485" ctrl="0.15 0.15 -0.15 0.15 0.1 -0.1 0.1 0.6 -0.5 0.45 0 0.05 0.05 0 0.05 0 0.05" />
+    <key name="intermediate_hand" qpos="0.15 0.15 -0.15 0.15 0.1 -0.1 0.1 0.3 -0.25 0.225 0.29925 0.2925 0 0.025 0.027425 0.025 0.027425 0 0.025 0.027425 0 0.025 0.027425" ctrl="0.15 0.15 -0.15 0.15 0.1 -0.1 0.1 0.3 -0.25 0.225 0 0.025 0.025 0 0.025 0 0.025" />
+    <key name="open_hand" qpos="0.15 0.15 -0.15 0.15 0.1 -0.1 0.1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" ctrl="0.15 0.15 -0.15 0.15 0.1 -0.1 0.1 0 0 0 0 0 0 0 0 0 0" />
+  </keyframe>
+</mujoco>

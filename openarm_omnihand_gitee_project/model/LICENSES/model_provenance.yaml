@@ -1,0 +1,195 @@
+stage: MOTION-MVP-OMNIHAND-CLOSED-POSE
+source_model:
+  path: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/model/right_arm_omnihand_full_tree.urdf
+  sha256: 25970eaa3595fa5f1124ce38be295da539ad4e286e2db70605c115943e9e3676
+s1_manifest:
+  path: /home/yh/isaaclab-dev/outputs/OPENARM_OMNIHAND_MOVEIT2_SIM_TO_REAL_V1/S1_20261010_1530/source_manifest.json
+  sha256: 2a5d3c0f5bc22c9b3c2b2e70afcaf4ae00087956a9d22148e3e16cfdae286a4b
+changes:
+- mesh URI relocation without byte changes
+- robot name
+- remove non-element stray text
+- append massless provisional tool_tcp frame
+- 'closed thumb fixed pose: ABAD=-0.5, MCP=0.45, PIP=0.5985, DIP=0.585 rad; official
+  coupling retained'
+removed_stray_text:
+- y
+- y
+- y
+- y
+preserved:
+- v10 right body mount
+- J2 offset once
+- J8_A/B mounts without J8 motor
+- all links, meshes, inertias, arm joints, limits and mount origins; only four thumb
+  fixed rotations changed
+payload:
+  hand_mass_kg: 0.44709999999999994
+  adapter_mass_kg: 0.015
+  retained_mount_mass_kg: 0.10148072681317376
+  terminal_total_mass_kg: 0.5635807268131737
+  mass_basis: "\u624B\u4E3A\u7528\u6237\u8FD1\u4F3C\u6D4B\u91CF\uFF1B\u7ED3\u6784\u4E3A\
+    \u51E0\u4F55\u4F30\u8BA1\uFF1B\u603B\u6210\u975E\u5B9E\u6D4B"
+  com_and_inertia_physical_validation: false
+  source_path: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/config/payload.yaml
+  sha256: ed109169442eb9967b375e032866eac49546e76d724430fb1725a99e1c1a2e9e
+mounting:
+  root: world
+  body: openarm_body_link0
+  arm_root: openarm_right_link0
+  flange: openarm_right_link7
+  hand_base: omni_base_link
+  body_to_arm_root:
+    xyz_m:
+    - 0
+    - -0.031
+    - 0.698
+    rpy_rad:
+    - 1.5708
+    - 0
+    - 0
+    evidence: "\u4FDD\u7559\u5F53\u524Dv10\u53F3\u4FA7\u5B89\u88C5"
+  flange_to_hand_base:
+    xyz_m:
+    - 0
+    - 0
+    - 0.0665006
+    rpy_rad:
+    - 0.0
+    - 0.0
+    - 3.141592653589793
+    orientation_evidence: "\u5386\u53F2\u7528\u6237\u5BF9\u56FE\u786E\u8BA4D\u65B9\
+      \u5411"
+    precision_physically_verified: false
+collision_accuracy_accepted: false
+assets:
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/commissioning/meshes/j7_tool_mount_no_j8.stl
+  package_path: meshes/commissioning/j7_tool_mount_no_j8.stl
+  sha256: 6bb7af43aa575dfc1c75a7136f68cb33d1d2a08c1ddf8848a94aaad527ea5df7
+  size_bytes: 1936384
+  license_record: 'See THIRD_PARTY.md: local derived mounting mesh'
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/finger_abad.STL
+  package_path: meshes/omnihand_sdk_0_8_0/finger_abad.STL
+  sha256: f4eea085b0258591f4dae906237fdc52119e05d7f3f8d30b825ca477d92fbe52
+  size_bytes: 201084
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/finger_dip.STL
+  package_path: meshes/omnihand_sdk_0_8_0/finger_dip.STL
+  sha256: 0089d5f21d2bbe4e2bd317620e61a11b6403a8046005c50548fd72c093d8ea05
+  size_bytes: 837084
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/finger_pip.STL
+  package_path: meshes/omnihand_sdk_0_8_0/finger_pip.STL
+  sha256: d8ce8426ee47d4adc3ba75a9990e1144e4bc9e920f002fe9f6000b42ebf988a0
+  size_bytes: 627584
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/r_palm.STL
+  package_path: meshes/omnihand_sdk_0_8_0/r_palm.STL
+  sha256: 9788724443a62bc22552f4b8e9a5636a603973b6e880befba2063310a7d0c518
+  size_bytes: 1502984
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/r_thumb_roll.STL
+  package_path: meshes/omnihand_sdk_0_8_0/r_thumb_roll.STL
+  sha256: 61426e6098eed1af49301fe8ed2f8af3847bdb3c09087731337d487af6bd12f1
+  size_bytes: 1849884
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_abad.STL
+  package_path: meshes/omnihand_sdk_0_8_0/thumb_abad.STL
+  sha256: 61ec8a85dea39d81a11d8df2de7dccd4b23b4fd9e012d8ba4446aab7d92d1909
+  size_bytes: 334784
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_dip.STL
+  package_path: meshes/omnihand_sdk_0_8_0/thumb_dip.STL
+  sha256: c449c5cad11c8521431781ffe073f3280960935018400ec565b44842aad91dfe
+  size_bytes: 293784
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_mcp.STL
+  package_path: meshes/omnihand_sdk_0_8_0/thumb_mcp.STL
+  sha256: e4d0325b1244ab4b7bcf1b0101fae6267a2932d96a88f36cc32e0621d3428d60
+  size_bytes: 454184
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_bringup/gravity_compensation/snapshots/omnihand_sdk_2025_0_8_0/assets/meshes/thumb_pip.STL
+  package_path: meshes/omnihand_sdk_0_8_0/thumb_pip.STL
+  sha256: f5e35eb9b346ab5ed09f25c8144de53e7ef775abadf152468bc13bf4f311c4bd
+  size_bytes: 249284
+  license_record: OmniHand_MulanPSL-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link0_symp.stl
+  package_path: meshes/openarm_v10/arm/v10/collision/link0_symp.stl
+  sha256: baf52578e1d9e6225f3818cae82b6074a0b948d3cef8e9a3e6dfafca78507590
+  size_bytes: 40284
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link1_symp.stl
+  package_path: meshes/openarm_v10/arm/v10/collision/link1_symp.stl
+  sha256: 066113d13d5cc85098609003bc7ebb73c570015350877f5ed7162ef1b6601852
+  size_bytes: 17784
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link2_symp.stl
+  package_path: meshes/openarm_v10/arm/v10/collision/link2_symp.stl
+  sha256: 382ab32e4ae0880e8a1512e7a6ca6ce1f478a6c125db4efa977429ffb1d6b02a
+  size_bytes: 13384
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link3_symp.stl
+  package_path: meshes/openarm_v10/arm/v10/collision/link3_symp.stl
+  sha256: 00c908cefab152c00416a570a48bf9aafed1549085f19ff2d882dc3f355d9f59
+  size_bytes: 156984
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link4_symp.stl
+  package_path: meshes/openarm_v10/arm/v10/collision/link4_symp.stl
+  sha256: b54883b8c7c96268a68a5879f95998a53ad0b0c4fe74325fad63a6caef669c73
+  size_bytes: 1139984
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link5_symp.stl
+  package_path: meshes/openarm_v10/arm/v10/collision/link5_symp.stl
+  sha256: 678a2802906eff7b45a836d2f34a2d8e51def50b6599376968f888e05c72739e
+  size_bytes: 751484
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/collision/link6_symp.stl
+  package_path: meshes/openarm_v10/arm/v10/collision/link6_symp.stl
+  sha256: 95529bec23733476dfdbbb266c7db0d25a473a568de73c8337a82440fe4a9ac3
+  size_bytes: 30084
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link0.dae
+  package_path: meshes/openarm_v10/arm/v10/visual/link0.dae
+  sha256: cc54c874e3da9c33e4386fb691b49a9a6df0ddce2d89e84ae342075c57fc0230
+  size_bytes: 2872567
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link1.dae
+  package_path: meshes/openarm_v10/arm/v10/visual/link1.dae
+  sha256: c25937f901a4c15730927e08bf5fd26a072e801c529f0bd9678ba9758330647d
+  size_bytes: 7655919
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link2.dae
+  package_path: meshes/openarm_v10/arm/v10/visual/link2.dae
+  sha256: 5d2a1ec857a22eaa180034e2dcd989c54611abab6ce6659eb4999570c34cc124
+  size_bytes: 6288652
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link3.dae
+  package_path: meshes/openarm_v10/arm/v10/visual/link3.dae
+  sha256: 97d73c4bae3f3f7570bf3e28306da719aa99a6bec662060c9e358e5625b11cce
+  size_bytes: 6846210
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link4.dae
+  package_path: meshes/openarm_v10/arm/v10/visual/link4.dae
+  sha256: 59eb1cbf44b1250ad9533176b30084179f9164fcb998ee2623d89b48968ec426
+  size_bytes: 6644484
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link5.dae
+  package_path: meshes/openarm_v10/arm/v10/visual/link5.dae
+  sha256: 96fd3516df16a772a84c268529e5b53b05e6df07da6ccfe850bc091eba947156
+  size_bytes: 9034473
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/arm/v10/visual/link6.dae
+  package_path: meshes/openarm_v10/arm/v10/visual/link6.dae
+  sha256: adcd37741f4e223bd6fe9925625e84191b525c9d27f151f9178b23989de05459
+  size_bytes: 6133097
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/body/v10/collision/body_link0_symp.stl
+  package_path: meshes/openarm_v10/body/v10/collision/body_link0_symp.stl
+  sha256: 6c18bbf7e86b03e3faf802e61e8eb438b38dcbcf146d97cffe6e808c65e9a72a
+  size_bytes: 293284
+  license_record: OpenArm_Apache-2.0.txt
+- source: /home/yh/isaaclab-dev/openarm_ros2_v1_ws/src/openarm_description/meshes/body/v10/visual/body_link0.dae
+  package_path: meshes/openarm_v10/body/v10/visual/body_link0.dae
+  sha256: a05f59379dcf694e5ff336b1ee3a47ea504a2425a2fa774af1b14e096d9a239a
+  size_bytes: 10783948
+  license_record: OpenArm_Apache-2.0.txt
