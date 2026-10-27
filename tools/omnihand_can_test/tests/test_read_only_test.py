@@ -58,12 +58,31 @@ class ReadOnlyProtocol(unittest.TestCase):
         self.assertIsNone(testtool.decode_reply(testtool.unpack_frame(classic), 0x02, 9))
         self.assertIsNone(testtool.decode_reply(testtool.unpack_frame(testtool.query_frame(9, 0x09)), 0x09, 9))
 
-    def test_positions_are_little_endian_and_in_range(self):
+    def test_positions_are_little_endian_and_truncated_reply_rejected(self):
         positions = [0, 1, 256, 1000, 2000, 3000, 4095, 4096, 25, 1500]
         decoded = testtool.decode_reply(reply(0x09, struct.pack("<10H", *positions)), 0x09, 9)
         self.assertEqual(decoded["positions_raw"], positions)
-        self.assertIsNone(testtool.decode_reply(reply(0x09, struct.pack("<10H", *([4097]*10))), 0x09, 9))
+        self.assertTrue(decoded["positions_in_documented_range"])
         self.assertIsNone(testtool.decode_reply(reply(0x09, b"\0\0"), 0x09, 9))
+
+    def test_recorded_firmware_119_reply_passes_with_range_warning(self):
+        recorded = {
+            0xCD: bytes.fromhex("cd 02 54 31 01 01 09 03 00 00 0a 00"),
+            0x02: bytes.fromhex("02 01"),
+            0x09: bytes.fromhex("09 d2 07 f1 07 f8 0f 6b 07 fe 0f fe 0f cc 07 01 10 09 08 02 10 00 00 00"),
+        }
+        class RecordedTransport:
+            def exchange(self, node, command, timeout):
+                testtool.query_frame(node, command)
+                raw = testtool.FD_FRAME.pack(node, len(recorded[command]), 1, recorded[command].ljust(64, b"\0"))
+                return [testtool.decode_reply(testtool.unpack_frame(raw), command, node)]
+        result = testtool.probe(RecordedTransport(), 9)
+        self.assertTrue(result["communication_passed"])
+        self.assertEqual(result["device_info"]["software_version"], "1.1.9")
+        positions = result["joint_positions"]
+        self.assertEqual(positions["positions_raw"], [2002, 2033, 4088, 1899, 4094, 4094, 1996, 4097, 2057, 4098])
+        self.assertFalse(positions["positions_in_documented_range"])
+        self.assertEqual(positions["warnings"][0]["motor_ids"], [8, 10])
 
     def test_o10_identification_and_enable_state(self):
         info = testtool.decode_reply(reply(0xCD, INFO), 0xCD)

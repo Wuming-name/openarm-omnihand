@@ -78,11 +78,15 @@ def decode_reply(frame, command, expected_id=None):
         if len(payload) < 20:
             return None
         positions = list(struct.unpack("<10H", payload[:20]))
-        if any(value > 4096 for value in positions):
-            return None
-        result = {"positions_raw": positions, "unit": "O10 raw position counts 0..4096, not radians",
+        outside = [i + 1 for i, value in enumerate(positions) if value > 4096]
+        result = {"positions_raw": positions, "unit": "O10 raw uint16 position counts, not radians",
+                  "documented_position_range": [0, 4096],
+                  "positions_in_documented_range": not outside,
                   "by_motor": {str(i+1): {"label": name, "raw": value}
                                for i, (name, value) in enumerate(zip(MOTOR_NAMES, positions))}}
+        if outside:
+            result["warnings"] = [{"code": "POSITION_OUTSIDE_DOCUMENTED_RANGE", "motor_ids": outside,
+                                   "message": "Raw reply retained without clamping. Communication can pass; position calibration and validity for control remain unverified."}]
     elif command == 0x02:
         if not payload or payload[0] not in (0, 1, 2):
             return None
