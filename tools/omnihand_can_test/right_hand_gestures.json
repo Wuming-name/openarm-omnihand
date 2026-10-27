@@ -1,0 +1,33 @@
+{
+  "hand": "right",
+  "source_commit": "1b552ea77c2d61adef327d179dc9f6b47405c628",
+  "source_url": "https://github.com/AgibotTech/agillink_omnihand_sdk",
+  "sdk_version": "1.1.10",
+  "sdk_wheel_sha256": "049cbb9f46fea981cd8c568554d4a250bcb1885b959e297d32b68c6bf58f50f4",
+  "fist_enum": "OMNIHAND_2025_GESTURE_FIST1",
+  "open_enum": "OMNIHAND_2025_GESTURE_PAPER",
+  "fist": [
+    2458,
+    849,
+    1446,
+    0,
+    46,
+    46,
+    0,
+    46,
+    4096,
+    46
+  ],
+  "open": [
+    1924,
+    631,
+    4093,
+    0,
+    4069,
+    4069,
+    0,
+    4069,
+    4096,
+    4069
+  ]
+}
