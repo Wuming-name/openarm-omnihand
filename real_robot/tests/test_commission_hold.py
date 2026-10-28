@@ -7,6 +7,7 @@ import numpy as np
 from real_robot.commission_hold import HoldController, StationaryOverlapGuard, ModelWorker, HoldViolation
 from real_robot.control import RunBundle
 from real_robot.settings import load
+from rl_ppo.evaluate import apply_evaluation_gain_scale
 
 
 class CommissionController(unittest.TestCase):
@@ -99,6 +100,19 @@ class CommissionController(unittest.TestCase):
         for value in (0., 1.1, float('nan')):
             with self.assertRaises(ValueError):
                 HoldController(self.bundle, load(), self.q, np.zeros(7), 0., gain_scale=value)
+
+    def test_gain_override_evaluation_matches_commissioning_after_reset(self):
+        kp = list(self.env.physics['kp'])
+        kd = list(self.env.physics['kd'])
+        apply_evaluation_gain_scale(self.env, .2)
+        self.env.reset(seed=123)
+        np.testing.assert_allclose(self.env.kp, np.array(kp)*.2)
+        np.testing.assert_allclose(self.env.kd, np.array(kd)*.2)
+        self.assertEqual(self.env.physics['kp'], kp)
+        self.assertEqual(self.env.physics['kd'], kd)
+        for value in (0., 1.1, float('nan')):
+            with self.assertRaises(ValueError):
+                apply_evaluation_gain_scale(self.env, value)
 
     def test_spawned_model_worker_supplies_reference_and_stops_on_bad_state(self):
         worker = ModelWorker(self.fixture_run, load(), self.q, np.zeros(7), False)
