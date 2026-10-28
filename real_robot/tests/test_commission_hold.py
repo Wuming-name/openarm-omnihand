@@ -80,6 +80,26 @@ class CommissionController(unittest.TestCase):
             np.testing.assert_allclose(torque, ff, atol=1e-9)
             self.assertTrue(np.isfinite(self.controller.step_fast(self.q, np.zeros(7), .002)).all())
 
+    def test_scaled_commissioning_gains_preserve_training_and_feedforward(self):
+        kp = list(self.env.physics['kp'])
+        kd = list(self.env.physics['kd'])
+        scaled = HoldController(self.bundle, load(), self.q, np.zeros(7), 0., gain_scale=.2)
+        ff = scaled.reference(self.q, np.zeros(7))
+        actual = self.q-np.ones(7)*.001
+        velocity = np.ones(7)*.01
+        torque = scaled.step_fast(actual, velocity, 0., ff)
+        expected = ff+.2*(np.asarray(kp)*.001-np.asarray(kd)*.01)
+        np.testing.assert_allclose(torque, expected, atol=1e-8)
+        self.assertEqual(self.env.physics['kp'], kp)
+        self.assertEqual(self.env.physics['kd'], kd)
+        with self.assertRaises(HoldViolation):
+            scaled.check_measured(self.q, np.ones(7)*.16)
+
+    def test_invalid_gain_scale_rejected_before_control(self):
+        for value in (0., 1.1, float('nan')):
+            with self.assertRaises(ValueError):
+                HoldController(self.bundle, load(), self.q, np.zeros(7), 0., gain_scale=value)
+
     def test_spawned_model_worker_supplies_reference_and_stops_on_bad_state(self):
         worker = ModelWorker(self.fixture_run, load(), self.q, np.zeros(7), False)
         try:

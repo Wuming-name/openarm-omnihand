@@ -5,6 +5,7 @@ Default mock mode never opens CAN. Live mode requires --backend socketcan
 On exit, live mode attempts to disable all motors enabled by this test.
 """
 import argparse
+from collections import deque
 from datetime import datetime
 import json
 import math
@@ -56,7 +57,9 @@ class StationaryOverlapGuard:
 
 
 class HoldController:
-    def __init__(self, bundle, hardware, q, velocity, now, stationary_baseline=False):
+    def __init__(self, bundle, hardware, q, velocity, now, stationary_baseline=False, gain_scale=1.):
+        if not math.isfinite(gain_scale) or not .1 <= gain_scale <= 1.:
+            raise ValueError('Commissioning gain scale must be 0.1..1.0')
         self.bundle = bundle
         self.overlap_guard = None
         self.initial_overlaps = []
@@ -72,7 +75,10 @@ class HoldController:
         self.target = np.asarray(q, dtype=float).copy()
         if np.any(self.target < bundle.hard_low) or np.any(self.target > bundle.hard_high):
             raise RuntimeError('Initial target outside model hard limits')
-        self.servo = Servo(hardware, bundle.env.physics, bundle.hard_low, bundle.hard_high)
+        physics = dict(bundle.env.physics)
+        physics['kp'] = [gain_scale*x for x in bundle.env.physics['kp']]
+        physics['kd'] = [gain_scale*x for x in bundle.env.physics['kd']]
+        self.servo = Servo(hardware, physics, bundle.hard_low, bundle.hard_high)
         self.started, self.last_reference = now, -math.inf
         self.max_drift, self.max_torque = 0., np.zeros(7)
 
@@ -216,10 +222,13 @@ def main():
     parser.add_argument('--backend', choices=['mock', 'socketcan'], default='mock')
     parser.add_argument('--execute', action='store_true')
     parser.add_argument('--seconds', type=float, default=3.)
+    parser.add_argument('--gain-scale', type=float, default=1., help='Commissioning PD gain fraction, 0.1..1; does not change saved training files or gravity FF')
     parser.add_argument('--stationary-baseline', action='store_true', help='Near-zero fixed-pose test only; monitor known initial model overlaps without certifying them safe')
     args = parser.parse_args()
     if not math.isfinite(args.seconds) or not 2 <= args.seconds <= 5:
         parser.error('--seconds must be 2..5')
+    if not math.isfinite(args.gain_scale) or not .1 <= args.gain_scale <= 1.:
+        parser.error('--gain-scale must be 0.1..1.0')
     live = args.backend == 'socketcan'
     if live and not args.execute:
         parser.error('Live test requires --execute and physically supported arm')
@@ -232,6 +241,8 @@ def main():
               'watchdog_verified': False, 'is_ppo_test': False, 'passed': False,
               'hardware_commands_attempted': False, 'disable_attempts': [],
               'stationary_baseline': args.stationary_baseline,
+              'gain_scale': args.gain_scale,
+              'training_gains_unchanged': args.gain_scale == 1.,
               'collision_model_validated_for_motion': False}
     bundle = bus = controller = worker = None
     own_enable = False
@@ -240,6 +251,7 @@ def main():
     steps = 0
     costs = {'receive_s': [], 'controller_s': [], 'send_s': [], 'cycle_work_s': [], 'model_compute_s': []}
     progress = []
+    trace = deque(maxlen=500)
     try:
         bundle = RunBundle(args.run, load_policy=False)
         if live:
@@ -263,11 +275,13 @@ def main():
         report['measured_velocity_rad_s'] = np.asarray(velocity, dtype=float).tolist()
         report['model_sha256'] = bundle.env.task['model_sha256']
         start = time.monotonic() if live else 0.
-        controller = HoldController(bundle, hardware, q, velocity, start, args.stationary_baseline)
+        controller = HoldController(bundle, hardware, q, velocity, start, args.stationary_baseline, args.gain_scale)
         report['initial_model_overlaps'] = controller.initial_overlaps
         report['target_q_rad'] = controller.target.tolist()
-        report['kp'] = bundle.env.physics['kp']
-        report['kd'] = bundle.env.physics['kd']
+        report['kp'] = controller.servo.physics['kp']
+        report['kd'] = controller.servo.physics['kd']
+        report['training_kp'] = bundle.env.physics['kp']
+        report['training_kd'] = bundle.env.physics['kd']
         print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
         if live:
             # Initialize and warm model process BEFORE enabling any motor.
@@ -327,6 +341,8 @@ def main():
                         observed[i] += 1
                         previous_received[i] = stamp
                 q, velocity = [s['q'] for s in states], [s['velocity'] for s in states]
+            trace.append({'elapsed_s': now-start, 'q_rad': list(q), 'velocity_rad_s': list(velocity),
+                          'commanded_torque_nm': None})
             begin_controller = time.perf_counter()
             if live:
                 packet = worker.receive()
@@ -344,6 +360,7 @@ def main():
             else:
                 torque = controller.step(q, velocity, now)
             begin_send = time.perf_counter()
+            trace[-1]['commanded_torque_nm'] = list(torque)
             if live:
                 bus.torques(torque)
             else:
@@ -414,6 +431,10 @@ def main():
             bundle.env.close()
         output = Path('outputs/real_robot') / (datetime.now().strftime('%Y%m%d_%H%M%S_%f')+'_commission_hold.json')
         output.parent.mkdir(parents=True, exist_ok=True)
+        trace_path = output.with_name(output.stem+'_trace.json')
+        trace_path.write_text(json.dumps({'note': 'Last at most 500 cycles; rejected sample may have no new torque command',
+                                         'gain_scale': args.gain_scale, 'samples': list(trace)}, indent=2)+'\n', encoding='utf-8')
+        report['trace_file'] = str(trace_path)
         output.write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
         print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
         print('REPORT:', output, flush=True)
