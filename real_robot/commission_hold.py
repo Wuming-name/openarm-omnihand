@@ -172,11 +172,11 @@ def _model_worker(connection, run, hardware, q, velocity, stationary_baseline):
 
 class ModelWorker:
     """One outstanding small request: no unbounded queue or CAN in child."""
-    def __init__(self, run, hardware, q, velocity, stationary_baseline):
+    def __init__(self, run, hardware, q, velocity, stationary_baseline, worker_target=None, worker_args=()):
         ctx = mp.get_context('spawn')
         self.connection, child = ctx.Pipe()
-        self.process = ctx.Process(target=_model_worker, args=(child, str(Path(run).resolve()), hardware,
-                                   list(q), list(velocity), stationary_baseline), daemon=True)
+        self.process = ctx.Process(target=worker_target or _model_worker, args=(child, str(Path(run).resolve()), hardware,
+                                   list(q), list(velocity), stationary_baseline, *worker_args), daemon=True)
         self.pending = True
         self.latest = None
         self.process.start()
