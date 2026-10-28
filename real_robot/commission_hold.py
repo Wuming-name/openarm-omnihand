@@ -8,6 +8,7 @@ import argparse
 from datetime import datetime
 import json
 import math
+import multiprocessing as mp
 from pathlib import Path
 import time
 
@@ -69,7 +70,8 @@ class HoldController:
         self.started, self.last_reference = now, -math.inf
         self.max_drift, self.max_torque = 0., np.zeros(7)
 
-    def step(self, q, velocity, now):
+    def reference(self, q, velocity):
+        """Expensive model work; live caller runs this in a separate process."""
         b = self.bundle
         b.update_state(q, velocity)
         if self.overlap_guard is None:
@@ -78,23 +80,113 @@ class HoldController:
             if np.any(np.asarray(q) < b.hard_low) or np.any(np.asarray(q) > b.hard_high):
                 raise RuntimeError('Measured joint outside model hard limits')
             self.overlap_guard.check(contacts(b.env.model, b.env.data, b.env.physics['contact_tolerance_m']))
+        self.check_measured(q, velocity)
+        return b.feedforward()
+
+    def check_measured(self, q, velocity):
+        q, velocity = np.asarray(q), np.asarray(velocity)
+        if q.shape != (7,) or velocity.shape != (7,) or not np.isfinite(q).all() or not np.isfinite(velocity).all():
+            raise RuntimeError('Malformed/nonfinite measured state')
+        if np.any(q < self.bundle.hard_low) or np.any(q > self.bundle.hard_high):
+            raise RuntimeError('Measured joint outside model hard limits')
         drift = float(np.max(np.abs(np.asarray(q)-self.target)))
         drift_limit = .005 if self.stationary_baseline else .05
         speed_limit = .1 if self.stationary_baseline else .15
         if drift > drift_limit or np.max(np.abs(velocity)) > speed_limit:
             raise RuntimeError(f'Supported hold drift >{drift_limit}rad or speed >{speed_limit}rad/s')
         self.max_drift = max(self.max_drift, drift)
-        if now-self.last_reference >= b.env.dt-1e-8:
-            # Match the trained nominal controller immediately. A ramp from zero
-            # FF would remove gravity support and change the closed-loop test.
-            ff = b.feedforward()
-            self.servo.accept(self.target.tolist(), [0.]*7, ff.tolist(), list(q), now)
-            self.last_reference = now
+
+    def step_fast(self, q, velocity, now, fresh_ff=None):
+        """500Hz measured-state checks and PD only; no MuJoCo or printing."""
+        self.check_measured(q, velocity)
+        if fresh_ff is not None:
+            self.servo.accept(self.target.tolist(), [0.]*7, list(fresh_ff), list(q), now)
         torque = self.servo.tick(list(q), list(velocity), now)
         if self.servo.fault:
             raise RuntimeError('Servo latched fault: '+self.servo.fault)
         self.max_torque = np.maximum(self.max_torque, np.abs(torque))
         return torque
+
+    def step(self, q, velocity, now):
+        b = self.bundle
+        ff = self.reference(q, velocity)
+        fresh_ff = None
+        if now-self.last_reference >= b.env.dt-1e-8:
+            # Match the trained nominal controller immediately. A ramp from zero
+            # FF would remove gravity support and change the closed-loop test.
+            fresh_ff = ff
+            self.last_reference = now
+        return self.step_fast(q, velocity, now, fresh_ff)
+
+
+def _model_worker(connection, run, hardware, q, velocity, stationary_baseline):
+    bundle = None
+    try:
+        bundle = RunBundle(run, load_policy=False)
+        controller = HoldController(bundle, hardware, q, velocity, 0., stationary_baseline)
+        while True:
+            begin = time.perf_counter()
+            ff = controller.reference(q, velocity)
+            connection.send({'ff': ff.tolist(), 'computed': time.monotonic(),
+                             'model_compute_s': time.perf_counter()-begin})
+            request = connection.recv()
+            if request is None:
+                break
+            q, velocity = request
+    except (EOFError, BrokenPipeError):
+        pass
+    except Exception as exc:
+        try:
+            connection.send({'error': str(exc)})
+        except (EOFError, BrokenPipeError):
+            pass
+    finally:
+        if bundle:
+            bundle.env.close()
+        connection.close()
+
+
+class ModelWorker:
+    """One outstanding small request: no unbounded queue or CAN in child."""
+    def __init__(self, run, hardware, q, velocity, stationary_baseline):
+        ctx = mp.get_context('spawn')
+        self.connection, child = ctx.Pipe()
+        self.process = ctx.Process(target=_model_worker, args=(child, str(Path(run).resolve()), hardware,
+                                   list(q), list(velocity), stationary_baseline), daemon=True)
+        self.pending = True
+        self.latest = None
+        self.process.start()
+        child.close()
+        if not self.connection.poll(15.):
+            self.close()
+            raise RuntimeError('Model worker initialization timed out before motor enable')
+        try:
+            self.receive()
+        except BaseException:
+            self.close()
+            raise
+
+    def receive(self):
+        if self.connection.poll():
+            self.latest = self.connection.recv()
+            self.pending = False
+        if self.latest and 'error' in self.latest:
+            raise RuntimeError('Model worker: '+self.latest['error'])
+        return self.latest
+
+    def request(self, q, velocity):
+        if not self.pending:
+            self.connection.send((list(q), list(velocity)))
+            self.pending = True
+
+    def close(self):
+        try:
+            self.connection.close()
+        finally:
+            self.process.join(timeout=.3)
+            if self.process.is_alive():
+                self.process.terminate()
+                self.process.join(timeout=.5)
 
 
 def main():
@@ -121,10 +213,13 @@ def main():
               'hardware_commands_attempted': False, 'disable_attempts': [],
               'stationary_baseline': args.stationary_baseline,
               'collision_model_validated_for_motion': False}
-    bundle = bus = controller = None
+    bundle = bus = controller = worker = None
     own_enable = False
     intervals, observed = [], [0]*7
     previous_received = [None]*7
+    steps = 0
+    costs = {'receive_s': [], 'controller_s': [], 'send_s': [], 'cycle_work_s': [], 'model_compute_s': []}
+    progress = []
     try:
         bundle = RunBundle(args.run, load_policy=False)
         if live:
@@ -155,6 +250,23 @@ def main():
         report['kd'] = bundle.env.physics['kd']
         print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
         if live:
+            # Initialize and warm model process BEFORE enabling any motor.
+            worker = ModelWorker(args.run, hardware, q, velocity, args.stationary_baseline)
+            bus.states.clear()
+            bus.refresh()
+            deadline = time.monotonic()+.5
+            while len(bus.states) < 7 and time.monotonic() < deadline:
+                bus.drain()
+                time.sleep(.001)
+            states = snapshot(bus, hardware, time.monotonic())
+            if any(s['status'] != 0 for s in states):
+                raise RuntimeError('Motor enabled by another controller during model preparation')
+            q, velocity = [s['q'] for s in states], [s['velocity'] for s in states]
+            controller.check_measured(q, velocity)
+            worker.request(q, velocity)
+            if not worker.connection.poll(.5):
+                raise RuntimeError('Model worker warmup failed before motor enable')
+            worker.receive()
             print('SUPPORTED ARM: 500Hz software PD/MIT torque test, DISABLE on exit.', flush=True)
             # Clear previous firmware targets before the single initial enable.
             report['hardware_commands_attempted'] = True
@@ -177,11 +289,13 @@ def main():
             start = time.monotonic()
             controller.started = start
         previous, next_log, steps = start, start, 0
+        last_model_request, last_generation = -math.inf, None
         period = 1/hardware['servo_hz']
         while True:
             now = time.monotonic() if live else start+steps*period
             if now-start >= args.seconds:
                 break
+            begin_receive = time.perf_counter()
             if live:
                 bus.drain()
                 states = snapshot(bus, hardware, time.monotonic())
@@ -193,24 +307,47 @@ def main():
                         observed[i] += 1
                         previous_received[i] = stamp
                 q, velocity = [s['q'] for s in states], [s['velocity'] for s in states]
-            torque = controller.step(q, velocity, now)
+            begin_controller = time.perf_counter()
+            if live:
+                packet = worker.receive()
+                if not packet or time.monotonic()-packet['computed'] > hardware['command_timeout_s']:
+                    raise RuntimeError('Model reference/collision monitor stale; control stopped')
+                fresh_ff = None
+                if packet['computed'] != last_generation:
+                    fresh_ff = packet['ff']
+                    last_generation = packet['computed']
+                    costs['model_compute_s'].append(packet['model_compute_s'])
+                if now-last_model_request >= bundle.env.dt and not worker.pending:
+                    worker.request(q, velocity)
+                    last_model_request = now
+                torque = controller.step_fast(q, velocity, now, fresh_ff)
+            else:
+                torque = controller.step(q, velocity, now)
+            begin_send = time.perf_counter()
             if live:
                 bus.torques(torque)
             else:
                 bundle.env.data.ctrl[:] = torque
                 mujoco.mj_step(bundle.env.model, bundle.env.data)
                 q, velocity = bundle.env.data.qpos.copy(), bundle.env.data.qvel.copy()
+            end_work = time.perf_counter()
+            costs['receive_s'].append(begin_controller-begin_receive)
+            costs['controller_s'].append(begin_send-begin_controller)
+            costs['send_s'].append(end_work-begin_send)
+            costs['cycle_work_s'].append(end_work-begin_receive)
             if steps:
                 intervals.append(now-previous)
             previous = now
             steps += 1
             if now >= next_log:
-                print(f'HOLD_500HZ t={now-start:.2f}s max_drift={controller.max_drift:.5f}rad', flush=True)
+                # Never synchronously print inside the live servo cadence.
+                progress.append({'elapsed_s': now-start, 'max_drift_rad': controller.max_drift})
                 next_log = now+.5
             if live:
                 # Absolute cadence; never burst old commands to catch up.
                 remaining = start+steps*period-time.monotonic()
                 if remaining < -period:
+                    report['deadline_overrun_s'] = -remaining
                     raise RuntimeError('Cannot sustain 500Hz; test stops rather than sends a catch-up burst')
                 if remaining > 0:
                     time.sleep(remaining)
@@ -221,9 +358,8 @@ def main():
         if live and (report['measured_loop_hz'] < 475 or min(observed) < .8*steps):
             raise RuntimeError('Insufficient loop rate or fresh per-axis feedback updates for 500Hz acceptance')
         report['passed'] = True
-    except (RuntimeError, ValueError, OSError, KeyboardInterrupt) as exc:
+    except (RuntimeError, ValueError, OSError, EOFError, KeyboardInterrupt) as exc:
         report['error'] = str(exc)
-        print('STOP:', str(exc), flush=True)
     finally:
         if bus:
             if own_enable:
@@ -238,6 +374,17 @@ def main():
                 report['disable_delivery_verified'] = False
                 print('Disable attempted; arm must remain supported. Delivery not guaranteed.', flush=True)
             bus.close()
+        if worker:
+            worker.close()
+        # Preserve partial diagnostics even when a timing fault stops early.
+        report.update(cycles=steps,
+                      measured_loop_hz=1/float(np.mean(intervals)) if intervals else None,
+                      max_loop_gap_s=max(intervals) if intervals else None,
+                      observed_feedback_updates=observed if live else None,
+                      model_reference_updates=len(costs['model_compute_s']),
+                      progress=progress,
+                      timing_costs={key: {'max_s': max(values), 'p95_s': float(np.percentile(values, 95)),
+                                         'mean_s': float(np.mean(values))} for key, values in costs.items() if values})
         if controller:
             report['max_drift_rad'] = controller.max_drift
             report['max_commanded_torque_nm'] = controller.max_torque.tolist()

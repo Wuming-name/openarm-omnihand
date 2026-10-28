@@ -1,9 +1,10 @@
 import unittest
+from unittest import mock
 from pathlib import Path
 import mujoco
 import numpy as np
 
-from real_robot.commission_hold import HoldController, StationaryOverlapGuard
+from real_robot.commission_hold import HoldController, StationaryOverlapGuard, ModelWorker
 from real_robot.control import RunBundle
 from real_robot.settings import load
 
@@ -54,6 +55,29 @@ class CommissionController(unittest.TestCase):
             HoldController(self.bundle, load(), self.q, np.zeros(7), 0., True)
         with self.assertRaises(RuntimeError):
             controller.step(np.array([.006,0,0,0,0,0,0]), np.zeros(7), .002)
+
+    def test_fast_servo_does_not_execute_model_work(self):
+        ff = self.controller.reference(self.q, np.zeros(7))
+        with mock.patch.object(self.bundle, 'update_state', side_effect=AssertionError('model work in fast loop')):
+            torque = self.controller.step_fast(self.q, np.zeros(7), 0., ff)
+            np.testing.assert_allclose(torque, ff, atol=1e-9)
+            self.assertTrue(np.isfinite(self.controller.step_fast(self.q, np.zeros(7), .002)).all())
+
+    def test_spawned_model_worker_supplies_reference_and_stops_on_bad_state(self):
+        worker = ModelWorker(self.fixture_run, load(), self.q, np.zeros(7), False)
+        try:
+            np.testing.assert_allclose(worker.latest['ff'], self.controller.reference(self.q, np.zeros(7)))
+            worker.request(self.q, np.zeros(7))
+            self.assertTrue(worker.connection.poll(3.))
+            self.assertEqual(len(worker.receive()['ff']), 7)
+            bad = self.q.copy()
+            bad[0] += .06
+            worker.request(bad, np.zeros(7))
+            self.assertTrue(worker.connection.poll(3.))
+            with self.assertRaises(RuntimeError):
+                worker.receive()
+        finally:
+            worker.close()
 
 
 class BaselineGuardTests(unittest.TestCase):
