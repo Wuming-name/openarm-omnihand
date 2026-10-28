@@ -47,11 +47,13 @@ probe 不依赖 ROS、PyTorch 或 MuJoCo，只使用系统 Python 标准库。�
 
 ```bash
 sudo ip link set can0 down
-sudo ip link set can0 type can bitrate 1000000 sample-point 0.80 \
-    dbitrate 5000000 dsample-point 0.75 fd on
+sudo ip link set can0 type can bitrate 1000000 sample-point 0.75 \
+    dbitrate 5000000 dsample-point 0.75 dsjw 2 fd on restart-ms 0
 sudo ip link set can0 up
 python3 -m real_robot.probe
 ```
+
+2026-10-28 用户提供的 Ubuntu 报告 `20261028_194206_385603_probe.json` 显示：采用上面的 can0 时序后，J1～J7 的 ID、MIT 模式、P/V/T 量程全部读取并匹配，查询前后保持 ERROR-ACTIVE、tx/rx 错误计数为 0，错误警告/被动累计计数未增加。这仅是一次只读检查；不是 500 Hz 控制验收。七轴状态均为 0（未使能），TIMEOUT 原值均为 0，通信丢失保护尚未核实。不得把 0 填成“已验证的有限超时”，也不自动改写电机寄存器。
 
 这不改变电机内部参数，也不配置手部 can1。只读查询并不接管原控制器；不要同时运行两套力矩发送程序。
 
