@@ -1,0 +1,43 @@
+{
+  "checked_date": "2026-10-28",
+  "repositories": {
+    "enactic/openarm_can": "bfd4e52194aefe38389fa6e670be3738136facb9",
+    "enactic/openarm_ros2": "8f23aeabb372c256f7807b9a74d48e035fc68386",
+    "enactic/openarm": "46cfc7c93ba271f2ff08823ab43536ee76184d32"
+  },
+  "reference_file_hashes": [
+    {
+      "file": "openarm_3-configure-test.mdx",
+      "sha256": "f01db6e2851d201e4913faee76b616d620bee580cfa6e1fe5742d6479f4741bd"
+    },
+    {
+      "file": "openarm_can_dm_motor.cpp",
+      "sha256": "ffecb9466ac84006d1b1d1c8275959663a7781e687b058e935a04aeac6a9a9a6"
+    },
+    {
+      "file": "openarm_can_dm_motor_constants.hpp",
+      "sha256": "3eae75095d3151a01bc0e568899554c21e11c7f89c830df153c561774f0fabe5"
+    },
+    {
+      "file": "openarm_can_dm_motor_control.cpp",
+      "sha256": "c21cde56e933ca0aa8819c571fe9528f8b5a3827da8e78aa8d05f29026ad4fd3"
+    },
+    {
+      "file": "openarm_can_dm_motor_device_collection.cpp",
+      "sha256": "da951f357f70b3f1c662884e451c257792574014cfef85e828b0cdea7a8721a1"
+    },
+    {
+      "file": "openarm_can_openarm.cpp",
+      "sha256": "e0c821d593f9728ad76507a9b42a1a161f908c475dc9d1295e1829a15fef7988"
+    },
+    {
+      "file": "openarm_ros2_openarm_simple_hardware.cpp",
+      "sha256": "a76793f202437da56d375af7fd9bfb705a3c93c0c69079077315ea648b5690fc"
+    },
+    {
+      "file": "openarm_ros2_ros2_controllers.yaml",
+      "sha256": "e41935875004710228a85423befe3105df50711129a59fcb0c64d861f935ab8f"
+    }
+  ],
+  "note": "Reference snapshots were inspected during development, not bundled. Protocol facts independently implemented. IDs are official defaults, not a measurement of this robot."
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "arm_channel": "can0",
+  "hand_channel": "can1",
+  "hand_id": 9,
+  "bitrate": 1000000,
+  "data_bitrate": 5000000,
+  "servo_hz": 500,
+  "state_hz": 100,
+  "command_timeout_s": 0.10,
+  "feedback_timeout_s": 0.05,
+  "max_timer_gap_s": 0.02,
+  "max_joint_speed_rad_s": 1.0,
+  "max_temperature_c": 70,
+  "over_continuous_torque_seconds": 0.5,
+  "max_step_to_A_rad": 2.0,
+  "to_A_seconds": 12.0,
+  "initial_hold_seconds": 1.0,
+  "hold_B_seconds": 5.0,
+  "hand_timeout_s": 2.0,
+  "hand_position_tolerance_counts": 128,
+  "calibration": {
+    "joint_mapping_and_zero_verified": false,
+    "hand_pose_and_tcp_match_training": false,
+    "hardware_stop_and_support_verified": false,
+    "motor_timeout_raw_verified": null,
+    "motor_timeout_seconds_verified": null
+  },
+  "motors": [
+    {"joint": "openarm_right_joint1", "model": "DM-J8009P-2EC", "protocol": "DM8009", "tx": 1, "rx": 17, "sign": 1, "offset_rad": 0.0, "mechanical_peak_nm": 40.0, "continuous_nm": 20.0},
+    {"joint": "openarm_right_joint2", "model": "DM-J8009P-2EC", "protocol": "DM8009", "tx": 2, "rx": 18, "sign": 1, "offset_rad": 0.0, "mechanical_peak_nm": 40.0, "continuous_nm": 20.0},
+    {"joint": "openarm_right_joint3", "model": "DM-J4340P-2EC", "protocol": "DM4340", "tx": 3, "rx": 19, "sign": 1, "offset_rad": 0.0, "mechanical_peak_nm": 27.0, "continuous_nm": 9.0},
+    {"joint": "openarm_right_joint4", "model": "DM-J4340-2EC", "protocol": "DM4340", "tx": 4, "rx": 20, "sign": 1, "offset_rad": 0.0, "mechanical_peak_nm": 27.0, "continuous_nm": 9.0},
+    {"joint": "openarm_right_joint5", "model": "DM-J4310-2EC V1.1", "protocol": "DM4310", "tx": 5, "rx": 21, "sign": 1, "offset_rad": 0.0, "mechanical_peak_nm": 7.0, "continuous_nm": 3.0},
+    {"joint": "openarm_right_joint6", "model": "DM-J4310-2EC V1.1", "protocol": "DM4310", "tx": 6, "rx": 22, "sign": 1, "offset_rad": 0.0, "mechanical_peak_nm": 7.0, "continuous_nm": 3.0},
+    {"joint": "openarm_right_joint7", "model": "DM-J4310-2EC V1.1", "protocol": "DM4310", "tx": 7, "rx": 23, "sign": 1, "offset_rad": 0.0, "mechanical_peak_nm": 7.0, "continuous_nm": 3.0}
+  ]
+}

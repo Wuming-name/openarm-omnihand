@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-28",
+  "environment": "Windows, Python 3.11.1; deployment sources also parsed with Python 3.10 grammar",
+  "unit_tests": {"passed": 17, "failed": 0},
+  "controller_equivalence": {
+    "passed": true,
+    "policy_steps": 20,
+    "checks": ["37 observation fields", "500 Hz software PD", "nominal feedforward", "total torque clipping", "reference environment trajectory"]
+  },
+  "mission_baseline_simulation": {
+    "passed": true,
+    "backend": "MuJoCo only",
+    "phases": ["HOLD_INITIAL", "FISTING", "MOVE_A", "POLICY", "HOLD_B", "DONE"],
+    "policy_replacement": "Diagnostic classical baseline; not a trained PPO deployment acceptance test",
+    "hardware_commands_sent": false
+  },
+  "not_tested": ["Ubuntu ROS 2 runtime", "SocketCAN physical transport", "500 Hz real-time scheduling", "Seven actual motor IDs and registers", "Motor watchdog behavior", "Joint and palm calibration", "Real hand closure and load dynamics", "Successful trained PPO full deployment"],
+  "live_defaults_enabled": false,
+  "note": "Calibration flags remain false. Official protocol ranges do not establish real robot readiness. No motor configuration registers are written."
+}
