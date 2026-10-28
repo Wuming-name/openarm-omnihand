@@ -20,13 +20,48 @@ from .control import RunBundle
 from .hold_test import snapshot
 from .servo import Servo
 from .settings import DEFAULT, load
+from rl_ppo.model import contacts
+
+
+class StationaryOverlapGuard:
+    """Narrow stationary commissioning allowance, NOT a motion collision model."""
+    ALLOWED = {
+        frozenset(('collision_openarm_body_link0_0', f'collision_omni_R_thumb_{part}_0')): .025
+        for part in ('mcp', 'pip', 'dip')
+    }
+    ALLOWED[frozenset(('collision_openarm_right_link5_0_piece0', 'collision_openarm_right_link7_0_piece7'))] = .004
+
+    def __init__(self, initial):
+        self.depths = {}
+        for item in initial:
+            pair = frozenset((item['a'], item['b']))
+            depth = -float(item['distance_m'])
+            if pair not in self.ALLOWED or not math.isfinite(depth) or depth > self.ALLOWED[pair]:
+                raise RuntimeError('Initial overlap outside stationary commissioning scope')
+            self.depths[pair] = max(depth, self.depths.get(pair, 0.))
+
+    def check(self, current):
+        for item in current:
+            pair = frozenset((item['a'], item['b']))
+            depth = -float(item['distance_m'])
+            if pair not in self.depths or not math.isfinite(depth) or depth > self.depths[pair]+.0005:
+                raise RuntimeError('New contact or initial model overlap worsened >0.5mm')
 
 
 class HoldController:
-    def __init__(self, bundle, hardware, q, velocity, now):
+    def __init__(self, bundle, hardware, q, velocity, now, stationary_baseline=False):
         self.bundle = bundle
+        self.overlap_guard = None
+        self.initial_overlaps = []
+        self.stationary_baseline = stationary_baseline
         bundle.update_state(q, velocity)
-        bundle.check_state(startup=True)
+        if stationary_baseline:
+            if np.max(np.abs(q)) > .1:
+                raise RuntimeError('Stationary baseline is limited to current near-zero pose, all |q|<=0.1rad')
+            self.initial_overlaps = contacts(bundle.env.model, bundle.env.data, bundle.env.physics['contact_tolerance_m'])
+            self.overlap_guard = StationaryOverlapGuard(self.initial_overlaps)
+        else:
+            bundle.check_state(startup=True)
         self.target = np.asarray(q, dtype=float).copy()
         if np.any(self.target < bundle.hard_low) or np.any(self.target > bundle.hard_high):
             raise RuntimeError('Initial target outside model hard limits')
@@ -37,10 +72,17 @@ class HoldController:
     def step(self, q, velocity, now):
         b = self.bundle
         b.update_state(q, velocity)
-        b.check_state(startup=True)
+        if self.overlap_guard is None:
+            b.check_state(startup=True)
+        else:
+            if np.any(np.asarray(q) < b.hard_low) or np.any(np.asarray(q) > b.hard_high):
+                raise RuntimeError('Measured joint outside model hard limits')
+            self.overlap_guard.check(contacts(b.env.model, b.env.data, b.env.physics['contact_tolerance_m']))
         drift = float(np.max(np.abs(np.asarray(q)-self.target)))
-        if drift > .05 or np.max(np.abs(velocity)) > .15:
-            raise RuntimeError('Supported hold drift >0.05rad or speed >0.15rad/s')
+        drift_limit = .005 if self.stationary_baseline else .05
+        speed_limit = .1 if self.stationary_baseline else .15
+        if drift > drift_limit or np.max(np.abs(velocity)) > speed_limit:
+            raise RuntimeError(f'Supported hold drift >{drift_limit}rad or speed >{speed_limit}rad/s')
         self.max_drift = max(self.max_drift, drift)
         if now-self.last_reference >= b.env.dt-1e-8:
             # Match the trained nominal controller immediately. A ramp from zero
@@ -62,16 +104,23 @@ def main():
     parser.add_argument('--backend', choices=['mock', 'socketcan'], default='mock')
     parser.add_argument('--execute', action='store_true')
     parser.add_argument('--seconds', type=float, default=3.)
+    parser.add_argument('--stationary-baseline', action='store_true', help='Near-zero fixed-pose test only; monitor known initial model overlaps without certifying them safe')
     args = parser.parse_args()
     if not math.isfinite(args.seconds) or not 2 <= args.seconds <= 5:
         parser.error('--seconds must be 2..5')
     live = args.backend == 'socketcan'
     if live and not args.execute:
         parser.error('Live test requires --execute and physically supported arm')
+    if args.stationary_baseline and args.seconds > 3:
+        parser.error('Stationary baseline test limited to at most 3 seconds')
+    if args.stationary_baseline and not live:
+        parser.error('Stationary baseline is a physical supported-pose test; mock integration retains original contact forces. Use ordinary mock for dynamics tests.')
     hardware = load(args.config)
     report = {'backend': args.backend, 'timing_clock': 'monotonic' if live else 'simulation', 'TIMEOUT_changed': False,
               'watchdog_verified': False, 'is_ppo_test': False, 'passed': False,
-              'hardware_commands_attempted': False, 'disable_attempts': []}
+              'hardware_commands_attempted': False, 'disable_attempts': [],
+              'stationary_baseline': args.stationary_baseline,
+              'collision_model_validated_for_motion': False}
     bundle = bus = controller = None
     own_enable = False
     intervals, observed = [], [0]*7
@@ -94,12 +143,13 @@ def main():
             q, velocity = [s['q'] for s in states], [s['velocity'] for s in states]
         else:
             q, velocity = bundle.env.data.qpos.copy(), bundle.env.data.qvel.copy()
-        # Preserve measured inputs even if collision preflight rejects them.
+        # Preserve the measured input even if collision preflight rejects it.
         report['measured_q_rad'] = np.asarray(q, dtype=float).tolist()
         report['measured_velocity_rad_s'] = np.asarray(velocity, dtype=float).tolist()
         report['model_sha256'] = bundle.env.task['model_sha256']
         start = time.monotonic() if live else 0.
-        controller = HoldController(bundle, hardware, q, velocity, start)
+        controller = HoldController(bundle, hardware, q, velocity, start, args.stationary_baseline)
+        report['initial_model_overlaps'] = controller.initial_overlaps
         report['target_q_rad'] = controller.target.tolist()
         report['kp'] = bundle.env.physics['kp']
         report['kd'] = bundle.env.physics['kd']

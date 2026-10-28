@@ -3,7 +3,7 @@ from pathlib import Path
 import mujoco
 import numpy as np
 
-from real_robot.commission_hold import HoldController
+from real_robot.commission_hold import HoldController, StationaryOverlapGuard
 from real_robot.control import RunBundle
 from real_robot.settings import load
 
@@ -45,3 +45,38 @@ class CommissionController(unittest.TestCase):
         self.controller.step(self.q, np.zeros(7), 0.)
         with self.assertRaises(RuntimeError):
             self.controller.step(self.q, np.zeros(7), .03)
+
+    def test_stationary_baseline_accepts_only_near_zero_and_fixed_target(self):
+        controller = HoldController(self.bundle, load(), np.zeros(7), np.zeros(7), 0., True)
+        self.assertTrue(controller.initial_overlaps)
+        self.assertTrue(np.isfinite(controller.step(np.zeros(7), np.zeros(7), 0.)).all())
+        with self.assertRaises(RuntimeError):
+            HoldController(self.bundle, load(), self.q, np.zeros(7), 0., True)
+        with self.assertRaises(RuntimeError):
+            controller.step(np.array([.006,0,0,0,0,0,0]), np.zeros(7), .002)
+
+
+class BaselineGuardTests(unittest.TestCase):
+    def item(self, depth=.018):
+        return {'a': 'collision_openarm_body_link0_0',
+                'b': 'collision_omni_R_thumb_mcp_0', 'distance_m': -depth}
+
+    def test_same_or_reduced_initial_overlap_accepted(self):
+        guard = StationaryOverlapGuard([self.item()])
+        guard.check([self.item(.017)])
+        guard.check([])
+
+    def test_increasing_overlap_rejected(self):
+        with self.assertRaises(RuntimeError):
+            StationaryOverlapGuard([self.item()]).check([self.item(.019)])
+
+    def test_new_pair_rejected_even_if_in_known_allowlist(self):
+        item = self.item()
+        item['b'] = 'collision_omni_R_thumb_pip_0'
+        with self.assertRaises(RuntimeError):
+            StationaryOverlapGuard([self.item()]).check([item])
+
+    def test_unknown_or_deep_or_nonfinite_initial_contact_rejected(self):
+        for item in [dict(self.item(), b='other_link'), self.item(.026), self.item(float('nan'))]:
+            with self.assertRaises(RuntimeError):
+                StationaryOverlapGuard([item])
