@@ -1,0 +1,79 @@
+{
+  "validation_date": "2026-10-28",
+  "authoring_platform": "Windows / Python 3.11.1",
+  "target": "Ubuntu 22.04 / Python 3.10 / ROS 2 Humble untouched",
+  "versions": {
+    "mujoco": "3.4.0",
+    "torch": "2.5.1+cpu",
+    "gymnasium": "1.2.1",
+    "stable_baselines3": "2.7.1"
+  },
+  "unit_tests_passed": 6,
+  "python_310_syntax": "passed",
+  "task_prepare": "passed; gravity, frozen-body transform/mass preservation, 7 DOFs, collision-checked A/B, nominal hold",
+  "same_binary_for_baseline_and_final_validation": true,
+  "task_candidate": {
+    "A_base_m": [
+      0.08339818139019296,
+      -0.40830227726525453,
+      0.37757792895122966
+    ],
+    "B_base_m": [
+      0.01748733472923838,
+      -0.5647041617424838,
+      0.539980519622603
+    ],
+    "distance_m": 0.23490506727690247,
+    "hardware_validated": false
+  },
+  "classical_baseline": {
+    "is_success": true,
+    "failure": null,
+    "distance_m": 0.005883027946946925,
+    "orientation_error_rad": 0.017852433652962046,
+    "tcp_speed_m_s": 0.011399766426270257,
+    "tcp_base_m": [
+      0.020965510616157767,
+      -0.5618886964785499,
+      0.536161427365038
+    ],
+    "contacts": [],
+    "simulation_seconds": 2.999999999999891
+  },
+  "ppo_smoke": {
+    "steps": 512,
+    "parallel_envs": 2,
+    "rollout": 128,
+    "save_reload_nominal_randomized_evaluation": "passed",
+    "success_rate": 0.0,
+    "note": "Pipeline check only; short policy failed by self-collision, not a trained deployable policy"
+  },
+  "callback_smoke": {
+    "steps": 256,
+    "parallel_envs": 2,
+    "checkpoints_written": 2,
+    "best_model_saved": true,
+    "periodic_evaluation": "passed"
+  },
+  "not_verified": [
+    "Ubuntu execution",
+    "graphical viewer",
+    "long PPO convergence",
+    "hardware torque/dynamics mapping",
+    "physical fist pose and TCP calibration",
+    "ROS 2 deployment"
+  ],
+  "hardware_ready": false,
+  "environment_verification": {
+    "passed": true,
+    "checks": [
+      "SB3 Gymnasium check_env",
+      "37 observations, seven frozen-hand DOFs, deterministic reset, gravity",
+      "Malformed/nonfinite actions rejected",
+      "Nominal zero-action hold across resets",
+      "Random actions: finite state, total torque, velocity, acceleration and target bounds",
+      "Seeded mass/gain/noise randomization and randomized hold"
+    ],
+    "hardware_ready": false
+  }
+}

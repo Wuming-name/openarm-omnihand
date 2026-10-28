@@ -1,0 +1,3 @@
+!assets/wrist/*.obj
+__pycache__/
+*.pyc

@@ -1,0 +1,95 @@
+{
+  "tool": "trimesh",
+  "version": "4.7.4",
+  "method": "components",
+  "parameters": {
+    "split_connected_components": true
+  },
+  "geoms": {
+    "collision_openarm_right_link5_0": {
+      "source_mesh_sha256": "9e23f4baa884cc7dd997ce665f7502f8c27d5e708c263f6958e39f4449a77722",
+      "planar_patches_retained_with_nearest_solid": 0,
+      "parts": [
+        {
+          "file": "collision_openarm_right_link5_0_part00.obj",
+          "sha256": "d5f1fba4035dfc478f373756095b76896971063059c3150b5a331fac1b2992b1"
+        },
+        {
+          "file": "collision_openarm_right_link5_0_part01.obj",
+          "sha256": "57c4132a87aff98279bb85ba053dd122f91c053b072ca5a4e0f6859ec80df498"
+        },
+        {
+          "file": "collision_openarm_right_link5_0_part02.obj",
+          "sha256": "c5bec5862a72cb454ea212722ed532c8b95a0146783723556e7a5fbedd4804e8"
+        },
+        {
+          "file": "collision_openarm_right_link5_0_part03.obj",
+          "sha256": "e6b7327118fc6b40511306df45ac4e6c964a05a9432a115b3fac42cce6ea8cf8"
+        }
+      ]
+    },
+    "collision_openarm_right_link7_0": {
+      "source_mesh_sha256": "1ed7612a69b6ff725819a4d38dd5d0df099bf3cae5f53a35675571d22ee47ecc",
+      "planar_patches_retained_with_nearest_solid": 3,
+      "parts": [
+        {
+          "file": "collision_openarm_right_link7_0_part00.obj",
+          "sha256": "57d909435467827b3e9f3a51a08858d0de3bbc613542ec6669c43803b7aeee56"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part01.obj",
+          "sha256": "249ae02e983850ff7f3dfbaf2b961a447c9ae7f0676d510285d736d5a8324f49"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part02.obj",
+          "sha256": "5bad4f2bcc814f03e794d5b1b0139545de612b69a7b739ba1513cd2830d730a6"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part03.obj",
+          "sha256": "1e5a4b833171b0e32d9c1fc94c8796b8538d74b880878d2b549db95461fbe84f"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part04.obj",
+          "sha256": "cfda24f3d19a000bdf11e77a4841d76ccfce870a88f623bb3a7faae82f9f06a5"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part05.obj",
+          "sha256": "41ee990cb72ca744dd03b47aed31204e836c46694daf6d5a191b4f27cd3bbdfd"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part06.obj",
+          "sha256": "2b6a4c271cb70812046c54795c576835d27bb518a0b14b867f6f6b2710d70380"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part07.obj",
+          "sha256": "3c4a36dca64ca60e997054cbbf45ff47aab09977c2ebd5d1e972b0ac185883fc"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part08.obj",
+          "sha256": "0a0dfa72d1cca19048d44a99488d4369096139acaff5bd40f43e04cc858a9304"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part09.obj",
+          "sha256": "634c25e6b1f09ac04b42f56808b380af1cc167b48e3b95a076dc8fbe3b58ae8b"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part10.obj",
+          "sha256": "a1e9a354e344d3e44c1a16ccc3865eb8755467936792bd46e6960d1f7f6220f2"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part11.obj",
+          "sha256": "c15549958eb3db1451cbfecb1e57fe1e3180717f72a42c773b55ec9910757595"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part12.obj",
+          "sha256": "d192383dc97bb5842e134377e3e86199028b43129a926e144b8d6033f509bdd4"
+        },
+        {
+          "file": "collision_openarm_right_link7_0_part13.obj",
+          "sha256": "99a38b807f8a3e8fec316852d9c34b97a2ad9bfad454cc5655fe5081ee55985e"
+        }
+      ]
+    }
+  },
+  "status": "approximate convex decomposition; inspect visually before physical deployment"
+}
