@@ -94,6 +94,10 @@ def main():
             q, velocity = [s['q'] for s in states], [s['velocity'] for s in states]
         else:
             q, velocity = bundle.env.data.qpos.copy(), bundle.env.data.qvel.copy()
+        # Preserve measured inputs even if collision preflight rejects them.
+        report['measured_q_rad'] = np.asarray(q, dtype=float).tolist()
+        report['measured_velocity_rad_s'] = np.asarray(velocity, dtype=float).tolist()
+        report['model_sha256'] = bundle.env.task['model_sha256']
         start = time.monotonic() if live else 0.
         controller = HoldController(bundle, hardware, q, velocity, start)
         report['target_q_rad'] = controller.target.tolist()
