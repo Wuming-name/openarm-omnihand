@@ -24,6 +24,12 @@ from .settings import DEFAULT, load
 from rl_ppo.model import contacts
 
 
+class HoldViolation(RuntimeError):
+    def __init__(self, message, details):
+        super().__init__(message)
+        self.details = details
+
+
 class StationaryOverlapGuard:
     """Narrow stationary commissioning allowance, NOT a motion collision model."""
     ALLOWED = {
@@ -92,9 +98,21 @@ class HoldController:
         drift = float(np.max(np.abs(np.asarray(q)-self.target)))
         drift_limit = .005 if self.stationary_baseline else .05
         speed_limit = .1 if self.stationary_baseline else .15
-        if drift > drift_limit or np.max(np.abs(velocity)) > speed_limit:
-            raise RuntimeError(f'Supported hold drift >{drift_limit}rad or speed >{speed_limit}rad/s')
+        # Include the rejected sample, not just previously accepted samples.
         self.max_drift = max(self.max_drift, drift)
+        if drift > drift_limit or np.max(np.abs(velocity)) > speed_limit:
+            drift_axis = int(np.argmax(np.abs(q-self.target)))
+            speed_axis = int(np.argmax(np.abs(velocity)))
+            details = {'source': 'measured_state_guard', 'q_rad': q.tolist(),
+                       'target_q_rad': self.target.tolist(), 'velocity_rad_s': velocity.tolist(),
+                       'position_errors_rad': (q-self.target).tolist(),
+                       'max_drift_rad': drift, 'drift_axis': drift_axis+1,
+                       'max_abs_speed_rad_s': float(np.max(np.abs(velocity))), 'speed_axis': speed_axis+1,
+                       'drift_limit_rad': drift_limit, 'speed_limit_rad_s': speed_limit,
+                       'drift_exceeded': bool(drift > drift_limit),
+                       'speed_exceeded': bool(np.max(np.abs(velocity)) > speed_limit)}
+            raise HoldViolation(f"Measured guard: J{drift_axis+1} drift={drift:.7f}rad (limit {drift_limit}); "
+                                f"J{speed_axis+1} speed={float(velocity[speed_axis]):.7f}rad/s (limit ±{speed_limit})", details)
 
     def step_fast(self, q, velocity, now, fresh_ff=None):
         """500Hz measured-state checks and PD only; no MuJoCo or printing."""
@@ -137,7 +155,7 @@ def _model_worker(connection, run, hardware, q, velocity, stationary_baseline):
         pass
     except Exception as exc:
         try:
-            connection.send({'error': str(exc)})
+            connection.send({'error': str(exc), 'stop_details': getattr(exc, 'details', None)})
         except (EOFError, BrokenPipeError):
             pass
     finally:
@@ -171,7 +189,9 @@ class ModelWorker:
             self.latest = self.connection.recv()
             self.pending = False
         if self.latest and 'error' in self.latest:
-            raise RuntimeError('Model worker: '+self.latest['error'])
+            details = self.latest.get('stop_details') or {}
+            details['source'] = 'model_worker'
+            raise HoldViolation('Model worker: '+self.latest['error'], details)
         return self.latest
 
     def request(self, q, velocity):
@@ -360,6 +380,8 @@ def main():
         report['passed'] = True
     except (RuntimeError, ValueError, OSError, EOFError, KeyboardInterrupt) as exc:
         report['error'] = str(exc)
+        if hasattr(exc, 'details'):
+            report['stop_details'] = exc.details
     finally:
         if bus:
             if own_enable:

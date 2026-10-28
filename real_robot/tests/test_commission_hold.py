@@ -4,7 +4,7 @@ from pathlib import Path
 import mujoco
 import numpy as np
 
-from real_robot.commission_hold import HoldController, StationaryOverlapGuard, ModelWorker
+from real_robot.commission_hold import HoldController, StationaryOverlapGuard, ModelWorker, HoldViolation
 from real_robot.control import RunBundle
 from real_robot.settings import load
 
@@ -42,6 +42,23 @@ class CommissionController(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             self.controller.step(self.q, np.ones(7)*.16, .002)
 
+    def test_rejected_sample_preserves_exact_axis_and_drift(self):
+        q = self.q.copy()
+        q[3] += .06
+        with self.assertRaises(HoldViolation) as caught:
+            self.controller.check_measured(q, np.zeros(7))
+        self.assertEqual(caught.exception.details['drift_axis'], 4)
+        self.assertTrue(caught.exception.details['drift_exceeded'])
+        self.assertFalse(caught.exception.details['speed_exceeded'])
+        self.assertAlmostEqual(self.controller.max_drift, .06)
+        velocity = np.zeros(7)
+        velocity[5] = -.16
+        with self.assertRaises(HoldViolation) as caught:
+            self.controller.check_measured(self.q, velocity)
+        self.assertEqual(caught.exception.details['speed_axis'], 6)
+        self.assertTrue(caught.exception.details['speed_exceeded'])
+        self.assertFalse(caught.exception.details['drift_exceeded'])
+
     def test_late_tick_is_not_treated_as_valid_hold(self):
         self.controller.step(self.q, np.zeros(7), 0.)
         with self.assertRaises(RuntimeError):
@@ -74,8 +91,10 @@ class CommissionController(unittest.TestCase):
             bad[0] += .06
             worker.request(bad, np.zeros(7))
             self.assertTrue(worker.connection.poll(3.))
-            with self.assertRaises(RuntimeError):
+            with self.assertRaises(HoldViolation) as caught:
                 worker.receive()
+            self.assertEqual(caught.exception.details['source'], 'model_worker')
+            self.assertTrue(caught.exception.details['drift_exceeded'])
         finally:
             worker.close()
 
