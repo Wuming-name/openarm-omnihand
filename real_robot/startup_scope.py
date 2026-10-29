@@ -8,6 +8,11 @@ SCREENED_20261029 = (
     -0.028801403830014394,
 )
 SCREENED_START_TOLERANCE_RAD = .002
+SCREENED_20261029_164521 = (
+    0.004768444342717615, 0.010490577553978753, 0.015449759670405072,
+    0.05893797207598972, 0.12417029068436669, 0.00705729762722207,
+    -0.029182879377431803,
+)
 
 
 def classify_start_pose(q):
@@ -16,7 +21,11 @@ def classify_start_pose(q):
         raise ValueError('Expected seven finite initial joint positions')
     if max(abs(x) for x in values) <= .1:
         return 'near_zero_0.1rad'
-    if all(abs(a-b) <= SCREENED_START_TOLERANCE_RAD
-           for a, b in zip(values, SCREENED_20261029)):
-        return 'screened_pose_20261029_153744'
+    for name, anchor in (
+        ('screened_pose_20261029_153744', SCREENED_20261029),
+        ('screened_pose_20261029_164521', SCREENED_20261029_164521),
+    ):
+        if all(abs(a-b) <= SCREENED_START_TOLERANCE_RAD
+               for a, b in zip(values, anchor)):
+            return name
     raise ValueError('Start outside near-zero scope and the narrowly screened 20261029 pose')

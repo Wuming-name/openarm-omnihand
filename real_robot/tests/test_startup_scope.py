@@ -1,6 +1,6 @@
 import unittest
 
-from real_robot.startup_scope import classify_start_pose, SCREENED_20261029
+from real_robot.startup_scope import classify_start_pose, SCREENED_20261029, SCREENED_20261029_164521
 
 
 class InitialPoseScope(unittest.TestCase):
@@ -22,5 +22,14 @@ class InitialPoseScope(unittest.TestCase):
 
     def test_malformed_and_nonfinite_rejected(self):
         for q in ([0.]*6, [0.]*8, [float('nan')]*7, [float('inf')]*7):
+            with self.assertRaises(ValueError):
+                classify_start_pose(q)
+
+    def test_disabled_settled_pose_is_separately_scoped(self):
+        self.assertEqual(classify_start_pose(SCREENED_20261029_164521),
+                         'screened_pose_20261029_164521')
+        for axis in range(7):
+            q = list(SCREENED_20261029_164521)
+            q[axis] -= .0021
             with self.assertRaises(ValueError):
                 classify_start_pose(q)

@@ -10,7 +10,7 @@ from real_robot.commission_hold import HoldViolation, ModelWorker
 from real_robot.control import RunBundle
 from real_robot.settings import load
 from real_robot.startup_joint_test import reference_at, TrackingController, validate_first_segment, _startup_worker
-from real_robot.startup_scope import SCREENED_20261029
+from real_robot.startup_scope import SCREENED_20261029, SCREENED_20261029_164521
 from real_robot.plan_startup import screen_candidate
 
 
@@ -82,6 +82,38 @@ class J2ModelScope(unittest.TestCase):
         packet = {'command':bad.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7}
         with self.assertRaises(RuntimeError):
             controller.accept_motion(packet,start,np.zeros(7),0.)
+
+    def test_latest_disabled_pose_path_and_40_percent_j2_controller(self):
+        start = np.array(SCREENED_20261029_164521)
+        candidate = screen_candidate(self.bundle,start,.06,.08)
+        plan = copy.deepcopy(self.plan)
+        plan.update(candidate,q_start_rad=start.tolist())
+        a,end,duration,initial = validate_first_segment(plan,self.bundle)
+        self.assertAlmostEqual(end[1]-a[1],.06)
+        controller = TrackingController(self.bundle,load(),a,end,.4)
+        for elapsed in np.linspace(0,15,151):
+            q,v,_ = reference_at(a,end,duration,elapsed)
+            controller.accept_motion({'command':q.tolist(),'velocity_command':v.tolist(),
+                                      'ff':[0.]*7},q,v,float(elapsed))
+        np.testing.assert_allclose(q,start)
+
+    def test_j2_only_gain_override_preserves_other_axes_and_saved_physics(self):
+        start,end,_,_ = validate_first_segment(self.plan,self.bundle)
+        original = copy.deepcopy(self.bundle.env.physics)
+        base = TrackingController(self.bundle,load(),start,end)
+        changed = TrackingController(self.bundle,load(),start,end,.4)
+        for name in ('kp','kd'):
+            expected = list(base.servo.physics[name])
+            expected[1] *= 2
+            np.testing.assert_allclose(changed.servo.physics[name],expected)
+            np.testing.assert_allclose(self.bundle.env.physics[name],original[name])
+        bad = start.copy()
+        bad[1] += .0201
+        with self.assertRaises(HoldViolation):
+            changed.check_measured(bad,np.zeros(7))
+        for value in (0., .6, float('nan'), float('inf')):
+            with self.assertRaises(ValueError):
+                TrackingController(self.bundle,load(),start,end,value)
 
     def test_motion_and_fixed_joint_tracking_limits_are_distinct(self):
         start,end,_,_ = validate_first_segment(self.plan,self.bundle)
