@@ -25,6 +25,7 @@ class J2Reference(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn('--j2-gain-scale', result.stdout)
+        self.assertIn('--endpoint-only', result.stdout)
 
     def test_only_j2_moves_and_returns(self):
         start = np.zeros(7)
@@ -93,6 +94,27 @@ class J2ModelScope(unittest.TestCase):
         packet = {'command':bad.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7}
         with self.assertRaises(RuntimeError):
             controller.accept_motion(packet,start,np.zeros(7),0.)
+
+    def test_endpoint_mode_allows_j2_lag_but_rejects_bad_endpoint_and_other_hazards(self):
+        start,end,_,_ = validate_first_segment(self.plan,self.bundle)
+        controller = TrackingController(self.bundle,load(),start,end,.4,True)
+        command = start.copy()
+        command[1] += .025
+        packet = {'command':command.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7}
+        controller.accept_motion(packet,start,np.zeros(7),0.)
+        with self.assertRaises(HoldViolation):
+            controller.check_outward_endpoint(start)
+        self.assertAlmostEqual(controller.check_outward_endpoint(end),0.)
+        bad = start.copy()
+        bad[5] += .006
+        with self.assertRaises(HoldViolation):
+            controller.check_measured(bad,np.zeros(7))
+        with self.assertRaises(HoldViolation):
+            controller.check_measured(start,np.ones(7)*.11)
+        beyond = end.copy()
+        beyond[1] += .006
+        with self.assertRaises(RuntimeError):
+            controller.check_measured(beyond,np.zeros(7))
 
     def test_latest_disabled_pose_path_and_40_percent_j2_controller(self):
         start = np.array(SCREENED_20261029_164521)

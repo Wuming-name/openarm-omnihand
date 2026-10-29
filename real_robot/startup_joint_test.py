@@ -70,7 +70,7 @@ def reference_at(start, end, duration, elapsed):
 
 
 class TrackingController(HoldController):
-    def __init__(self, bundle, hardware, start, end, j2_gain_scale=.2):
+    def __init__(self, bundle, hardware, start, end, j2_gain_scale=.2, endpoint_only=False):
         if j2_gain_scale not in (.2, .4):
             raise ValueError('J2 commissioning gain scale must be 0.2 or 0.4')
         super().__init__(bundle, hardware, start, np.zeros(7), 0., True, .2)
@@ -78,6 +78,7 @@ class TrackingController(HoldController):
         self.servo.physics['kp'][1] = bundle.env.physics['kp'][1]*j2_gain_scale
         self.servo.physics['kd'][1] = bundle.env.physics['kd'][1]*j2_gain_scale
         self.start, self.end = start.copy(), end.copy()
+        self.endpoint_only = endpoint_only
 
     def accept_motion(self, packet, q, velocity, now):
         command, v = np.asarray(packet['command']), np.asarray(packet['velocity_command'])
@@ -101,14 +102,27 @@ class TrackingController(HoldController):
         limits = np.full(7,.005)
         limits[1] = .02  # Moving-axis tracking window; other six stay fixed.
         self.max_drift = max(self.max_drift,float(np.max(errors)))
-        if np.any(errors > limits) or np.max(np.abs(velocity)) > .1:
+        checked = np.ones(7,dtype=bool)
+        if self.endpoint_only:
+            checked[1] = False
+        if np.any(errors[checked] > limits[checked]) or np.max(np.abs(velocity)) > .1:
             raise HoldViolation('Bounded J2 tracking or speed limit exceeded',
                                 {'q_rad':q.tolist(),'target_q_rad':self.target.tolist(),
                                  'position_errors_rad':(q-self.target).tolist(),
                                  'tracking_limits_rad':limits.tolist(),'velocity_rad_s':velocity.tolist(),
+                                 'tracking_check_axes':(np.flatnonzero(checked)+1).tolist(),
                                  'speed_limit_rad_s':.1})
         if np.any(q < np.minimum(self.start,self.end)-.005) or np.any(q > np.maximum(self.start,self.end)+.005):
             raise RuntimeError('Measured pose outside bounded J2 corridor')
+
+    def check_outward_endpoint(self, q):
+        error = float(abs(np.asarray(q)[1]-self.end[1]))
+        if not np.isfinite(error) or error > .02:
+            raise HoldViolation('J2 outward endpoint error exceeds 0.02rad after hold',
+                                {'endpoint':'outward','actual_j2_rad':float(q[1]),
+                                 'target_j2_rad':float(self.end[1]),
+                                 'endpoint_error_rad':error,'endpoint_limit_rad':.02})
+        return error
 
 
 def _startup_worker(connection, run, hardware, q, velocity, stationary_baseline, end, duration):
@@ -177,10 +191,14 @@ def main():
     parser.add_argument('--execute', action='store_true')
     parser.add_argument('--j2-gain-scale', type=float, choices=(.2, .4), default=.2,
                         help='J2-only commissioning PD fraction; other six axes remain at 0.2')
+    parser.add_argument('--endpoint-only', action='store_true',
+                        help='Check J2 accuracy after outward hold and final return, not along the moving reference')
     args = parser.parse_args()
     hardware = load(args.config)
     report = {'test': 'only_J2_out_and_return', 'passed': False, 'gain_scale': .2,
               'j2_gain_scale': args.j2_gain_scale,
+              'j2_accuracy_mode': 'endpoints' if args.endpoint_only else 'continuous',
+              'outward_tolerance_rad': .02, 'return_tolerance_rad': .005,
               'joint_gain_scales': [.2,args.j2_gain_scale,.2,.2,.2,.2,.2],
               'hardware_commands_attempted': False, 'disable_attempts': [],
               'is_ppo_test': False, 'initial_model_overlap_allowance': True,
@@ -209,7 +227,7 @@ def main():
             q, velocity = fresh_disabled(bus,hardware)
             if np.max(np.abs(np.asarray(q)-start)) > .002:
                 raise RuntimeError('Measured start differs from plan by >0.002rad; refresh probe and plan')
-            controller = TrackingController(bundle,hardware,start,end,args.j2_gain_scale)
+            controller = TrackingController(bundle,hardware,start,end,args.j2_gain_scale,args.endpoint_only)
             controller.check_measured(q,velocity)
             worker = ModelWorker(args.run,hardware,start,np.zeros(7),True,
                                  worker_target=_startup_worker,worker_args=(end,duration))
@@ -259,6 +277,9 @@ def main():
                               'feedback_torque_nm':feedback_torque,
                               'command_q_rad':packet['command'],'commanded_torque_nm':None})
                 if packet['computed'] != generation:
+                    if (args.endpoint_only and packet['phase'] in ('J2_RETURN','RETURN_HOLD')
+                            and 'outward_endpoint_error_rad' not in report):
+                        report['outward_endpoint_error_rad'] = controller.check_outward_endpoint(q)
                     controller.accept_motion(packet,q,velocity,now)
                     generation = packet['computed']
                     if not phases or phases[-1]['phase'] != packet['phase']:
@@ -279,6 +300,8 @@ def main():
                 if remaining > 0:
                     time.sleep(remaining)
             report['return_error_rad'] = float(np.max(np.abs(np.asarray(q)-start)))
+            if args.endpoint_only and 'outward_endpoint_error_rad' not in report:
+                raise RuntimeError('Outward endpoint was not validated; cannot report success')
             if report['return_error_rad'] > .005:
                 raise RuntimeError('Did not return to planned initial pose')
             if not intervals or 1/np.mean(intervals) < 475 or min(updates) < .8*steps:
