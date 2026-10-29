@@ -68,13 +68,14 @@ class MoveToAModel(unittest.TestCase):
         self.assertEqual(output[1]['torque'],.1)  # Not 70*0.03+0.1.
         self.assertAlmostEqual(c.last_estimated_torque[1],2.2)
 
-    def test_endpoint_gate_checks_position_tcp_and_speed(self):
-        packet = {'a_distance_m':0.}
+    def test_endpoint_gate_checks_palm_not_exact_joint_pose(self):
+        packet = {'a_distance_m':0.,'a_orientation_error_rad':0.}
         self.assertTrue(at_a(self.bundle,self.bundle.q_a,[0.]*7,packet))
         bad = self.bundle.q_a.copy()
         bad[1] += .011
-        self.assertFalse(at_a(self.bundle,bad,[0.]*7,packet))
-        self.assertFalse(at_a(self.bundle,self.bundle.q_a,[0.]*7,{'a_distance_m':.016}))
+        self.assertTrue(at_a(self.bundle,bad,[0.]*7,packet))
+        self.assertFalse(at_a(self.bundle,self.bundle.q_a,[0.]*7,dict(packet,a_distance_m=.016)))
+        self.assertFalse(at_a(self.bundle,self.bundle.q_a,[0.]*7,dict(packet,a_orientation_error_rad=.11)))
         self.assertFalse(at_a(self.bundle,self.bundle.q_a,[.051]*7,packet))
 
     def test_native_servo_rejects_gross_lead_and_overspeed(self):

@@ -73,38 +73,21 @@ class ToAController(NativeMITServo):
         self.accept(packet['command'],packet['velocity_command'],packet['ff'],q,now)
 
 
-def _worker(connection,run,hardware,q,velocity,stationary_baseline,segments):
+def _worker(connection,run,hardware,q,velocity,stationary_baseline,segments,with_policy=False):
+    from .policy_mission import PolicyMission
     bundle = None
     try:
-        bundle = RunBundle(run,load_policy=False)
-        start = np.array(q)
-        guard = StationaryOverlapGuard(model_contacts(bundle,start))
-        bundle.update_state(bundle.q_a,np.zeros(7))
-        palm_a = bundle.env.position.copy()
-        begin = None
+        bundle = RunBundle(run,load_policy=with_policy)
+        mission = PolicyMission(bundle,q,segments,enable_policy=with_policy)
         while True:
-            command,v,phase = reference_at(start,segments,0. if begin is None else time.monotonic()-begin)
-            bundle.update_state(q,velocity)
-            measured = np.asarray(q)
-            if np.any(measured < bundle.hard_low) or np.any(measured > bundle.hard_high):
-                raise RuntimeError('Measured joint outside hard limits')
-            found = contacts(bundle.env.model,bundle.env.data,bundle.env.physics['contact_tolerance_m'])
-            if phase in ('HOLD_INITIAL','shoulder_retreat','wrist_retreat'):
-                guard.check(found)
-                if np.max(np.abs(measured-start)) > .125:
-                    raise RuntimeError('Measured escape leaves startup neighborhood')
-            elif found:
-                raise HoldViolation('Collision after escape',{'contacts':found,'q_rad':list(q)})
-            connection.send({'command':command.tolist(),'velocity_command':v.tolist(),
-                             'ff':bundle.feedforward().tolist(),'phase':phase,
-                             'tcp_base_m':bundle.env.position.tolist(),
-                             'a_distance_m':float(np.linalg.norm(bundle.env.position-palm_a)),
-                             'computed':time.monotonic()})
+            packet = mission.tick(q,velocity,time.monotonic())
+            packet['computed'] = time.monotonic()
+            connection.send(packet)
             request = connection.recv()
             if request is None:
                 break
             if isinstance(request,dict):
-                q,velocity,begin = request['q'],request['velocity'],request['start_time']
+                q,velocity,mission.begin = request['q'],request['velocity'],request['start_time']
             else:
                 q,velocity = request
     except (EOFError,BrokenPipeError):
@@ -136,26 +119,31 @@ def live_states(bus,hardware):
 
 
 def at_a(bundle,q,velocity,packet):
-    return (np.max(np.abs(np.array(q)-bundle.q_a)) <= .01
-            and packet['a_distance_m'] <= .015
-            and np.max(np.abs(velocity)) <= .05)
+    from .policy_mission import a_accepted
+    return a_accepted(packet,velocity)
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+def main(with_policy=False):
+    parser = argparse.ArgumentParser(description=(
+        'Startup -> accepted palm A -> PPO -> B hold, full native MIT throughout; no CAN without --execute.'
+        if with_policy else __doc__))
     parser.add_argument('--run',required=True)
     parser.add_argument('--plan',default='outputs/real_robot/startup_plan.json')
     parser.add_argument('--config',default=str(DEFAULT))
     parser.add_argument('--execute',action='store_true')
+    if with_policy:
+        parser.add_argument('--evaluation-report',default='outputs/real_robot/ppo_native_evaluation.json')
     args = parser.parse_args()
     hardware = load(args.config)
-    report = {'test':'official_native_MIT_move_to_A','passed':False,'is_ppo_test':False,
+    report = {'test':'official_native_MIT_move_to_A','passed':False,'is_ppo_test':with_policy,
               'control_profile':PROFILE,'host_pd_enabled':False,
               'native_mit_kp':list(OFFICIAL_KP),'native_mit_kd':list(OFFICIAL_KD),
               'firmware_torque_limit_verified':False,
               'hardware_commands_attempted':False,'disable_attempts':[],
               'TIMEOUT_changed':False,'watchdog_verified':False,
               'hand_commands_sent':False,'hand_monitored':False}
+    if with_policy:
+        report['test'] = 'native_MIT_startup_A_PPO_B'
     bundle = bus = worker = controller = None
     enabled = False
     trace = deque(maxlen=1000)
@@ -165,6 +153,10 @@ def main():
     q = v = None
     try:
         bundle = RunBundle(args.run,load_policy=False)
+        if with_policy and args.execute:
+            from .evaluate_policy import verify_evaluation
+            verify_evaluation(args.evaluation_report,bundle)
+            report['offline_evaluation_report'] = args.evaluation_report
         start,verified = validate_plan(bundle,json.loads(Path(args.plan).read_text(encoding='utf-8')))
         segments = verified['segments']
         duration = 1.+verified['total_duration_s']
@@ -186,7 +178,7 @@ def main():
                 raise RuntimeError('Actual start moved >0.002rad from new plan; re-probe and re-plan')
             controller = ToAController(bundle,hardware,start)
             worker = ModelWorker(args.run,hardware,start,np.zeros(7),True,
-                                 worker_target=_worker,worker_args=(segments,))
+                                 worker_target=_worker,worker_args=(segments,with_policy))
             q,v = fresh_disabled(bus,hardware)
             if np.max(np.abs(np.array(q)-start)) > .002:
                 raise RuntimeError('Actual start moved during preparation; re-plan')
@@ -194,7 +186,8 @@ def main():
             if not worker.connection.poll(.5):
                 raise RuntimeError('Model worker did not warm up')
             worker.receive()
-            print('OFFICIAL V1 NATIVE MIT: motor PD + model feedforward. At A KEEP HOLDING. Support arm before Ctrl+C; exit attempts DISABLE.',flush=True)
+            destination = 'A then PPO to B' if with_policy else 'A'
+            print(f'OFFICIAL V1 NATIVE MIT: {destination}, then KEEP HOLDING. Support arm before Ctrl+C; exit attempts DISABLE.',flush=True)
             report['hardware_commands_attempted'] = True
             bus.torques([0.]*7)
             enabled = True
@@ -231,6 +224,8 @@ def main():
                     generation = packet['computed']
                     if not phases or phases[-1]['phase'] != packet['phase']:
                         phases.append({'phase':packet['phase'],'elapsed_s':now-begin})
+                        if with_policy and packet['phase'] in ('POLICY','HOLD_B'):
+                            print('STATE: '+packet['phase'],flush=True)
                 if now-last_request >= .02 and not worker.pending:
                     worker.request(q,v)
                     last_request = now
@@ -243,7 +238,20 @@ def main():
                               'feedforward_torque_nm':list(controller.ff),
                               'estimated_total_torque_nm':list(controller.last_estimated_torque),
                               'feedback_torque_nm':[s['torque'] for s in states]})
-                if packet['phase'] == 'HOLD_A':
+                if with_policy:
+                    report['accepted_A'] = packet.get('accepted_A')
+                    report['final_B_distance_m'] = packet['b_distance_m']
+                    if packet['phase'] == 'HOLD_B':
+                        stable_since = (now if stable_since is None else stable_since) if packet['b_goal_reached'] else None
+                        if stable_since is not None and now-stable_since >= .5:
+                            if not report['passed']:
+                                print('B_REACHED: maintaining B. Support arm before Ctrl+C.',flush=True)
+                            report['passed'] = True
+                        elif not packet['b_goal_reached']:
+                            report['passed'] = False
+                    else:
+                        stable_since = None
+                elif packet['phase'] == 'HOLD_A':
                     stable_since = (now if stable_since is None else stable_since) if at_a(bundle,q,v,packet) else None
                     if not report['passed'] and stable_since is not None and now-stable_since >= .5:
                         report.update(passed=True,a_reached_seconds=now-begin,
@@ -291,7 +299,7 @@ def main():
         if bundle:
             bundle.env.close()
         report.update(cycles=steps,phases=phases)
-        output = Path('outputs/real_robot')/(datetime.now().strftime('%Y%m%d_%H%M%S_%f')+'_move_to_A.json')
+        output = Path('outputs/real_robot')/(datetime.now().strftime('%Y%m%d_%H%M%S_%f')+('_policy_to_B.json' if with_policy else '_move_to_A.json'))
         output.parent.mkdir(parents=True,exist_ok=True)
         trace_path = output.with_name(output.stem+'_trace.json')
         trace_path.write_text(json.dumps(list(trace),indent=2)+'\n',encoding='utf-8')

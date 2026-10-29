@@ -1,5 +1,7 @@
 # 完整 MIT＋官方 V1.0 默认增益
 
+当前 A 点已改为手掌位置/姿态/稳定性验收，不再要求每轴误差0.01rad。接入 PPO 的新入口、离线评估及操作步骤见 `PPO_A_TO_B_NATIVE_MIT.md`；本文件下文到 A 的控制方式保持一致，原策略并未自动获得新增益下的验证。
+
 本说明替代 MOVE_TO_A_TRAINING_GAINS.md 中的电脑外环 PD 和 J5/J6 Kd 覆盖方案。`move_to_a.py` 与 ROS2 `bridge_node.py` 共用 `NativeMITServo`。旧增益覆盖命令不再支持，防止误把电脑外环参数用于电机内环。
 
 官方来源（2026-10-29 核对）：
