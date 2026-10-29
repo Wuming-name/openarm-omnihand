@@ -1,4 +1,4 @@
-"""Planned startup to A using training PD with a J6 outer-loop Kd override.
+"""Planned startup to A using training PD with J5/J6 outer-loop Kd overrides.
 
 No CAN without --execute. At A, maintain torque until Ctrl+C; exit attempts
 disable, which cannot support the arm against gravity. No PPO or hand commands.
@@ -63,13 +63,17 @@ def reference_at(start, segments, elapsed):
 
 
 class ToAController(HoldController):
-    def __init__(self,bundle,hardware,start,j6_kd=None):
+    def __init__(self,bundle,hardware,start,j6_kd=None,j5_kd=None):
         if j6_kd is not None and j6_kd not in (.5,2.5):
             raise ValueError('J6 outer Kd must be 0.5 or 2.5')
+        if j5_kd is not None and j5_kd not in (.5,3.):
+            raise ValueError('J5 outer Kd must be 0.5 or 3.0')
         self.hardware = hardware
         super().__init__(bundle,hardware,start,np.zeros(7),0.,True,1.)
         if j6_kd is not None:
             self.servo.physics['kd'][5] = j6_kd
+        if j5_kd is not None:
+            self.servo.physics['kd'][4] = j5_kd
 
     def check_measured(self,q,velocity):
         q,v = np.asarray(q),np.asarray(velocity)
@@ -171,11 +175,14 @@ def main():
     parser.add_argument('--execute',action='store_true')
     parser.add_argument('--j6-kd',type=float,choices=(.5,2.5),default=.5,
                         help='J6 host outer-loop Kd; default 0.5 after observed oscillation; native MIT Kd remains zero')
+    parser.add_argument('--j5-kd',type=float,choices=(.5,3.),default=.5,
+                        help='J5 host outer-loop Kd; default 0.5 after observed oscillation; native MIT Kd remains zero')
     args = parser.parse_args()
     hardware = load(args.config)
     report = {'test':'training_gains_move_to_A','passed':False,'is_ppo_test':False,
               'gain_scale':1.,'hardware_commands_attempted':False,'disable_attempts':[],
               'j6_outer_kd_override':args.j6_kd,'native_mit_kp':0.,'native_mit_kd':0.,
+              'j5_outer_kd_override':args.j5_kd,
               'TIMEOUT_changed':False,'watchdog_verified':False,
               'hand_commands_sent':False,'hand_monitored':False}
     bundle = bus = worker = controller = None
@@ -197,6 +204,7 @@ def main():
                       trajectory_seconds=duration,initial_model_overlaps=verified['initial_contacts'])
         report['training_kd'] = list(bundle.env.physics['kd'])
         report['kd'][5] = args.j6_kd
+        report['kd'][4] = args.j5_kd
         if not args.execute:
             report['preview_only'] = True
         else:
@@ -206,7 +214,7 @@ def main():
             q,v = fresh_disabled(bus,hardware)
             if np.max(np.abs(np.array(q)-start)) > .002:
                 raise RuntimeError('Actual start moved >0.002rad from new plan; re-probe and re-plan')
-            controller = ToAController(bundle,hardware,start,j6_kd=args.j6_kd)
+            controller = ToAController(bundle,hardware,start,j6_kd=args.j6_kd,j5_kd=args.j5_kd)
             worker = ModelWorker(args.run,hardware,start,np.zeros(7),True,
                                  worker_target=_worker,worker_args=(segments,))
             q,v = fresh_disabled(bus,hardware)
@@ -216,7 +224,7 @@ def main():
             if not worker.connection.poll(.5):
                 raise RuntimeError('Model worker did not warm up')
             worker.receive()
-            print(f'TRAINING PD / J6 OUTER Kd={args.j6_kd}: move to A, then KEEP HOLDING. Ctrl+C attempts motor DISABLE; support arm before exit.',flush=True)
+            print(f'TRAINING PD / J5 Kd={args.j5_kd}, J6 Kd={args.j6_kd}: move to A, then KEEP HOLDING. Ctrl+C attempts motor DISABLE; support arm before exit.',flush=True)
             report['hardware_commands_attempted'] = True
             bus.torques([0.]*7)
             enabled = True

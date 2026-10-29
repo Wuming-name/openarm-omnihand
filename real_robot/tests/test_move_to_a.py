@@ -102,6 +102,24 @@ class MoveToAModel(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             c.check_measured(self.start,np.ones(7)*1.1)
 
+    def test_j5_j6_kd_override_keeps_all_kp_and_other_kd(self):
+        original = copy.deepcopy(self.bundle.env.physics)
+        c = ToAController(self.bundle,load(),self.start,j6_kd=.5,j5_kd=.5)
+        expected = list(original['kd'])
+        expected[4:6] = [.5,.5]
+        np.testing.assert_allclose(c.servo.physics['kd'],expected)
+        np.testing.assert_allclose(c.servo.physics['kp'],original['kp'])
+        np.testing.assert_allclose(self.bundle.env.physics['kd'],original['kd'])
+        velocity = [0.]*7
+        velocity[4:6] = [.1,.1]
+        c.accept_reference({'command':self.start.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7},
+                           self.start.tolist(),velocity,0.)
+        output = c.step_fast(self.start.tolist(),velocity,0.)
+        np.testing.assert_allclose(output[4:6],[-.05,-.05])
+        for invalid in (0.,1.,2.5,float('nan'),float('inf')):
+            with self.assertRaises(ValueError):
+                ToAController(self.bundle,load(),self.start,j5_kd=invalid)
+
     def test_spawned_worker_follows_plan_then_holds_a(self):
         segments = self.verified['segments']
         worker = ModelWorker(self.fixture_run,load(),self.start,np.zeros(7),True,
