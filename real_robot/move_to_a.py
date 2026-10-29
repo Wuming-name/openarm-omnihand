@@ -1,4 +1,4 @@
-"""Planned startup to A using training PD with J5/J6 outer-loop Kd overrides.
+"""Planned startup to A using full native MIT and official OpenArm V1 gains.
 
 No CAN without --execute. At A, maintain torque until Ctrl+C; exit attempts
 disable, which cannot support the arm against gravity. No PPO or hand commands.
@@ -14,10 +14,11 @@ import numpy as np
 
 from . import protocol as p
 from .can_bus import MotorBus
-from .commission_hold import HoldController, HoldViolation, ModelWorker, StationaryOverlapGuard
+from .commission_hold import HoldViolation, ModelWorker, StationaryOverlapGuard
 from .control import RunBundle, minimum_jerk
 from .plan_startup import model_contacts, screen_candidate
 from .settings import DEFAULT, load
+from .mit_servo import NativeMITServo, OFFICIAL_KP, OFFICIAL_KD, PROFILE
 from .startup_joint_test import fresh_disabled
 from .startup_scope import classify_start_pose
 from rl_ppo.model import contacts
@@ -62,41 +63,14 @@ def reference_at(start, segments, elapsed):
     return np.array(segments[-1]['end_q_rad']),np.zeros(7),'HOLD_A'
 
 
-class ToAController(HoldController):
-    def __init__(self,bundle,hardware,start,j6_kd=None,j5_kd=None):
-        if j6_kd is not None and j6_kd not in (.5,2.5):
-            raise ValueError('J6 outer Kd must be 0.5 or 2.5')
-        if j5_kd is not None and j5_kd not in (.5,3.):
-            raise ValueError('J5 outer Kd must be 0.5 or 3.0')
-        self.hardware = hardware
-        super().__init__(bundle,hardware,start,np.zeros(7),0.,True,1.)
-        if j6_kd is not None:
-            self.servo.physics['kd'][5] = j6_kd
-        if j5_kd is not None:
-            self.servo.physics['kd'][4] = j5_kd
-
-    def check_measured(self,q,velocity):
-        q,v = np.asarray(q),np.asarray(velocity)
-        if q.shape != (7,) or v.shape != (7,) or not np.isfinite(q).all() or not np.isfinite(v).all():
-            raise RuntimeError('Malformed measured state')
-        if np.any(q < self.bundle.hard_low) or np.any(q > self.bundle.hard_high):
-            raise RuntimeError('Measured joint outside hard limits')
-        if np.max(np.abs(v)) > self.hardware['max_joint_speed_rad_s']:
-            raise HoldViolation('Measured overspeed',{'q_rad':q.tolist(),
-                                'velocity_rad_s':v.tolist(),
-                                'speed_limit_rad_s':self.hardware['max_joint_speed_rad_s']})
-        self.max_drift = max(self.max_drift,float(np.max(np.abs(q-self.target))))
+class ToAController(NativeMITServo):
+    """To-A and ROS bridge share native MIT control and official gains."""
+    def __init__(self,bundle,hardware,start):
+        classify_start_pose(start)
+        super().__init__(hardware,bundle.env.physics,bundle.hard_low,bundle.hard_high)
 
     def accept_reference(self,packet,q,velocity,now):
-        self.target = np.asarray(packet['command'],dtype=float)
-        self.check_measured(q,velocity)
-        # Shared ROS servo: bounds gross target lead, velocity and torque.
-        # No ordinary 0.02rad moving-reference tracking-error rejection.
-        try:
-            self.servo.accept(packet['command'],packet['velocity_command'],packet['ff'],q,now)
-        except ValueError as exc:
-            raise HoldViolation(str(exc),{'q_rad':list(q),'target_q_rad':self.target.tolist(),
-                                'position_errors_rad':(self.target-np.asarray(q)).tolist()}) from exc
+        self.accept(packet['command'],packet['velocity_command'],packet['ff'],q,now)
 
 
 def _worker(connection,run,hardware,q,velocity,stationary_baseline,segments):
@@ -173,16 +147,13 @@ def main():
     parser.add_argument('--plan',default='outputs/real_robot/startup_plan.json')
     parser.add_argument('--config',default=str(DEFAULT))
     parser.add_argument('--execute',action='store_true')
-    parser.add_argument('--j6-kd',type=float,choices=(.5,2.5),default=.5,
-                        help='J6 host outer-loop Kd; default 0.5 after observed oscillation; native MIT Kd remains zero')
-    parser.add_argument('--j5-kd',type=float,choices=(.5,3.),default=.5,
-                        help='J5 host outer-loop Kd; default 0.5 after observed oscillation; native MIT Kd remains zero')
     args = parser.parse_args()
     hardware = load(args.config)
-    report = {'test':'training_gains_move_to_A','passed':False,'is_ppo_test':False,
-              'gain_scale':1.,'hardware_commands_attempted':False,'disable_attempts':[],
-              'j6_outer_kd_override':args.j6_kd,'native_mit_kp':0.,'native_mit_kd':0.,
-              'j5_outer_kd_override':args.j5_kd,
+    report = {'test':'official_native_MIT_move_to_A','passed':False,'is_ppo_test':False,
+              'control_profile':PROFILE,'host_pd_enabled':False,
+              'native_mit_kp':list(OFFICIAL_KP),'native_mit_kd':list(OFFICIAL_KD),
+              'firmware_torque_limit_verified':False,
+              'hardware_commands_attempted':False,'disable_attempts':[],
               'TIMEOUT_changed':False,'watchdog_verified':False,
               'hand_commands_sent':False,'hand_monitored':False}
     bundle = bus = worker = controller = None
@@ -197,14 +168,13 @@ def main():
         start,verified = validate_plan(bundle,json.loads(Path(args.plan).read_text(encoding='utf-8')))
         segments = verified['segments']
         duration = 1.+verified['total_duration_s']
-        report.update(kp=list(bundle.env.physics['kp']),kd=list(bundle.env.physics['kd']),
+        report.update(kp=list(OFFICIAL_KP),kd=list(OFFICIAL_KD),
                       start_q_rad=start.tolist(),q_A_rad=bundle.q_a.tolist(),
                       model_sha256=bundle.env.task['model_sha256'],
                       config_sha256=bundle.env.task['config_sha256'],
                       trajectory_seconds=duration,initial_model_overlaps=verified['initial_contacts'])
+        report['training_kp'] = list(bundle.env.physics['kp'])
         report['training_kd'] = list(bundle.env.physics['kd'])
-        report['kd'][5] = args.j6_kd
-        report['kd'][4] = args.j5_kd
         if not args.execute:
             report['preview_only'] = True
         else:
@@ -214,7 +184,7 @@ def main():
             q,v = fresh_disabled(bus,hardware)
             if np.max(np.abs(np.array(q)-start)) > .002:
                 raise RuntimeError('Actual start moved >0.002rad from new plan; re-probe and re-plan')
-            controller = ToAController(bundle,hardware,start,j6_kd=args.j6_kd,j5_kd=args.j5_kd)
+            controller = ToAController(bundle,hardware,start)
             worker = ModelWorker(args.run,hardware,start,np.zeros(7),True,
                                  worker_target=_worker,worker_args=(segments,))
             q,v = fresh_disabled(bus,hardware)
@@ -224,7 +194,7 @@ def main():
             if not worker.connection.poll(.5):
                 raise RuntimeError('Model worker did not warm up')
             worker.receive()
-            print(f'TRAINING PD / J5 Kd={args.j5_kd}, J6 Kd={args.j6_kd}: move to A, then KEEP HOLDING. Ctrl+C attempts motor DISABLE; support arm before exit.',flush=True)
+            print('OFFICIAL V1 NATIVE MIT: motor PD + model feedforward. At A KEEP HOLDING. Support arm before Ctrl+C; exit attempts DISABLE.',flush=True)
             report['hardware_commands_attempted'] = True
             bus.torques([0.]*7)
             enabled = True
@@ -257,17 +227,21 @@ def main():
                 if not packet or now-packet['computed'] > hardware['command_timeout_s']:
                     raise RuntimeError('Model/reference stale')
                 if packet['computed'] != generation:
-                    controller.accept_reference(packet,q,v,now)
+                    controller.accept(packet['command'],packet['velocity_command'],packet['ff'],q,now)
                     generation = packet['computed']
                     if not phases or phases[-1]['phase'] != packet['phase']:
                         phases.append({'phase':packet['phase'],'elapsed_s':now-begin})
                 if now-last_request >= .02 and not worker.pending:
                     worker.request(q,v)
                     last_request = now
-                torque = controller.step_fast(q,v,now)
-                bus.torques(torque)
+                commands = controller.tick(q,v,now,[s['torque'] for s in states])
+                if controller.fault:
+                    raise RuntimeError('MIT servo latched fault: '+controller.fault)
+                bus.mit_commands(commands)
                 trace.append({'elapsed_s':now-begin,'q_rad':q,'velocity_rad_s':v,
-                              'command_q_rad':packet['command'],'commanded_torque_nm':torque,
+                              'command_q_rad':packet['command'],'command_velocity_rad_s':packet['velocity_command'],
+                              'feedforward_torque_nm':list(controller.ff),
+                              'estimated_total_torque_nm':list(controller.last_estimated_torque),
                               'feedback_torque_nm':[s['torque'] for s in states]})
                 if packet['phase'] == 'HOLD_A':
                     stable_since = (now if stable_since is None else stable_since) if at_a(bundle,q,v,packet) else None
@@ -308,7 +282,8 @@ def main():
         if worker:
             worker.close()
         if controller:
-            report['max_commanded_torque_nm'] = controller.max_torque.tolist()
+            report['max_estimated_total_torque_nm'] = list(controller.max_estimated_torque)
+            report['max_feedforward_torque_nm'] = list(controller.max_feedforward)
         if q is not None and bundle:
             report['final_q_rad'] = list(q)
             report['final_velocity_rad_s'] = list(v)

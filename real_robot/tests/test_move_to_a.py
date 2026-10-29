@@ -10,6 +10,7 @@ from real_robot.commission_hold import ModelWorker
 from real_robot.control import RunBundle
 from real_robot.move_to_a import ToAController, reference_at, validate_plan, _worker, at_a
 from real_robot.settings import load
+from real_robot.mit_servo import OFFICIAL_KP, OFFICIAL_KD
 
 
 class MoveToAModel(unittest.TestCase):
@@ -52,18 +53,20 @@ class MoveToAModel(unittest.TestCase):
             np.testing.assert_allclose(q,self.bundle.q_a)
             np.testing.assert_allclose(v,0.)
 
-    def test_exact_training_gains_and_no_normal_tracking_rejection(self):
+    def test_official_native_gains_no_double_pd_and_training_unchanged(self):
         original = copy.deepcopy(self.bundle.env.physics)
         c = ToAController(self.bundle,load(),self.start)
-        for key in ('kp','kd','torque_limits'):
-            np.testing.assert_allclose(c.servo.physics[key],original[key])
-            np.testing.assert_allclose(self.bundle.env.physics[key],original[key])
+        np.testing.assert_allclose(c.physics['kp'],OFFICIAL_KP)
+        np.testing.assert_allclose(c.physics['kd'],OFFICIAL_KD)
+        np.testing.assert_allclose(self.bundle.env.physics['kd'],original['kd'])
         target = self.start.copy()
         target[1] += .03
-        packet = {'command':target.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7}
+        packet = {'command':target.tolist(),'velocity_command':[0.]*7,'ff':[.1]*7}
         c.accept_reference(packet,self.start.tolist(),[0.]*7,0.)
-        output = c.step_fast(self.start.tolist(),[0.]*7,0.)
-        self.assertAlmostEqual(output[1],original['kp'][1]*.03)
+        output = c.tick(self.start.tolist(),[0.]*7,0.)
+        self.assertEqual(output[1]['kp'],70.)
+        self.assertEqual(output[1]['torque'],.1)  # Not 70*0.03+0.1.
+        self.assertAlmostEqual(c.last_estimated_torque[1],2.2)
 
     def test_endpoint_gate_checks_position_tcp_and_speed(self):
         packet = {'a_distance_m':0.}
@@ -74,51 +77,17 @@ class MoveToAModel(unittest.TestCase):
         self.assertFalse(at_a(self.bundle,self.bundle.q_a,[0.]*7,{'a_distance_m':.016}))
         self.assertFalse(at_a(self.bundle,self.bundle.q_a,[.051]*7,packet))
 
-    def test_only_j6_outer_kd_changes_and_saved_training_is_untouched(self):
-        original = copy.deepcopy(self.bundle.env.physics)
-        c = ToAController(self.bundle,load(),self.start,j6_kd=.5)
-        expected = list(original['kd'])
-        expected[5] = .5
-        np.testing.assert_allclose(c.servo.physics['kd'],expected)
-        np.testing.assert_allclose(c.servo.physics['kp'],original['kp'])
-        np.testing.assert_allclose(self.bundle.env.physics['kd'],original['kd'])
-        packet = {'command':self.start.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7}
-        velocity = [0.]*7
-        velocity[5] = .1
-        c.accept_reference(packet,self.start.tolist(),velocity,0.)
-        output = c.step_fast(self.start.tolist(),velocity,0.)
-        self.assertAlmostEqual(output[5],-.05)
-        for invalid in (0.,1.,5.,float('nan'),float('inf')):
-            with self.assertRaises(ValueError):
-                ToAController(self.bundle,load(),self.start,j6_kd=invalid)
-
-    def test_shared_servo_rejects_gross_lead_and_overspeed(self):
+    def test_native_servo_rejects_gross_lead_and_overspeed(self):
         c = ToAController(self.bundle,load(),self.start)
         bad = self.start.copy()
         bad[1] += .3
-        with self.assertRaises(RuntimeError):
+        with self.assertRaises(ValueError):
             c.accept_reference({'command':bad.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7},
                                self.start.tolist(),[0.]*7,0.)
-        with self.assertRaises(RuntimeError):
-            c.check_measured(self.start,np.ones(7)*1.1)
-
-    def test_j5_j6_kd_override_keeps_all_kp_and_other_kd(self):
-        original = copy.deepcopy(self.bundle.env.physics)
-        c = ToAController(self.bundle,load(),self.start,j6_kd=.5,j5_kd=.5)
-        expected = list(original['kd'])
-        expected[4:6] = [.5,.5]
-        np.testing.assert_allclose(c.servo.physics['kd'],expected)
-        np.testing.assert_allclose(c.servo.physics['kp'],original['kp'])
-        np.testing.assert_allclose(self.bundle.env.physics['kd'],original['kd'])
-        velocity = [0.]*7
-        velocity[4:6] = [.1,.1]
         c.accept_reference({'command':self.start.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7},
-                           self.start.tolist(),velocity,0.)
-        output = c.step_fast(self.start.tolist(),velocity,0.)
-        np.testing.assert_allclose(output[4:6],[-.05,-.05])
-        for invalid in (0.,1.,2.5,float('nan'),float('inf')):
-            with self.assertRaises(ValueError):
-                ToAController(self.bundle,load(),self.start,j5_kd=invalid)
+                           self.start.tolist(),[0.]*7,0.)
+        with self.assertRaises(RuntimeError):
+            c.tick(self.start,np.ones(7)*1.1,0.)
 
     def test_spawned_worker_follows_plan_then_holds_a(self):
         segments = self.verified['segments']

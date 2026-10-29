@@ -12,7 +12,7 @@ from rclpy.qos import qos_profile_sensor_data
 
 from .settings import DEFAULT, NAMES, load
 from .control import RunBundle
-from .servo import Servo
+from .mit_servo import NativeMITServo, PROFILE
 
 
 class Bridge(Node):
@@ -24,7 +24,7 @@ class Bridge(Node):
         self.hardware = load(args.config, live=live)
         self.bundle = RunBundle(args.run, load_policy=False)
         self.env = self.bundle.env
-        self.servo = Servo(self.hardware, self.env.physics, self.bundle.hard_low, self.bundle.hard_high)
+        self.servo = NativeMITServo(self.hardware, self.env.physics, self.bundle.hard_low, self.bundle.hard_high)
         self.backend, self.bus = args.backend, None
         self.phase, self.reason = "WAIT_COMMAND", ""
         self.last_refresh, self.last_publish, self.last_status = 0., 0., 0.
@@ -137,15 +137,15 @@ class Bridge(Node):
                         if self.enable_started is not None and now-self.enable_started < .1:
                             return
                         raise RuntimeError("Motor disabled; no automatic fault clear or re-enable")
-                torque = self.servo.tick(q, velocity, now)
+                commands = self.servo.tick(q, velocity, now, torque)
                 if self.servo.fault:
                     self.phase, self.reason = "FAULT_HOLD", self.servo.fault
-                if torque is not None:
+                if commands is not None:
                     if self.bus:
-                        self.bus.torques(torque)
+                        self.bus.mit_commands(commands)
                     else:
                         import mujoco
-                        self.env.data.ctrl[:] = torque
+                        self.env.data.ctrl[:] = self.servo.last_estimated_torque
                         mujoco.mj_step(self.env.model, self.env.data)
                         mujoco.mj_forward(self.env.model, self.env.data)
                         q, velocity, torque = self.measured()
@@ -161,6 +161,7 @@ class Bridge(Node):
         if now-self.last_status > .1:
             message = String()
             message.data = json.dumps({"backend": self.backend, "phase": self.phase, "reason": self.reason,
+                "control_profile": PROFILE,
                 "model_sha256": self.env.task["model_sha256"], "config_sha256": self.env.task["config_sha256"]})
             self.status_pub.publish(message)
             self.last_status = now

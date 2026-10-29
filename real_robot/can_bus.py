@@ -128,3 +128,18 @@ class MotorBus:
     def close(self):
         self.sock.close()
         self.lock.close()
+
+    def mit_commands(self,commands):
+        """Model-coordinate targets. Encode all seven before sending any frame."""
+        if not self.allow_control or not self.checked or len(commands) != 7:
+            raise RuntimeError('Control not enabled or wrong MIT command size')
+        packets = []
+        for motor,command in zip(self.config['motors'],commands):
+            if abs(command['torque']) > motor['mechanical_peak_nm']:
+                raise ValueError('MIT feedforward exceeds mechanical peak')
+            packets.append((motor['tx'],p.mit_payload(
+                motor['protocol'],motor['offset_rad']+motor['sign']*command['q'],
+                motor['sign']*command['velocity'],command['kp'],command['kd'],
+                motor['sign']*command['torque'])))
+        for can_id,payload in packets:
+            self.send(can_id,payload)
