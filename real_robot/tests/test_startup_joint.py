@@ -3,6 +3,8 @@ import json
 from pathlib import Path
 import unittest
 import time
+import subprocess
+import sys
 
 import numpy as np
 
@@ -15,6 +17,15 @@ from real_robot.plan_startup import screen_candidate
 
 
 class J2Reference(unittest.TestCase):
+    def test_command_line_exposes_j2_gain_option(self):
+        result = subprocess.run(
+            [sys.executable, '-m', 'real_robot.startup_joint_test', '--help'],
+            cwd=Path(__file__).resolve().parents[2],
+            capture_output=True, text=True, timeout=30,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('--j2-gain-scale', result.stdout)
+
     def test_only_j2_moves_and_returns(self):
         start = np.zeros(7)
         end = start.copy()

@@ -70,8 +70,13 @@ def reference_at(start, end, duration, elapsed):
 
 
 class TrackingController(HoldController):
-    def __init__(self, bundle, hardware, start, end):
+    def __init__(self, bundle, hardware, start, end, j2_gain_scale=.2):
+        if j2_gain_scale not in (.2, .4):
+            raise ValueError('J2 commissioning gain scale must be 0.2 or 0.4')
         super().__init__(bundle, hardware, start, np.zeros(7), 0., True, .2)
+        # Only the moving axis changes; saved training parameters stay intact.
+        self.servo.physics['kp'][1] = bundle.env.physics['kp'][1]*j2_gain_scale
+        self.servo.physics['kd'][1] = bundle.env.physics['kd'][1]*j2_gain_scale
         self.start, self.end = start.copy(), end.copy()
 
     def accept_motion(self, packet, q, velocity, now):
@@ -170,9 +175,13 @@ def main():
     parser.add_argument('--plan', default='outputs/real_robot/startup_plan.json')
     parser.add_argument('--config', default=str(DEFAULT))
     parser.add_argument('--execute', action='store_true')
+    parser.add_argument('--j2-gain-scale', type=float, choices=(.2, .4), default=.2,
+                        help='J2-only commissioning PD fraction; other six axes remain at 0.2')
     args = parser.parse_args()
     hardware = load(args.config)
     report = {'test': 'only_J2_out_and_return', 'passed': False, 'gain_scale': .2,
+              'j2_gain_scale': args.j2_gain_scale,
+              'joint_gain_scales': [.2,args.j2_gain_scale,.2,.2,.2,.2,.2],
               'hardware_commands_attempted': False, 'disable_attempts': [],
               'is_ppo_test': False, 'initial_model_overlap_allowance': True,
               'collision_model_validated_for_full_motion': False}
@@ -180,10 +189,15 @@ def main():
     own_enable = False
     intervals, trace, updates = [], deque(maxlen=500), [0]*7
     previous_stamps, phases, steps = [None]*7, [], 0
+    max_feedback_torque = np.zeros(7)
     try:
         bundle = RunBundle(args.run, load_policy=False)
         plan = json.loads(Path(args.plan).read_text(encoding='utf-8'))
         start, end, duration, initial = validate_first_segment(plan,bundle)
+        report['kp'] = [.2*x for x in bundle.env.physics['kp']]
+        report['kd'] = [.2*x for x in bundle.env.physics['kd']]
+        report['kp'][1] = args.j2_gain_scale*bundle.env.physics['kp'][1]
+        report['kd'][1] = args.j2_gain_scale*bundle.env.physics['kd'][1]
         report.update(start_scope=classify_start_pose(start),
                       start_q_rad=start.tolist(), outward_q_rad=end.tolist(), leg_duration_s=duration,
                       total_duration_s=3.+2*duration, initial_model_overlaps=initial,
@@ -195,7 +209,7 @@ def main():
             q, velocity = fresh_disabled(bus,hardware)
             if np.max(np.abs(np.asarray(q)-start)) > .002:
                 raise RuntimeError('Measured start differs from plan by >0.002rad; refresh probe and plan')
-            controller = TrackingController(bundle,hardware,start,end)
+            controller = TrackingController(bundle,hardware,start,end,args.j2_gain_scale)
             controller.check_measured(q,velocity)
             worker = ModelWorker(args.run,hardware,start,np.zeros(7),True,
                                  worker_target=_startup_worker,worker_args=(end,duration))
@@ -232,6 +246,8 @@ def main():
                 if any(s['status'] != 1 for s in states):
                     raise RuntimeError('Motor enable lost')
                 q, velocity = [s['q'] for s in states], [s['velocity'] for s in states]
+                feedback_torque = [s['torque'] for s in states]
+                max_feedback_torque = np.maximum(max_feedback_torque,np.abs(feedback_torque))
                 for i,s in enumerate(states):
                     if s['received_monotonic'] != previous_stamps[i]:
                         updates[i] += 1
@@ -240,6 +256,7 @@ def main():
                 if not packet or time.monotonic()-packet['computed'] > .1:
                     raise RuntimeError('Motion/model reference stale')
                 trace.append({'elapsed_s':now-begin,'q_rad':q,'velocity_rad_s':velocity,
+                              'feedback_torque_nm':feedback_torque,
                               'command_q_rad':packet['command'],'commanded_torque_nm':None})
                 if packet['computed'] != generation:
                     controller.accept_motion(packet,q,velocity,now)
@@ -295,6 +312,7 @@ def main():
         if controller:
             report['max_tracking_error_rad'] = controller.max_drift
             report['max_commanded_torque_nm'] = controller.max_torque.tolist()
+        report['max_abs_feedback_torque_nm'] = max_feedback_torque.tolist()
         if bundle:
             bundle.env.close()
         output = Path('outputs/real_robot')/(datetime.now().strftime('%Y%m%d_%H%M%S_%f')+'_startup_J2.json')
