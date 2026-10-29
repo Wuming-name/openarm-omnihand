@@ -17,14 +17,14 @@ def make_env(task_path, rank, seed, randomize=True):
     return env
 
 
-def main():
+def main(argv=None):
     parser = common_parser(__doc__)
     parser.add_argument("--task", help="Default outputs/ppo/task/task.json; run prepare first")
     parser.add_argument("--run-dir")
     parser.add_argument("--steps", type=int)
     parser.add_argument("--envs", type=int)
     parser.add_argument("--rollout", type=int)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     root = root_path(args.project_root)
     task_path = Path(args.task or root / "outputs/ppo/task/task.json").resolve()
     task = read_json(task_path)
