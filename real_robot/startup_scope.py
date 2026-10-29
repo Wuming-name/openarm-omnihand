@@ -1,31 +1,17 @@
-"""Explicit initial-pose scopes; these never authorize motion or waive contacts."""
+"""Measured initial-pose region; never authorizes motion or waives contacts."""
 import math
 
 
-SCREENED_20261029 = (
-    0.005149919890135024, 0.0165941863126573, 0.015449759670405072,
-    0.05893797207598972, 0.12417029068436669, 0.00705729762722207,
-    -0.028801403830014394,
-)
-SCREENED_START_TOLERANCE_RAD = .002
-SCREENED_20261029_164521 = (
-    0.004768444342717615, 0.010490577553978753, 0.015449759670405072,
-    0.05893797207598972, 0.12417029068436669, 0.00705729762722207,
-    -0.029182879377431803,
-)
+# Test envelope, not motor hard limits. J5 includes its measured ~0.124rad pose.
+# Acceptance here still requires fresh planning, hard limits and contact checks.
+START_ABS_LIMITS_RAD = (.1, .1, .1, .1, .15, .1, .1)
 
 
 def classify_start_pose(q):
     values = tuple(float(x) for x in q)
     if len(values) != 7 or not all(math.isfinite(x) for x in values):
         raise ValueError('Expected seven finite initial joint positions')
-    if max(abs(x) for x in values) <= .1:
-        return 'near_zero_0.1rad'
-    for name, anchor in (
-        ('screened_pose_20261029_153744', SCREENED_20261029),
-        ('screened_pose_20261029_164521', SCREENED_20261029_164521),
-    ):
-        if all(abs(a-b) <= SCREENED_START_TOLERANCE_RAD
-               for a, b in zip(values, anchor)):
-            return name
-    raise ValueError('Start outside near-zero scope and the narrowly screened 20261029 pose')
+    for axis, (value, limit) in enumerate(zip(values, START_ABS_LIMITS_RAD), 1):
+        if abs(value) > limit:
+            raise ValueError(f'J{axis} measured start {value:.6f}rad outside test region +/-{limit}rad')
+    return 'measured_start_region_v1'

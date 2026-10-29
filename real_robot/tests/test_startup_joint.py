@@ -12,8 +12,15 @@ from real_robot.commission_hold import HoldViolation, ModelWorker
 from real_robot.control import RunBundle
 from real_robot.settings import load
 from real_robot.startup_joint_test import reference_at, TrackingController, validate_first_segment, _startup_worker
-from real_robot.startup_scope import SCREENED_20261029, SCREENED_20261029_164521
 from real_robot.plan_startup import screen_candidate
+
+# Historical readings are regression fixtures, never runtime allowlists.
+SCREENED_20261029 = (
+    .005149919890135024,.0165941863126573,.015449759670405072,
+    .05893797207598972,.12417029068436669,.00705729762722207,-.028801403830014394)
+SCREENED_20261029_164521 = (
+    .004768444342717615,.010490577553978753,.015449759670405072,
+    .05893797207598972,.12417029068436669,.00705729762722207,-.029182879377431803)
 
 
 class J2Reference(unittest.TestCase):
@@ -94,6 +101,25 @@ class J2ModelScope(unittest.TestCase):
         packet = {'command':bad.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7}
         with self.assertRaises(RuntimeError):
             controller.accept_motion(packet,start,np.zeros(7),0.)
+
+    def test_current_180739_pose_plans_and_checks_endpoints(self):
+        start = np.array([.00705729762722207,.032616159304188486,.015449759670405072,
+                          .05893797207598972,.12417029068436669,.00705729762722207,
+                          -.028801403830014394])
+        candidate = screen_candidate(self.bundle,start,.04,.08)
+        plan = copy.deepcopy(self.plan)
+        plan.update(candidate,q_start_rad=start.tolist())
+        a,end,duration,_ = validate_first_segment(plan,self.bundle)
+        controller = TrackingController(self.bundle,load(),a,end,.4,True)
+        self.assertAlmostEqual(end[1]-a[1],.04)
+        self.assertEqual(candidate['segments'][2]['max_contact_count'],0)
+        command = a.copy()
+        command[1] += .03
+        controller.accept_motion({'command':command.tolist(),'velocity_command':[0.]*7,
+                                  'ff':[0.]*7},a,np.zeros(7),0.)
+        with self.assertRaises(HoldViolation):
+            controller.check_outward_endpoint(a)
+        controller.check_outward_endpoint(end)
 
     def test_endpoint_mode_allows_j2_lag_but_rejects_bad_endpoint_and_other_hazards(self):
         start,end,_,_ = validate_first_segment(self.plan,self.bundle)

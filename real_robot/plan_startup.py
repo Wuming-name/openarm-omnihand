@@ -17,7 +17,7 @@ from .commission_hold import StationaryOverlapGuard
 from .control import RunBundle
 from .control import minimum_jerk
 from .inspect_start import read_probe
-from .startup_scope import classify_start_pose
+from .startup_scope import classify_start_pose, START_ABS_LIMITS_RAD
 from rl_ppo.model import contacts
 
 
@@ -128,7 +128,7 @@ def main():
         report.update(source_probe=str(probe), source_probe_sha256=hashlib.sha256(probe.read_bytes()).hexdigest(),
                       model_sha256=bundle.env.task['model_sha256'], config_sha256=bundle.env.task['config_sha256'],
                       q_start_rad=start.tolist(), q_A_rad=bundle.q_a.tolist(), intended_gain_scale=.2,
-                      start_scope=start_scope,
+                      start_scope=start_scope, start_abs_limits_rad=list(START_ABS_LIMITS_RAD),
                       generated_at=datetime.now().astimezone().isoformat())
         rejected = []
         for shoulder in (.04, .06, .08):
