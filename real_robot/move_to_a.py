@@ -1,4 +1,4 @@
-"""Planned startup to A using unscaled training PD and bias compensation.
+"""Planned startup to A using training PD with a J6 outer-loop Kd override.
 
 No CAN without --execute. At A, maintain torque until Ctrl+C; exit attempts
 disable, which cannot support the arm against gravity. No PPO or hand commands.
@@ -63,9 +63,13 @@ def reference_at(start, segments, elapsed):
 
 
 class ToAController(HoldController):
-    def __init__(self,bundle,hardware,start):
+    def __init__(self,bundle,hardware,start,j6_kd=None):
+        if j6_kd is not None and j6_kd not in (.5,2.5):
+            raise ValueError('J6 outer Kd must be 0.5 or 2.5')
         self.hardware = hardware
         super().__init__(bundle,hardware,start,np.zeros(7),0.,True,1.)
+        if j6_kd is not None:
+            self.servo.physics['kd'][5] = j6_kd
 
     def check_measured(self,q,velocity):
         q,v = np.asarray(q),np.asarray(velocity)
@@ -165,10 +169,13 @@ def main():
     parser.add_argument('--plan',default='outputs/real_robot/startup_plan.json')
     parser.add_argument('--config',default=str(DEFAULT))
     parser.add_argument('--execute',action='store_true')
+    parser.add_argument('--j6-kd',type=float,choices=(.5,2.5),default=.5,
+                        help='J6 host outer-loop Kd; default 0.5 after observed oscillation; native MIT Kd remains zero')
     args = parser.parse_args()
     hardware = load(args.config)
     report = {'test':'training_gains_move_to_A','passed':False,'is_ppo_test':False,
               'gain_scale':1.,'hardware_commands_attempted':False,'disable_attempts':[],
+              'j6_outer_kd_override':args.j6_kd,'native_mit_kp':0.,'native_mit_kd':0.,
               'TIMEOUT_changed':False,'watchdog_verified':False,
               'hand_commands_sent':False,'hand_monitored':False}
     bundle = bus = worker = controller = None
@@ -188,6 +195,8 @@ def main():
                       model_sha256=bundle.env.task['model_sha256'],
                       config_sha256=bundle.env.task['config_sha256'],
                       trajectory_seconds=duration,initial_model_overlaps=verified['initial_contacts'])
+        report['training_kd'] = list(bundle.env.physics['kd'])
+        report['kd'][5] = args.j6_kd
         if not args.execute:
             report['preview_only'] = True
         else:
@@ -197,7 +206,7 @@ def main():
             q,v = fresh_disabled(bus,hardware)
             if np.max(np.abs(np.array(q)-start)) > .002:
                 raise RuntimeError('Actual start moved >0.002rad from new plan; re-probe and re-plan')
-            controller = ToAController(bundle,hardware,start)
+            controller = ToAController(bundle,hardware,start,j6_kd=args.j6_kd)
             worker = ModelWorker(args.run,hardware,start,np.zeros(7),True,
                                  worker_target=_worker,worker_args=(segments,))
             q,v = fresh_disabled(bus,hardware)
@@ -207,7 +216,7 @@ def main():
             if not worker.connection.poll(.5):
                 raise RuntimeError('Model worker did not warm up')
             worker.receive()
-            print('UNSCALED TRAINING PD: move to A, then KEEP HOLDING. Ctrl+C attempts motor DISABLE; support arm before exit.',flush=True)
+            print(f'TRAINING PD / J6 OUTER Kd={args.j6_kd}: move to A, then KEEP HOLDING. Ctrl+C attempts motor DISABLE; support arm before exit.',flush=True)
             report['hardware_commands_attempted'] = True
             bus.torques([0.]*7)
             enabled = True

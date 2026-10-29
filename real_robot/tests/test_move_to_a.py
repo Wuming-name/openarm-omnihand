@@ -74,6 +74,24 @@ class MoveToAModel(unittest.TestCase):
         self.assertFalse(at_a(self.bundle,self.bundle.q_a,[0.]*7,{'a_distance_m':.016}))
         self.assertFalse(at_a(self.bundle,self.bundle.q_a,[.051]*7,packet))
 
+    def test_only_j6_outer_kd_changes_and_saved_training_is_untouched(self):
+        original = copy.deepcopy(self.bundle.env.physics)
+        c = ToAController(self.bundle,load(),self.start,j6_kd=.5)
+        expected = list(original['kd'])
+        expected[5] = .5
+        np.testing.assert_allclose(c.servo.physics['kd'],expected)
+        np.testing.assert_allclose(c.servo.physics['kp'],original['kp'])
+        np.testing.assert_allclose(self.bundle.env.physics['kd'],original['kd'])
+        packet = {'command':self.start.tolist(),'velocity_command':[0.]*7,'ff':[0.]*7}
+        velocity = [0.]*7
+        velocity[5] = .1
+        c.accept_reference(packet,self.start.tolist(),velocity,0.)
+        output = c.step_fast(self.start.tolist(),velocity,0.)
+        self.assertAlmostEqual(output[5],-.05)
+        for invalid in (0.,1.,5.,float('nan'),float('inf')):
+            with self.assertRaises(ValueError):
+                ToAController(self.bundle,load(),self.start,j6_kd=invalid)
+
     def test_shared_servo_rejects_gross_lead_and_overspeed(self):
         c = ToAController(self.bundle,load(),self.start)
         bad = self.start.copy()
