@@ -17,6 +17,7 @@ from .commission_hold import StationaryOverlapGuard
 from .control import RunBundle
 from .control import minimum_jerk
 from .inspect_start import read_probe
+from .startup_scope import classify_start_pose
 from rl_ppo.model import contacts
 
 
@@ -122,12 +123,12 @@ def main():
         raw = json.loads(probe.read_text(encoding='utf-8'))
         if any(m['state']['status'] != 0 for m in raw['motors']):
             raise RuntimeError('Expected disabled-motor probe')
-        if np.max(np.abs(start)) > .1:
-            raise RuntimeError('This candidate search is limited to current near-zero posture')
+        start_scope = classify_start_pose(start)
         bundle = RunBundle(args.run, load_policy=False)
         report.update(source_probe=str(probe), source_probe_sha256=hashlib.sha256(probe.read_bytes()).hexdigest(),
                       model_sha256=bundle.env.task['model_sha256'], config_sha256=bundle.env.task['config_sha256'],
                       q_start_rad=start.tolist(), q_A_rad=bundle.q_a.tolist(), intended_gain_scale=.2,
+                      start_scope=start_scope,
                       generated_at=datetime.now().astimezone().isoformat())
         rejected = []
         for shoulder in (.04, .06, .08):

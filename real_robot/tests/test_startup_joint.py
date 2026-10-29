@@ -10,6 +10,8 @@ from real_robot.commission_hold import HoldViolation, ModelWorker
 from real_robot.control import RunBundle
 from real_robot.settings import load
 from real_robot.startup_joint_test import reference_at, TrackingController, validate_first_segment, _startup_worker
+from real_robot.startup_scope import SCREENED_20261029
+from real_robot.plan_startup import screen_candidate
 
 
 class J2Reference(unittest.TestCase):
@@ -51,6 +53,26 @@ class J2ModelScope(unittest.TestCase):
         bad['segments'][0]['end_q_rad'][6] += .01
         with self.assertRaises(ValueError):
             validate_first_segment(bad,self.bundle)
+
+    def test_screened_oct29_pose_full_path_and_bounded_return(self):
+        start = np.array(SCREENED_20261029)
+        candidate = screen_candidate(self.bundle, start, .04, .08)
+        plan = copy.deepcopy(self.plan)
+        plan.update(candidate, q_start_rad=start.tolist())
+        a, end, duration, initial = validate_first_segment(plan,self.bundle)
+        self.assertAlmostEqual(end[1]-a[1], .04)
+        self.assertEqual(candidate['segments'][2]['max_contact_count'], 0)
+        controller = TrackingController(self.bundle,load(),a,end)
+        controller.check_measured(start,np.zeros(7))
+        drift = start.copy()
+        drift[4] += .006
+        with self.assertRaises(HoldViolation):
+            controller.check_measured(drift,np.zeros(7))
+        for elapsed in np.linspace(0,15,151):
+            q,v,_ = reference_at(a,end,duration,elapsed)
+            controller.accept_motion({'command':q.tolist(),'velocity_command':v.tolist(),
+                                      'ff':[0.]*7},q,v,float(elapsed))
+        np.testing.assert_allclose(q,start)
 
     def test_reference_outside_corridor_rejected(self):
         start,end,_,_ = validate_first_segment(self.plan,self.bundle)

@@ -19,6 +19,7 @@ from .control import RunBundle, minimum_jerk
 from .hold_test import snapshot
 from .plan_startup import model_contacts
 from .settings import DEFAULT, load
+from .startup_scope import classify_start_pose
 from rl_ppo.model import contacts
 
 
@@ -35,7 +36,8 @@ def validate_first_segment(plan, bundle):
     duration = float(segment['duration_s'])
     if start.shape != (7,) or end.shape != (7,) or not np.isfinite(start).all() or not np.isfinite(end).all():
         raise ValueError('Malformed plan joint vectors')
-    if segment['name'] != 'shoulder_retreat' or np.max(np.abs(start)) > .1 or not 6 <= duration <= 10:
+    classify_start_pose(start)
+    if segment['name'] != 'shoulder_retreat' or not 6 <= duration <= 10:
         raise ValueError('Plan outside limited J2 test scope')
     if not np.allclose(segment['start_q_rad'], start, atol=1e-10, rtol=0):
         raise ValueError('Plan start vectors disagree')
@@ -182,7 +184,8 @@ def main():
         bundle = RunBundle(args.run, load_policy=False)
         plan = json.loads(Path(args.plan).read_text(encoding='utf-8'))
         start, end, duration, initial = validate_first_segment(plan,bundle)
-        report.update(start_q_rad=start.tolist(), outward_q_rad=end.tolist(), leg_duration_s=duration,
+        report.update(start_scope=classify_start_pose(start),
+                      start_q_rad=start.tolist(), outward_q_rad=end.tolist(), leg_duration_s=duration,
                       total_duration_s=3.+2*duration, initial_model_overlaps=initial,
                       model_sha256=bundle.env.task['model_sha256'])
         if args.execute:

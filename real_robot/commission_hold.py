@@ -22,6 +22,7 @@ from .control import RunBundle
 from .hold_test import snapshot
 from .servo import Servo
 from .settings import DEFAULT, load
+from .startup_scope import classify_start_pose
 from rl_ppo.model import contacts
 
 
@@ -66,8 +67,10 @@ class HoldController:
         self.stationary_baseline = stationary_baseline
         bundle.update_state(q, velocity)
         if stationary_baseline:
-            if np.max(np.abs(q)) > .1:
-                raise RuntimeError('Stationary baseline is limited to current near-zero pose, all |q|<=0.1rad')
+            try:
+                classify_start_pose(q)
+            except ValueError as exc:
+                raise RuntimeError(str(exc)) from exc
             self.initial_overlaps = contacts(bundle.env.model, bundle.env.data, bundle.env.physics['contact_tolerance_m'])
             self.overlap_guard = StationaryOverlapGuard(self.initial_overlaps)
         else:
