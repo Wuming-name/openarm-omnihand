@@ -12,12 +12,49 @@ import numpy as np
 from .control import RunBundle
 from .mit_servo import OFFICIAL_KP, OFFICIAL_KD, PROFILE
 from .policy_mission import a_metrics, a_accepted
-from rl_ppo.common import sha256
+from rl_ppo.common import sha256, config_hash, read_json
 
 
 def model_file(bundle):
     result = json.loads((bundle.run/'result.json').read_text())
     return bundle.run/result['model']
+
+
+def validate_start_report(source,bundle):
+    """Verify a gain-only lineage; never rewrite the original hardware report."""
+    task = bundle.env.task
+    if source.get('control_profile') != PROFILE or source.get('model_sha256') != task['model_sha256']:
+        raise ValueError('Accepted A report belongs to different model/control mode')
+    if source.get('config_sha256') == task['config_sha256']:
+        return {'mode':'same_snapshot','original_config_sha256':source['config_sha256']}
+    if (source.get('host_pd_enabled') is not False
+            or source.get('native_mit_kp') != list(OFFICIAL_KP)
+            or source.get('native_mit_kd') != list(OFFICIAL_KD)):
+        raise ValueError('Transferred A report must prove identical official native MIT gains')
+    audit_file = bundle.env.task_path.with_name('official_variant.json')
+    audit = read_json(audit_file)
+    if (audit.get('variant') != 'official_kp_kd_only'
+            or audit.get('source_config_sha256') != source.get('config_sha256')
+            or audit.get('new_config_sha256') != task['config_sha256']
+            or audit.get('source_model_sha256') != task['model_sha256']
+            or audit.get('variant_task_sha256') != sha256(bundle.env.task_path)):
+        raise ValueError('No matching gain-only source lineage for accepted A report')
+    original_task_file = Path(audit['source_run'])/'task/task.json'
+    original_task = read_json(original_task_file)
+    original_config = read_json(original_task_file.with_name('config.json'))
+    if (sha256(original_task_file) != audit['source_task_sha256']
+            or config_hash(original_config) != source['config_sha256']
+            or original_task['model_sha256'] != task['model_sha256']):
+        raise ValueError('Original task/config no longer matches variant provenance')
+    from rl_ppo.prepare_official import official_config
+    if official_config(original_config) != bundle.env.config:
+        raise ValueError('New configuration changes more than official Kp/Kd')
+    for key in ('q_A','q_B','p_A_base_m','p_B_base_m','R_A_base','R_B_base'):
+        if original_task[key] != task[key]:
+            raise ValueError('A/B geometry changed; old A measurement cannot be transferred')
+    return {'mode':'verified_gain_only_derivation','original_config_sha256':source['config_sha256'],
+            'new_config_sha256':task['config_sha256'],'variant_audit_sha256':sha256(audit_file),
+            'source_task_sha256':audit['source_task_sha256']}
 
 
 def verify_evaluation(path,bundle):
@@ -63,9 +100,7 @@ def main():
     env = b.env
     try:
         source = json.loads(Path(args.start_report).read_text(encoding='utf-8'))
-        if (source.get('control_profile') != PROFILE or source.get('model_sha256') != env.task['model_sha256']
-                or source.get('config_sha256') != env.task['config_sha256']):
-            raise ValueError('Accepted A report belongs to different model/config/control mode')
+        report['accepted_A_lineage'] = validate_start_report(source,b)
         q = np.asarray(source['final_q_rad'],dtype=float)
         metrics = a_metrics(b,q,source['final_velocity_rad_s'])
         if not a_accepted(metrics,source['final_velocity_rad_s']):

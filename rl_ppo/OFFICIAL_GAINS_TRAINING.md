@@ -28,4 +28,4 @@ python -m rl_ppo.evaluate --run outputs/ppo_official/run_实际日期目录 --ep
 python -m rl_ppo.evaluate --run outputs/ppo_official/run_实际日期目录 --episodes 20 --randomized
 ```
 
-后续实机控制必须明确换成新 run，重新生成与新配置哈希匹配的启动计划和离线评估。旧的 real_robot/ppo_native_evaluation.json、旧任务的启动计划不能混用；此前 A 报告使用旧配置哈希，也不能直接冒充新任务的实机验收。先完成此次对照训练及仿真评估，再按新任务准备实机测试。
+后续实机控制必须明确换成新 run，重新生成与新配置哈希匹配的启动计划和离线评估。旧的 real_robot/ppo_native_evaluation.json、旧任务的启动计划不能混用。此前 A 报告不改写；evaluate_policy 仅在核对官方 MIT 原生增益一致、模型不变、原任务哈希及源配置一致、新配置确实只替换 Kp/Kd、A/B几何不变后，允许复用其中的实测姿态，记录完整来源。任一条件不符都会拒绝，不能直接修改旧报告的配置哈希。

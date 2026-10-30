@@ -1,5 +1,30 @@
 # 接受当前 A 点误差后执行 PPO 到 B
 
+## 官方增益重训后的新策略
+
+新训练 run 为 `outputs/ppo_official/run_20261029_213104_305061`，后续命令必须明确使用它。标准 A 附近的20次标称及20次随机化评估已由用户完成；下一步仍需从接受的实际 A 姿态做一次匹配新策略的离线评估。
+
+旧 A 报告 `outputs/real_robot/20261029_201652_989760_move_to_A.json` 不改写。程序只在核对 official_variant.json 的来源链、模型及 A/B几何不变、新配置仅替换 Kp/Kd、原实物报告确实使用同一官方 MIT 增益后，复用其中的实测位置，并在新评估报告中保存 accepted_A_lineage。不是把旧策略评估报告改成新策略报告，也不认定新策略已实机成功。
+
+```bash
+python -m real_robot.evaluate_policy \
+  --run outputs/ppo_official/run_20261029_213104_305061 \
+  --start-report outputs/real_robot/20261029_201652_989760_move_to_A.json \
+  --output outputs/real_robot/ppo_official_A_evaluation.json
+```
+
+仅当 ALL_PASSED=True 后执行：
+
+```bash
+python -m real_robot.probe &&
+python -m real_robot.plan_startup --run outputs/ppo_official/run_20261029_213104_305061 &&
+python -m real_robot.run_policy \
+  --run outputs/ppo_official/run_20261029_213104_305061 \
+  --evaluation-report outputs/real_robot/ppo_official_A_evaluation.json --execute
+```
+
+以下较早命令中的旧 run 仅为历史示例，以本节新 run 为准。实机仍使用完整 MIT 和官方默认增益，到 B 后持续保持，先承托再 Ctrl+C。模型计算误差不是外部实测精度；这轮仍是 SocketCAN 测试入口，正式 ROS2 自动任务尚未验证。
+
 此轮使用与实物到 A 测试相同的 SocketCAN 调试入口和完整 MIT 控制器，不是 ROS2 自动部署已完成的声明。ROS2 bridge 继续共用相同 MIT 控制实现，但正式 ROS2 校准门槛保留。训练文件、策略权重、模型和哈希不修改。
 
 `move_to_a.py` 原有到 A 保持模式保留，A 验收改为手掌距离不超过 15mm、姿态误差不超过 0.10rad、七轴速度不超过 0.05rad/s并稳定 0.5秒，不再以七轴逐个 0.01rad 误差作为准入。用户接受的读数手掌误差约 5.396mm，关节偏差约 0.024rad，也能通过这项模型验收。位置和姿态仍是编码器＋模型计算，不是外部测量。
